@@ -1,0 +1,201 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Page Views Count\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-12-21 13:39+0700\n"
+"PO-Revision-Date: 2012-12-21 13:39+0700\n"
+"Last-Translator: Nguyen Tuan <mr.nguyencongtuan@gmail.com>\n"
+"Language-Team: a3rev\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-Basepath: ../\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: page-views-count.php:59
+#: page-views-count.php:64
+msgid "Page Views Count"
+msgstr ""
+
+#: pvc_class.php:105
+#: pvc_class.php:109
+msgid "total views"
+msgstr ""
+
+#: pvc_class.php:105
+msgid "views today"
+msgstr ""
+
+#: pvc_class.php:109
+msgid "no views today"
+msgstr ""
+
+#: pvc_class.php:111
+msgid "No views yet"
+msgstr ""
+
+#: pvc_class.php:217
+msgid "Settings"
+msgstr ""
+
+#: pvc_class.php:226
+msgid "Documentation"
+msgstr ""
+
+#: pvc_settings.php:15
+msgid "Page Views Count successfully updated"
+msgstr ""
+
+#: pvc_settings.php:25
+msgid "Page Views Count Settings"
+msgstr ""
+
+#: pvc_settings.php:28
+msgid "Post and Page Type"
+msgstr ""
+
+#: pvc_settings.php:32
+msgid "Posts"
+msgstr ""
+
+#: pvc_settings.php:35
+msgid "All posts including posts extracts on category and tags Archives"
+msgstr ""
+
+#: pvc_settings.php:39
+msgid "Pages"
+msgstr ""
+
+#: pvc_settings.php:47
+msgid "Custom Post Types"
+msgstr ""
+
+#: pvc_settings.php:64
+msgid "Page Views Count Function"
+msgstr ""
+
+#: pvc_settings.php:68
+msgid "There are 2 functions that you can use to manually add Page Views count to any content or post type that is created by your theme or plugin that creates it's own table intead of using cutom post types"
+msgstr ""
+
+#: pvc_settings.php:71
+msgid "Single post,  page, object"
+msgstr ""
+
+#: pvc_settings.php:75
+msgid "Index pages"
+msgstr ""
+
+#: pvc_settings.php:79
+msgid "See"
+msgstr ""
+
+#: pvc_settings.php:79
+msgid "the plugins wiki"
+msgstr ""
+
+#: pvc_settings.php:79
+msgid "docs for detailed explanation on using the funtions"
+msgstr ""
+
+#: pvc_settings.php:84
+msgid "Save Changes"
+msgstr ""
+
+#: pvc_settings.php:94
+msgid "Help spead the Word about this plugin"
+msgstr ""
+
+#: pvc_settings.php:95
+msgid "Things you can do to help others find this plugin"
+msgstr ""
+
+#: pvc_settings.php:97
+msgid "Rate this plugin 5"
+msgstr ""
+
+#: pvc_settings.php:97
+msgid "on WordPress.org"
+msgstr ""
+
+#: pvc_settings.php:98
+msgid "Mark the plugin as a fourite"
+msgstr ""
+
+#: pvc_settings.php:101
+msgid "More A3 Quality Plugins"
+msgstr ""
+
+#: pvc_settings.php:102
+msgid "Below is a list of the A3 plugins that are available for free download from wordpress.org"
+msgstr ""
+
+#: pvc_settings.php:103
+msgid "WordPress Plugins"
+msgstr ""
+
+#: pvc_settings.php:106
+msgid "WordPress Email Template"
+msgstr ""
+
+#: pvc_settings.php:109
+msgid "WooCommerce Plugins"
+msgstr ""
+
+#: pvc_settings.php:112
+msgid "WooCommerce Dynamic Products Gallery"
+msgstr ""
+
+#: pvc_settings.php:113
+msgid "WooCommerce Predictive Search"
+msgstr ""
+
+#: pvc_settings.php:114
+msgid "WooCommerce Compare Products"
+msgstr ""
+
+#: pvc_settings.php:115
+msgid "WooCommerce Widget Product Slideshow"
+msgstr ""
+
+#: pvc_settings.php:116
+msgid "WooCommerce Email Inquiry & Cart Options (Pro Version only fro the A3 Rev site)"
+msgstr ""
+
+#: pvc_settings.php:119
+msgid "WP e-Commerce Plugins"
+msgstr ""
+
+#: pvc_settings.php:122
+msgid "WP e-Commerce Dynamic Gallery"
+msgstr ""
+
+#: pvc_settings.php:123
+msgid "WP e-Commerce Predictive Search"
+msgstr ""
+
+#: pvc_settings.php:124
+msgid "WP e-Commerce Compare Products"
+msgstr ""
+
+#: pvc_settings.php:125
+msgid "WP e-Commerce Catalog Visibility & Email Inquiry"
+msgstr ""
+
+#: pvc_settings.php:126
+msgid "WP e-Commerce Grid View"
+msgstr ""
+
+#: pvc_settings.php:129
+msgid "Plugin Documentation"
+msgstr ""
+
+#: pvc_settings.php:130
+msgid "All of our plugins have comprehensive online documentation. Please refer to the plugins docs before raising a support request"
+msgstr ""
+
+#: pvc_settings.php:130
+msgid "Visit the a3rev wiki."
+msgstr ""
+
