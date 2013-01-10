@@ -91,7 +91,9 @@ class A3_PVC_Settings{
 	
 	function other_plugins_notice() {
 		$html = '';
-		$html .= '<div id="a3rev_plugins_notice"><h3>'.__('Help spead the Word about this plugin', 'pvc').'</h3>';
+		$html .= '<div id="a3rev_plugins_notice">';
+		$html .= '<a href="http://a3rev.com/shop/" target="_blank" style="float:right;margin-top:5px; margin-left:10px;" ><img src="'.A3_PVC_URL.'/a3logo.png" /></a>';
+		$html .= '<h3>'.__('Help spread the Word about this plugin', 'pvc').'</h3>';
 		$html .= '<p>'.__("Things you can do to help others find this plugin", 'pvc');
 		$html .= '<ul style="padding-left:10px;">';
 		$html .= '<li>* <a href="http://wordpress.org/extend/plugins/page-views-count/" target="_blank">'.__('Rate this plugin 5', 'pvc').' <img src="'.A3_PVC_URL.'/stars.png" align="top" /> '.__('on WordPress.org', 'pvc').'</a></li>';
@@ -113,9 +115,10 @@ class A3_PVC_Settings{
 		$html .= '<li>* <a href="http://wordpress.org/extend/plugins/woocommerce-predictive-search/" target="_blank">'.__('WooCommerce Predictive Search', 'pvc').'</a></li>';
 		$html .= '<li>* <a href="http://wordpress.org/extend/plugins/woocommerce-compare-products/" target="_blank">'.__('WooCommerce Compare Products', 'pvc').'</a></li>';
 		$html .= '<li>* <a href="http://wordpress.org/extend/plugins/woo-widget-product-slideshow/" target="_blank">'.__('WooCommerce Widget Product Slideshow', 'pvc').'</a></li>';
-		$html .= '<li>* <a href="http://a3rev.com/products-page/woocommerce/woo-email-inquiry-and-cart-options/" target="_blank">'.__('WooCommerce Email Inquiry & Cart Options (Pro Version only fro the A3 Rev site)', 'pvc').'</a></li>';
+		$html .= '<li>* <a href="http://a3rev.com/shop/woocommerce-email-inquiry-and-cart-options/" target="_blank">'.__('WooCommerce Email Inquiry & Cart Options', 'pvc').'</a>'.__(' - Pro Version only from a3rev', 'pvc').'</li>';
 		$html .= '</ul>';
 		$html .= '</p>';
+		
 		$html .= '<h3>'.__('WP e-Commerce Plugins', 'pvc').'</h3>';
 		$html .= '<p>';
 		$html .= '<ul style="padding-left:10px;">';

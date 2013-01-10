@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Page Views Count\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-12-21 13:39+0700\n"
-"PO-Revision-Date: 2012-12-21 13:39+0700\n"
+"POT-Creation-Date: 2013-01-10 11:57+0700\n"
+"PO-Revision-Date: 2013-01-10 11:57+0700\n"
 "Last-Translator: Nguyen Tuan <mr.nguyencongtuan@gmail.com>\n"
 "Language-Team: a3rev\n"
 "MIME-Version: 1.0\n"
@@ -103,99 +103,103 @@ msgstr ""
 msgid "Save Changes"
 msgstr ""
 
-#: pvc_settings.php:94
-msgid "Help spead the Word about this plugin"
+#: pvc_settings.php:96
+msgid "Help spread the Word about this plugin"
 msgstr ""
 
-#: pvc_settings.php:95
+#: pvc_settings.php:97
 msgid "Things you can do to help others find this plugin"
 msgstr ""
 
-#: pvc_settings.php:97
+#: pvc_settings.php:99
 msgid "Rate this plugin 5"
 msgstr ""
 
-#: pvc_settings.php:97
+#: pvc_settings.php:99
 msgid "on WordPress.org"
 msgstr ""
 
-#: pvc_settings.php:98
+#: pvc_settings.php:100
 msgid "Mark the plugin as a fourite"
 msgstr ""
 
-#: pvc_settings.php:101
+#: pvc_settings.php:103
 msgid "More A3 Quality Plugins"
 msgstr ""
 
-#: pvc_settings.php:102
+#: pvc_settings.php:104
 msgid "Below is a list of the A3 plugins that are available for free download from wordpress.org"
 msgstr ""
 
-#: pvc_settings.php:103
+#: pvc_settings.php:105
 msgid "WordPress Plugins"
 msgstr ""
 
-#: pvc_settings.php:106
+#: pvc_settings.php:108
 msgid "WordPress Email Template"
 msgstr ""
 
-#: pvc_settings.php:109
+#: pvc_settings.php:111
 msgid "WooCommerce Plugins"
 msgstr ""
 
-#: pvc_settings.php:112
+#: pvc_settings.php:114
 msgid "WooCommerce Dynamic Products Gallery"
 msgstr ""
 
-#: pvc_settings.php:113
+#: pvc_settings.php:115
 msgid "WooCommerce Predictive Search"
 msgstr ""
 
-#: pvc_settings.php:114
+#: pvc_settings.php:116
 msgid "WooCommerce Compare Products"
 msgstr ""
 
-#: pvc_settings.php:115
+#: pvc_settings.php:117
 msgid "WooCommerce Widget Product Slideshow"
 msgstr ""
 
-#: pvc_settings.php:116
-msgid "WooCommerce Email Inquiry & Cart Options (Pro Version only fro the A3 Rev site)"
+#: pvc_settings.php:118
+msgid "WooCommerce Email Inquiry & Cart Options"
 msgstr ""
 
-#: pvc_settings.php:119
-msgid "WP e-Commerce Plugins"
+#: pvc_settings.php:118
+msgid " - Pro Version only from a3rev"
 msgstr ""
 
 #: pvc_settings.php:122
-msgid "WP e-Commerce Dynamic Gallery"
-msgstr ""
-
-#: pvc_settings.php:123
-msgid "WP e-Commerce Predictive Search"
-msgstr ""
-
-#: pvc_settings.php:124
-msgid "WP e-Commerce Compare Products"
+msgid "WP e-Commerce Plugins"
 msgstr ""
 
 #: pvc_settings.php:125
-msgid "WP e-Commerce Catalog Visibility & Email Inquiry"
+msgid "WP e-Commerce Dynamic Gallery"
 msgstr ""
 
 #: pvc_settings.php:126
-msgid "WP e-Commerce Grid View"
+msgid "WP e-Commerce Predictive Search"
+msgstr ""
+
+#: pvc_settings.php:127
+msgid "WP e-Commerce Compare Products"
+msgstr ""
+
+#: pvc_settings.php:128
+msgid "WP e-Commerce Catalog Visibility & Email Inquiry"
 msgstr ""
 
 #: pvc_settings.php:129
+msgid "WP e-Commerce Grid View"
+msgstr ""
+
+#: pvc_settings.php:132
 msgid "Plugin Documentation"
 msgstr ""
 
-#: pvc_settings.php:130
+#: pvc_settings.php:133
 msgid "All of our plugins have comprehensive online documentation. Please refer to the plugins docs before raising a support request"
 msgstr ""
 
-#: pvc_settings.php:130
+#: pvc_settings.php:133
 msgid "Visit the a3rev wiki."
 msgstr ""
 
