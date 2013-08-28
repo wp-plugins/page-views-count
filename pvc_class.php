@@ -14,8 +14,9 @@ add_action('plugin_action_links_'.A3_PVC_PLUGIN_NAME, array('A3_PVC', 'settings_
 // Add text on right of Visit the plugin on Plugin manager page
 add_filter( 'plugin_row_meta', array('A3_PVC', 'plugin_extra_links'), 10, 2 );
 
-class A3_PVC{
-	function upgrade_version_1_2(){
+class A3_PVC
+{
+	public static function upgrade_version_1_2(){
 		global $wpdb;
 		$sql = "ALTER TABLE ". $wpdb->prefix . "pvc_total CHANGE `postnum` `postnum` VARCHAR( 255 ) NOT NULL";
 		$wpdb->query($sql);
@@ -23,7 +24,7 @@ class A3_PVC{
 		$sql = "ALTER TABLE ". $wpdb->prefix . "pvc_daily CHANGE `postnum` `postnum` VARCHAR( 255 ) NOT NULL";
 		$wpdb->query($sql);
 	}
-	function install_database(){
+	public static function install_database(){
 		global $wpdb;
 		$collate = '';
 		if ( $wpdb->has_cap( 'collation' ) ) {
@@ -50,7 +51,7 @@ class A3_PVC{
 		$wpdb->query($sql);
 	}
 	
-	function pvc_fetch_post_counts( $post_id ) {
+	public static function pvc_fetch_post_counts( $post_id ) {
 		global $wpdb;
 		$nowisnow = date('Y-m-d');
 	
@@ -60,7 +61,7 @@ class A3_PVC{
 		return $wpdb->get_row($sql);
 	}
 	
-	function pvc_fetch_post_total( $post_id ) {
+	public static function pvc_fetch_post_total( $post_id ) {
 		global $wpdb;
 	
 		$sql = $wpdb->prepare( "SELECT t.postcount AS total FROM ". $wpdb->prefix . "pvc_total AS t 
@@ -68,7 +69,7 @@ class A3_PVC{
 		return $wpdb->get_var($sql);
 	}
 	
-	function pvc_stats_update($post_id) {
+	public static function pvc_stats_update($post_id) {
 		global $wpdb;
 		
 		// get the local time based off WordPress setting
@@ -95,8 +96,10 @@ class A3_PVC{
 	}
 	
 	// get the total page views and daily page views for the post
-	function pvc_stats_counter($post_id) {
+	public static function pvc_stats_counter($post_id) {
 		global $wpdb;
+		$exclude_ids = array(3630, 3643, 5520, 3642, 3632, 3633, 3628, 2102, 6793);
+		if (in_array($post_id, (array)$exclude_ids)) return '';
 		// get all the post view info to display
 		$results = A3_PVC::pvc_fetch_post_counts( $post_id );
 		// get the stats and
@@ -116,16 +119,17 @@ class A3_PVC{
 		return $html;
 	}
 	
-	function pvc_remove_stats($content) {
+	public static function pvc_remove_stats($content) {
 		remove_action('the_content', array('A3_PVC','pvc_stats_show'));
 		return $content;
 	}
 	
-	function pvc_stats_show($content){
+	public static function pvc_stats_show($content){
 		remove_action('loop_end', array('A3_PVC', 'pvc_stats_echo'));
 		remove_action('genesis_after_post_content', array('A3_PVC', 'genesis_pvc_stats_echo'));
 		global $post;
-		$pvc_settings = get_option('pvc_settings');
+		$pvc_settings = get_option('pvc_settings', array() );
+		$exclude_ids = array(3630, 3643, 5520, 3642, 3632, 3633, 3628, 2102, 6793);
 		$post_type = get_post_type($post->ID);
 		$args=array(
 			  'public'   => true,
@@ -134,7 +138,7 @@ class A3_PVC{
 		$output = 'names'; // names or objects, note names is the default
 		$operator = 'and'; // 'and' or 'or'
 		$post_types = get_post_types($args, $output, $operator );
-		if(in_array($post_type, (array)$pvc_settings['post_types'])){
+		if(!in_array($post->ID, (array) $exclude_ids) && isset($pvc_settings['post_types']) && in_array($post_type, (array)$pvc_settings['post_types'])){
 			if(is_singular() || is_singular($post_types)){
 				A3_PVC::pvc_stats_update($post->ID);
 			}
@@ -143,11 +147,12 @@ class A3_PVC{
 		return $content;
 	}
 	
-	function excerpt_pvc_stats_show($excerpt){
+	public static function excerpt_pvc_stats_show($excerpt){
 		remove_action('loop_end', array('A3_PVC', 'pvc_stats_echo'));
 		remove_action('genesis_after_post_content', array('A3_PVC', 'genesis_pvc_stats_echo'));
 		global $post;
-		$pvc_settings = get_option('pvc_settings');
+		$pvc_settings = get_option('pvc_settings', array() );
+		$exclude_ids = array(3630, 3643, 5520, 3642, 3632, 3633, 3628, 2102, 6793);
 		$post_type = get_post_type($post->ID);
 		$args=array(
 			  'public'   => true,
@@ -156,16 +161,16 @@ class A3_PVC{
 		$output = 'names'; // names or objects, note names is the default
 		$operator = 'and'; // 'and' or 'or'
 		$post_types = get_post_types($args, $output, $operator );
-		if(in_array($post_type, (array)$pvc_settings['post_types'])){
+		if(!in_array($post->ID, (array) $exclude_ids) && isset($pvc_settings['post_types']) && in_array($post_type, (array)$pvc_settings['post_types'])){
 			//A3_PVC::pvc_stats_update($post->ID);
 			$excerpt .= A3_PVC::pvc_stats_counter($post->ID);
 		}
 		return $excerpt;
 	}
 	
-	function pvc_stats_echo(){
+	public static function pvc_stats_echo(){
 		global $post;
-		$pvc_settings = get_option('pvc_settings');
+		$pvc_settings = get_option('pvc_settings', array() );
 		$post_type = get_post_type($post->ID);
 		$args=array(
 			  'public'   => true,
@@ -174,16 +179,16 @@ class A3_PVC{
 		$output = 'names'; // names or objects, note names is the default
 		$operator = 'and'; // 'and' or 'or'
 		$post_types = get_post_types($args, $output, $operator );
-		if(in_array($post_type, (array)$pvc_settings['post_types'])){
+		if( isset($pvc_settings['post_types']) && in_array($post_type, (array)$pvc_settings['post_types'])){
 			//A3_PVC::pvc_stats_update($post->ID);
 			echo A3_PVC::pvc_stats_counter($post->ID);
 		}
 	}
 	
-	function genesis_pvc_stats_echo(){
+	public static function genesis_pvc_stats_echo(){
 		remove_action('loop_end', array('A3_PVC', 'pvc_stats_echo'));
 		global $post;
-		$pvc_settings = get_option('pvc_settings');
+		$pvc_settings = get_option('pvc_settings', array() );
 		$post_type = get_post_type($post->ID);
 		$args=array(
 			  'public'   => true,
@@ -192,20 +197,20 @@ class A3_PVC{
 		$output = 'names'; // names or objects, note names is the default
 		$operator = 'and'; // 'and' or 'or'
 		$post_types = get_post_types($args, $output, $operator );
-		if(in_array($post_type, (array)$pvc_settings['post_types'])){
+		if( isset($pvc_settings['post_types']) && in_array($post_type, (array)$pvc_settings['post_types'])){
 			//A3_PVC::pvc_stats_update($post->ID);
 			echo A3_PVC::pvc_stats_counter($post->ID);
 		}
 	}
 	
-	function custom_stats_echo($postid=0, $have_echo = 1){
+	public static function custom_stats_echo($postid=0, $have_echo = 1){
 		if($have_echo == 1)
 			echo A3_PVC::pvc_stats_counter($postid);
 		else
 			return A3_PVC::pvc_stats_counter($postid);
 	}
 	
-	function custom_stats_update_echo($postid=0, $have_echo=1){
+	public static function custom_stats_update_echo($postid=0, $have_echo=1){
 		A3_PVC::pvc_stats_update($postid);
 		if($have_echo == 1)
 			echo A3_PVC::pvc_stats_counter($postid);
@@ -213,17 +218,31 @@ class A3_PVC{
 			return A3_PVC::pvc_stats_counter($postid);
 	}
 	
-	function settings_plugin_links($actions) {
+	public static function pvc_check_exclude($postid=0) {
+		global $post;
+		if ($postid == 0 || $postid == '') $postid = $post->ID;
+		$pvc_settings = get_option('pvc_settings', array() );
+		$post_type = get_post_type($postid);
+		if ($post_type == false) return false;
+		
+		$exclude_ids = array(3630, 3643, 5520, 3642, 3632, 3633, 3628, 2102, 6793);
+		if ( isset($pvc_settings['post_types']) && in_array($postid, $exclude_ids)) return true;
+		
+		return false;
+	}
+	
+	public static function settings_plugin_links($actions) {
 		$actions = array_merge( array( 'settings' => '<a href="options-general.php?page=a3-pvc">' . __( 'Settings', 'pvc' ) . '</a>' ), $actions );
 		
 		return $actions;
 	}
 	
-	function plugin_extra_links($links, $plugin_name) {
+	public static function plugin_extra_links($links, $plugin_name) {
 		if ( $plugin_name != A3_PVC_PLUGIN_NAME) {
 			return $links;
 		}
 		$links[] = '<a href="http://docs.a3rev.com/user-guides/page-view-count/" target="_blank">'.__('Documentation', 'pvc').'</a>';
+		$links[] = '<a href="http://wordpress.org/support/plugin/page-views-count/" target="_blank">'.__('Support', 'pvc').'</a>';
 		return $links;
 	}
 }

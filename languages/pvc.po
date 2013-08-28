@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Page Views Count\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-01-10 11:57+0700\n"
-"PO-Revision-Date: 2013-01-10 11:57+0700\n"
+"POT-Creation-Date: 2013-08-28 15:26+0700\n"
+"PO-Revision-Date: 2013-08-28 15:26+0700\n"
 "Last-Translator: Nguyen Tuan <mr.nguyencongtuan@gmail.com>\n"
 "Language-Team: a3rev\n"
 "MIME-Version: 1.0\n"
@@ -13,193 +13,213 @@ msgstr ""
 "X-Poedit-Basepath: ../\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: page-views-count.php:59
-#: page-views-count.php:64
+#: page-views-count.php:120
+#: page-views-count.php:125
 msgid "Page Views Count"
 msgstr ""
 
-#: pvc_class.php:105
-#: pvc_class.php:109
+#: pvc_class.php:108
+#: pvc_class.php:112
 msgid "total views"
 msgstr ""
 
-#: pvc_class.php:105
+#: pvc_class.php:108
 msgid "views today"
 msgstr ""
 
-#: pvc_class.php:109
+#: pvc_class.php:112
 msgid "no views today"
 msgstr ""
 
-#: pvc_class.php:111
+#: pvc_class.php:114
 msgid "No views yet"
 msgstr ""
 
-#: pvc_class.php:217
+#: pvc_class.php:235
 msgid "Settings"
 msgstr ""
 
-#: pvc_class.php:226
+#: pvc_class.php:244
 msgid "Documentation"
 msgstr ""
 
-#: pvc_settings.php:15
+#: pvc_class.php:245
+msgid "Support"
+msgstr ""
+
+#: pvc_settings.php:31
 msgid "Page Views Count successfully updated"
 msgstr ""
 
-#: pvc_settings.php:25
+#: pvc_settings.php:41
 msgid "Page Views Count Settings"
 msgstr ""
 
-#: pvc_settings.php:28
+#: pvc_settings.php:44
 msgid "Post and Page Type"
 msgstr ""
 
-#: pvc_settings.php:32
+#: pvc_settings.php:48
 msgid "Posts"
 msgstr ""
 
-#: pvc_settings.php:35
+#: pvc_settings.php:51
 msgid "All posts including posts extracts on category and tags Archives"
 msgstr ""
 
-#: pvc_settings.php:39
+#: pvc_settings.php:55
 msgid "Pages"
 msgstr ""
 
-#: pvc_settings.php:47
+#: pvc_settings.php:63
 msgid "Custom Post Types"
 msgstr ""
 
-#: pvc_settings.php:64
+#: pvc_settings.php:80
+msgid "House Keeping"
+msgstr ""
+
+#: pvc_settings.php:83
+msgid "Clean up on Deletion"
+msgstr ""
+
+#: pvc_settings.php:87
+msgid "Check this box and if you ever delete this plugin it will completely remove all tables and data it created, leaving no trace it was ever here."
+msgstr ""
+
+#: pvc_settings.php:91
 msgid "Page Views Count Function"
 msgstr ""
 
-#: pvc_settings.php:68
+#: pvc_settings.php:95
 msgid "There are 2 functions that you can use to manually add Page Views count to any content or post type that is created by your theme or plugin that creates it's own table intead of using cutom post types"
 msgstr ""
 
-#: pvc_settings.php:71
+#: pvc_settings.php:98
 msgid "Single post,  page, object"
 msgstr ""
 
-#: pvc_settings.php:75
+#: pvc_settings.php:102
 msgid "Index pages"
 msgstr ""
 
-#: pvc_settings.php:79
+#: pvc_settings.php:106
 msgid "See"
 msgstr ""
 
-#: pvc_settings.php:79
+#: pvc_settings.php:106
 msgid "the plugins wiki"
 msgstr ""
 
-#: pvc_settings.php:79
+#: pvc_settings.php:106
 msgid "docs for detailed explanation on using the funtions"
 msgstr ""
 
-#: pvc_settings.php:84
+#: pvc_settings.php:111
 msgid "Save Changes"
 msgstr ""
 
-#: pvc_settings.php:96
+#: pvc_settings.php:123
 msgid "Help spread the Word about this plugin"
 msgstr ""
 
-#: pvc_settings.php:97
+#: pvc_settings.php:124
 msgid "Things you can do to help others find this plugin"
 msgstr ""
 
-#: pvc_settings.php:99
+#: pvc_settings.php:126
 msgid "Rate this plugin 5"
 msgstr ""
 
-#: pvc_settings.php:99
+#: pvc_settings.php:126
 msgid "on WordPress.org"
 msgstr ""
 
-#: pvc_settings.php:100
+#: pvc_settings.php:127
 msgid "Mark the plugin as a fourite"
 msgstr ""
 
-#: pvc_settings.php:103
-msgid "More A3 Quality Plugins"
+#: pvc_settings.php:130
+msgid "More FREE a3rev WordPress Plugins"
 msgstr ""
 
-#: pvc_settings.php:104
-msgid "Below is a list of the A3 plugins that are available for free download from wordpress.org"
+#: pvc_settings.php:133
+msgid "Contact Us page - Contact People"
 msgstr ""
 
-#: pvc_settings.php:105
-msgid "WordPress Plugins"
-msgstr ""
-
-#: pvc_settings.php:108
+#: pvc_settings.php:134
 msgid "WordPress Email Template"
 msgstr ""
 
-#: pvc_settings.php:111
-msgid "WooCommerce Plugins"
+#: pvc_settings.php:137
+msgid "FREE a3rev WooCommerce Plugins"
 msgstr ""
 
-#: pvc_settings.php:114
+#: pvc_settings.php:140
+msgid "WooCommerce Product Sort & Display"
+msgstr ""
+
+#: pvc_settings.php:141
+msgid "WooCommerce Products Quick View"
+msgstr ""
+
+#: pvc_settings.php:142
 msgid "WooCommerce Dynamic Products Gallery"
 msgstr ""
 
-#: pvc_settings.php:115
+#: pvc_settings.php:143
 msgid "WooCommerce Predictive Search"
 msgstr ""
 
-#: pvc_settings.php:116
+#: pvc_settings.php:144
 msgid "WooCommerce Compare Products"
 msgstr ""
 
-#: pvc_settings.php:117
+#: pvc_settings.php:145
 msgid "WooCommerce Widget Product Slideshow"
 msgstr ""
 
-#: pvc_settings.php:118
+#: pvc_settings.php:146
 msgid "WooCommerce Email Inquiry & Cart Options"
 msgstr ""
 
-#: pvc_settings.php:118
-msgid " - Pro Version only from a3rev"
+#: pvc_settings.php:150
+msgid "FREE a3rev WP e-Commerce Plugins"
 msgstr ""
 
-#: pvc_settings.php:122
-msgid "WP e-Commerce Plugins"
+#: pvc_settings.php:153
+msgid "WP e-Commerce Products Quick View"
 msgstr ""
 
-#: pvc_settings.php:125
+#: pvc_settings.php:154
 msgid "WP e-Commerce Dynamic Gallery"
 msgstr ""
 
-#: pvc_settings.php:126
+#: pvc_settings.php:155
 msgid "WP e-Commerce Predictive Search"
 msgstr ""
 
-#: pvc_settings.php:127
+#: pvc_settings.php:156
 msgid "WP e-Commerce Compare Products"
 msgstr ""
 
-#: pvc_settings.php:128
+#: pvc_settings.php:157
 msgid "WP e-Commerce Catalog Visibility & Email Inquiry"
 msgstr ""
 
-#: pvc_settings.php:129
+#: pvc_settings.php:158
 msgid "WP e-Commerce Grid View"
 msgstr ""
 
-#: pvc_settings.php:132
+#: pvc_settings.php:161
 msgid "Plugin Documentation"
 msgstr ""
 
-#: pvc_settings.php:133
+#: pvc_settings.php:162
 msgid "All of our plugins have comprehensive online documentation. Please refer to the plugins docs before raising a support request"
 msgstr ""
 
-#: pvc_settings.php:133
+#: pvc_settings.php:162
 msgid "Visit the a3rev wiki."
 msgstr ""
 

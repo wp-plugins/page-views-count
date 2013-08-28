@@ -2,8 +2,8 @@
 Contributors: a3rev, A3 Revolution Software Development team
 Tags: wordpress page view, page view count , post views, postview count,
 Requires at least: 3.3
-Tested up to: 3.5
-Stable tag: 1.0.1
+Tested up to: 3.6
+Stable tag: 1.0.2
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -33,7 +33,7 @@ If you do a translation for your site please send it to us and we'll include it 
 
 * English (default) - always included.
 *.po file (pvc.po) in languages folder for translations.
-* [Go here](http://a3rev.com/contact/) to send your translation files to us.
+* [Go here](http://a3rev.com/contact-us-page/) to send your translation files to us.
 
 = Documentation & Support =
 
@@ -85,10 +85,25 @@ The manual installation method involves down loading our plugin and uploading it
  
 == Changelog ==
 
-= 1.0.1 - 2013/01/10 =
+= 1.0.2 - 2013/08/28 =
+* Features :
+	* Major performance enhancement. All Time Views table data emptied each day on 24 hour cron. 
+	* Added House Keeping function to settings. Clean up on Deletion. Option - Choose if you ever delete this plugin it will completely remove all tables and data it has created, leaving no trace it was ever installed.
+* Tweaks :
+	* Plugin in code tested fully compatible with WordPress v3.6.0
+	* Ran full WP_DEBUG All Uncaught exceptions errors and warnings fixed.
+	* Added PHP Public Static to functions in Class. Done so that PHP Public Static warnings don't show in WP_DEBUG mode.
+	* Added when install and activate plugin link redirects to the plugins dashboard instead of the wp-plugins dashboard.
+	* Updated plugins support forum link to the wordpress support forum.
 
+= 1.0.1 - 2013/01/10 =
 * Tweak: Updated Support and Pro Version link URL's on wordpress.org description, plugins and plugins dashboard. Links were returning 404 errors since the launch of the all new a3rev.com mobile responsive site as the base e-commerce permalinks is changed.
 
 = 1.0.0 - 2012/12/20 =
-
 * First Release.
+
+
+== Upgrade Notice ==
+
+= 1.0.2 =
+Important upgrade - please update your plugin now for a major performance enhancement.
