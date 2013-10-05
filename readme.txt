@@ -86,11 +86,10 @@ The manual installation method involves down loading our plugin and uploading it
 == Changelog ==
 
 = 1.0.3 - 2013/10/05 =
-* Features:
+* Features :
 	* Upgraded the plugin to the newly developed a3rev admin panel app interface.
 	* New admin UI features check boxes replaced by switches.
-
-* Fixed:
+* Fixed :
 	* Plugins admin script and style not loading in Firefox with SSL on admin. Stripped http// and https// protocols so browser will use the protocol that the page was loaded with.
 
 = 1.0.2 - 2013/08/28 =
