@@ -2,8 +2,8 @@
 Contributors: a3rev, A3 Revolution Software Development team
 Tags: wordpress page view, page view count , post views, postview count,
 Requires at least: 3.3
-Tested up to: 3.6
-Stable tag: 1.0.2
+Tested up to: 3.6.1
+Stable tag: 1.0.3
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -85,6 +85,14 @@ The manual installation method involves down loading our plugin and uploading it
  
 == Changelog ==
 
+= 1.0.3 - 2013/10/05 =
+* Features:
+	* Upgraded the plugin to the newly developed a3rev admin panel app interface.
+	* New admin UI features check boxes replaced by switches.
+
+* Fixed:
+	* Plugins admin script and style not loading in Firefox with SSL on admin. Stripped http// and https// protocols so browser will use the protocol that the page was loaded with.
+
 = 1.0.2 - 2013/08/28 =
 * Features :
 	* Major performance enhancement. All Time Views table data emptied each day on 24 hour cron. 
@@ -104,6 +112,9 @@ The manual installation method involves down loading our plugin and uploading it
 
 
 == Upgrade Notice ==
+
+= 1.0.3 =
+Upgrade you plugin now for the all new a3rev admin panel app type interface and a protocols in browser bug fix
 
 = 1.0.2 =
 Important upgrade - please update your plugin now for a major performance enhancement.

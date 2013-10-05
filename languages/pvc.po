@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Page Views Count\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-08-28 15:26+0700\n"
-"PO-Revision-Date: 2013-08-28 15:26+0700\n"
+"POT-Creation-Date: 2013-10-05 11:54+0700\n"
+"PO-Revision-Date: 2013-10-05 11:54+0700\n"
 "Last-Translator: Nguyen Tuan <mr.nguyencongtuan@gmail.com>\n"
 "Language-Team: a3rev\n"
 "MIME-Version: 1.0\n"
@@ -13,213 +13,342 @@ msgstr ""
 "X-Poedit-Basepath: ../\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: page-views-count.php:120
-#: page-views-count.php:125
-msgid "Page Views Count"
-msgstr ""
-
-#: pvc_class.php:108
-#: pvc_class.php:112
+#: pvc_class.php:93
+#: pvc_class.php:98
 msgid "total views"
 msgstr ""
 
-#: pvc_class.php:108
+#: pvc_class.php:93
 msgid "views today"
 msgstr ""
 
-#: pvc_class.php:112
+#: pvc_class.php:98
 msgid "no views today"
 msgstr ""
 
-#: pvc_class.php:114
+#: pvc_class.php:100
 msgid "No views yet"
 msgstr ""
 
-#: pvc_class.php:235
+#: pvc_class.php:221
 msgid "Settings"
 msgstr ""
 
-#: pvc_class.php:244
-msgid "Documentation"
-msgstr ""
-
-#: pvc_class.php:245
-msgid "Support"
-msgstr ""
-
-#: pvc_settings.php:31
-msgid "Page Views Count successfully updated"
-msgstr ""
-
-#: pvc_settings.php:41
-msgid "Page Views Count Settings"
-msgstr ""
-
-#: pvc_settings.php:44
-msgid "Post and Page Type"
-msgstr ""
-
-#: pvc_settings.php:48
-msgid "Posts"
-msgstr ""
-
-#: pvc_settings.php:51
-msgid "All posts including posts extracts on category and tags Archives"
-msgstr ""
-
-#: pvc_settings.php:55
-msgid "Pages"
-msgstr ""
-
-#: pvc_settings.php:63
-msgid "Custom Post Types"
-msgstr ""
-
-#: pvc_settings.php:80
-msgid "House Keeping"
-msgstr ""
-
-#: pvc_settings.php:83
-msgid "Clean up on Deletion"
-msgstr ""
-
-#: pvc_settings.php:87
-msgid "Check this box and if you ever delete this plugin it will completely remove all tables and data it created, leaving no trace it was ever here."
-msgstr ""
-
-#: pvc_settings.php:91
-msgid "Page Views Count Function"
-msgstr ""
-
-#: pvc_settings.php:95
-msgid "There are 2 functions that you can use to manually add Page Views count to any content or post type that is created by your theme or plugin that creates it's own table intead of using cutom post types"
-msgstr ""
-
-#: pvc_settings.php:98
-msgid "Single post,  page, object"
-msgstr ""
-
-#: pvc_settings.php:102
-msgid "Index pages"
-msgstr ""
-
-#: pvc_settings.php:106
-msgid "See"
-msgstr ""
-
-#: pvc_settings.php:106
-msgid "the plugins wiki"
-msgstr ""
-
-#: pvc_settings.php:106
-msgid "docs for detailed explanation on using the funtions"
-msgstr ""
-
-#: pvc_settings.php:111
-msgid "Save Changes"
-msgstr ""
-
-#: pvc_settings.php:123
+#: pvc_class.php:241
 msgid "Help spread the Word about this plugin"
 msgstr ""
 
-#: pvc_settings.php:124
-msgid "Things you can do to help others find this plugin"
+#: pvc_class.php:243
+msgid "View this plugins"
 msgstr ""
 
-#: pvc_settings.php:126
-msgid "Rate this plugin 5"
+#: pvc_class.php:243
+msgid "documentation"
 msgstr ""
 
-#: pvc_settings.php:126
-msgid "on WordPress.org"
+#: pvc_class.php:244
+msgid "Visit this plugins"
 msgstr ""
 
-#: pvc_settings.php:127
-msgid "Mark the plugin as a fourite"
+#: pvc_class.php:244
+msgid "support forum"
 msgstr ""
 
-#: pvc_settings.php:130
-msgid "More FREE a3rev WordPress Plugins"
+#: pvc_class.php:246
+msgid "Other FREE a3rev WordPress Plugins"
 msgstr ""
 
-#: pvc_settings.php:133
+#: pvc_class.php:249
 msgid "Contact Us page - Contact People"
 msgstr ""
 
-#: pvc_settings.php:134
+#: pvc_class.php:250
 msgid "WordPress Email Template"
 msgstr ""
 
-#: pvc_settings.php:137
-msgid "FREE a3rev WooCommerce Plugins"
+#: pvc_class.php:253
+msgid "View all"
 msgstr ""
 
-#: pvc_settings.php:140
-msgid "WooCommerce Product Sort & Display"
+#: pvc_class.php:253
+msgid "16 a3rev plugins"
 msgstr ""
 
-#: pvc_settings.php:141
-msgid "WooCommerce Products Quick View"
+#: pvc_class.php:253
+msgid "on the WordPress repository"
 msgstr ""
 
-#: pvc_settings.php:142
-msgid "WooCommerce Dynamic Products Gallery"
+#: pvc_class.php:262
+msgid "Documentation"
 msgstr ""
 
-#: pvc_settings.php:143
-msgid "WooCommerce Predictive Search"
+#: pvc_class.php:263
+msgid "Support"
 msgstr ""
 
-#: pvc_settings.php:144
-msgid "WooCommerce Compare Products"
+#: admin/admin-interface.php:120
+msgid "Settings successfully saved."
 msgstr ""
 
-#: pvc_settings.php:145
-msgid "WooCommerce Widget Product Slideshow"
+#: admin/admin-interface.php:128
+msgid "Error: Settings can not save."
 msgstr ""
 
-#: pvc_settings.php:146
-msgid "WooCommerce Email Inquiry & Cart Options"
+#: admin/admin-interface.php:136
+msgid "Settings successfully reseted."
 msgstr ""
 
-#: pvc_settings.php:150
-msgid "FREE a3rev WP e-Commerce Plugins"
+#: admin/admin-interface.php:157
+msgid "Thin"
 msgstr ""
 
-#: pvc_settings.php:153
-msgid "WP e-Commerce Products Quick View"
+#: admin/admin-interface.php:158
+msgid "Thin/Italic"
 msgstr ""
 
-#: pvc_settings.php:154
-msgid "WP e-Commerce Dynamic Gallery"
+#: admin/admin-interface.php:159
+msgid "Normal"
 msgstr ""
 
-#: pvc_settings.php:155
-msgid "WP e-Commerce Predictive Search"
+#: admin/admin-interface.php:160
+msgid "Italic"
 msgstr ""
 
-#: pvc_settings.php:156
-msgid "WP e-Commerce Compare Products"
+#: admin/admin-interface.php:161
+msgid "Bold"
 msgstr ""
 
-#: pvc_settings.php:157
-msgid "WP e-Commerce Catalog Visibility & Email Inquiry"
+#: admin/admin-interface.php:162
+msgid "Bold/Italic"
 msgstr ""
 
-#: pvc_settings.php:158
-msgid "WP e-Commerce Grid View"
+#: admin/admin-interface.php:172
+msgid "Solid"
 msgstr ""
 
-#: pvc_settings.php:161
-msgid "Plugin Documentation"
+#: admin/admin-interface.php:173
+msgid "Double"
 msgstr ""
 
-#: pvc_settings.php:162
-msgid "All of our plugins have comprehensive online documentation. Please refer to the plugins docs before raising a support request"
+#: admin/admin-interface.php:174
+msgid "Dashed"
 msgstr ""
 
-#: pvc_settings.php:162
-msgid "Visit the a3rev wiki."
+#: admin/admin-interface.php:175
+msgid "Dotted"
+msgstr ""
+
+#: admin/admin-interface.php:1137
+#: admin/admin-interface.php:1226
+#: admin/admin-interface.php:1255
+#: admin/settings/general-settings.php:261
+msgid "ON"
+msgstr ""
+
+#: admin/admin-interface.php:1138
+#: admin/admin-interface.php:1227
+#: admin/admin-interface.php:1256
+#: admin/settings/general-settings.php:262
+msgid "OFF"
+msgstr ""
+
+#: admin/admin-interface.php:1297
+msgid "Width"
+msgstr ""
+
+#: admin/admin-interface.php:1299
+msgid "Height"
+msgstr ""
+
+#: admin/admin-interface.php:1301
+msgid "Hard Crop"
+msgstr ""
+
+#: admin/admin-interface.php:1379
+msgid "-- Default Fonts --"
+msgstr ""
+
+#: admin/admin-interface.php:1390
+msgid "-- Google Fonts --"
+msgstr ""
+
+#: admin/admin-interface.php:1431
+msgid "Preview your customized typography settings"
+msgstr ""
+
+#: admin/admin-interface.php:1524
+#: admin/admin-interface.php:1690
+msgid "Preview your customized border settings"
+msgstr ""
+
+#: admin/admin-interface.php:1533
+#: admin/admin-interface.php:1665
+msgid "Rounded"
+msgstr ""
+
+#: admin/admin-interface.php:1534
+#: admin/admin-interface.php:1666
+msgid "Square"
+msgstr ""
+
+#: admin/admin-interface.php:1540
+#: admin/admin-interface.php:1674
+msgid "Rounded Value"
+msgstr ""
+
+#: admin/admin-interface.php:1629
+msgid "Preview your customized border styles settings"
+msgstr ""
+
+#: admin/admin-interface.php:1731
+#: admin/settings/general-settings.php:209
+#: admin/settings/general-settings.php:219
+#: admin/settings/general-settings.php:240
+msgid "YES"
+msgstr ""
+
+#: admin/admin-interface.php:1732
+#: admin/settings/general-settings.php:210
+#: admin/settings/general-settings.php:220
+#: admin/settings/general-settings.php:241
+msgid "NO"
+msgstr ""
+
+#: admin/admin-interface.php:1746
+msgid "Horizontal Shadow"
+msgstr ""
+
+#: admin/admin-interface.php:1764
+msgid "Vertical Shadow"
+msgstr ""
+
+#: admin/admin-interface.php:1782
+msgid "Blur Distance"
+msgstr ""
+
+#: admin/admin-interface.php:1800
+msgid "Spread Size"
+msgstr ""
+
+#: admin/admin-interface.php:1818
+msgid "INNER"
+msgstr ""
+
+#: admin/admin-interface.php:1819
+msgid "OUTER"
+msgstr ""
+
+#: admin/admin-interface.php:1837
+msgid "Preview your customized box shadow settings"
+msgstr ""
+
+#: admin/admin-interface.php:2021
+msgid "Save changes"
+msgstr ""
+
+#: admin/admin-interface.php:2022
+msgid "Reset Settings"
+msgstr ""
+
+#: admin/admin-pages/admin-pvc-page.php:63
+#: admin/admin-pages/admin-pvc-page.php:64
+msgid "Page Views Count"
+msgstr ""
+
+#: admin/includes/uploader/class-uploader.php:149
+msgid "Upload"
+msgstr ""
+
+#: admin/includes/uploader/class-uploader.php:169
+msgid "View File"
+msgstr ""
+
+#: admin/includes/uploader/class-uploader.php:188
+msgid "Use this Image"
+msgstr ""
+
+#: admin/includes/uploader/class-uploader.php:189
+msgid "Use as"
+msgstr ""
+
+#: admin/includes/uploader/class-uploader.php:199
+msgid "Previously Uploaded"
+msgstr ""
+
+#: admin/settings/general-settings.php:81
+msgid "Page View Count Settings successfully saved."
+msgstr ""
+
+#: admin/settings/general-settings.php:82
+msgid "Error: Page View Count Settings can not save."
+msgstr ""
+
+#: admin/settings/general-settings.php:83
+msgid "Page View Count Settings successfully reseted."
+msgstr ""
+
+#: admin/settings/general-settings.php:153
+#: admin/tabs/admin-pvc-tab.php:78
+msgid "General"
+msgstr ""
+
+#: admin/settings/general-settings.php:198
+msgid "Activate on Posts and Pages"
+msgstr ""
+
+#: admin/settings/general-settings.php:202
+msgid "Posts"
+msgstr ""
+
+#: admin/settings/general-settings.php:203
+msgid "All posts including posts extracts on category and tags Archives"
+msgstr ""
+
+#: admin/settings/general-settings.php:213
+msgid "Pages"
+msgstr ""
+
+#: admin/settings/general-settings.php:229
+msgid "Activate on these Custom Post Types"
+msgstr ""
+
+#: admin/settings/general-settings.php:251
+msgid "House Keeping :"
+msgstr ""
+
+#: admin/settings/general-settings.php:255
+msgid "Clean up on Deletion"
+msgstr ""
+
+#: admin/settings/general-settings.php:256
+msgid "On deletion (not deactivate) the plugin will completely remove all tables and data it created, leaving no trace it was ever here."
+msgstr ""
+
+#: admin/settings/general-settings.php:276
+msgid "Page Views Count Function"
+msgstr ""
+
+#: admin/settings/general-settings.php:280
+msgid "There are 2 functions that you can use to manually add Page Views count to any content or post type that is created by your theme or plugin that creates it's own table intead of using cutom post types"
+msgstr ""
+
+#: admin/settings/general-settings.php:283
+msgid "Single post,  page, object"
+msgstr ""
+
+#: admin/settings/general-settings.php:287
+msgid "Index pages"
+msgstr ""
+
+#: admin/settings/general-settings.php:291
+msgid "See"
+msgstr ""
+
+#: admin/settings/general-settings.php:291
+msgid "the plugins wiki"
+msgstr ""
+
+#: admin/settings/general-settings.php:291
+msgid "docs for detailed explanation on using the funtions"
 msgstr ""
 

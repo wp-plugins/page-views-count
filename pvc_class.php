@@ -1,19 +1,4 @@
 <?php
-add_action('wp_head', 'a3_pvc_include_style');
-function a3_pvc_include_style(){
-	echo '<style type="text/css">.pvc_clear{clear:both} .pvc_stats{background:url("'.A3_PVC_URL.'/chart-bar.png") no-repeat scroll 0 5px transparent !important;padding: 5px 5px 5px 25px !important;float:left;}</style>';
-}
-add_action('genesis_after_post_content', array('A3_PVC', 'genesis_pvc_stats_echo'));
-//add_action('loop_end', array('A3_PVC', 'pvc_stats_echo'), 9);
-add_filter('the_content', array('A3_PVC','pvc_stats_show'), 8);
-add_filter('the_excerpt', array('A3_PVC','excerpt_pvc_stats_show'), 8);
-//add_filter('get_the_excerpt', array('A3_PVC','excerpt_pvc_stats_show'), 8);
-
-add_action('plugin_action_links_'.A3_PVC_PLUGIN_NAME, array('A3_PVC', 'settings_plugin_links') );
-
-// Add text on right of Visit the plugin on Plugin manager page
-add_filter( 'plugin_row_meta', array('A3_PVC', 'plugin_extra_links'), 10, 2 );
-
 class A3_PVC
 {
 	public static function upgrade_version_1_2(){
@@ -107,6 +92,7 @@ class A3_PVC
 		if($results){
 			$stats_html = '<p class="pvc_stats">' . number_format($results->total) . '&nbsp;' .__('total views', 'pvc') . ', ' . number_format($results->today) . '&nbsp;' .__('views today', 'pvc') . '</p>';
 		}else{
+			$stats_html = '';
 			$total = A3_PVC::pvc_fetch_post_total($post_id);
 			if($total > 0){
 				$stats_html .= '<p class="pvc_stats">' . number_format($total) . '&nbsp;' .__('total views', 'pvc') . ', ' .__('no views today', 'pvc') . '</p>';
@@ -235,6 +221,38 @@ class A3_PVC
 		$actions = array_merge( array( 'settings' => '<a href="options-general.php?page=a3-pvc">' . __( 'Settings', 'pvc' ) . '</a>' ), $actions );
 		
 		return $actions;
+	}
+	
+	public static function plugin_extension_start() {
+		global $wp_pvc_admin_init;
+		
+		$wp_pvc_admin_init->plugin_extension_start();
+	}
+	
+	public static function plugin_extension_end() {
+		global $wp_pvc_admin_init;
+		
+		$wp_pvc_admin_init->plugin_extension_end();
+	}
+	
+	public static function plugin_extension() {
+		$html = '';
+		$html .= '<a href="http://a3rev.com/shop/" target="_blank" style="float:right;margin-top:5px; margin-left:10px;" ><img src="'.A3_PVC_URL.'/a3logo.png" /></a>';
+		$html .= '<h3>'.__('Help spread the Word about this plugin', 'pvc').'</h3>';
+		$html .= '<p>&nbsp;</p>';
+		$html .= '<h3>'.__('View this plugins', 'wp_email_template').' <a href="http://docs.a3rev.com/user-guides/page-view-count/" target="_blank">'.__('documentation', 'wp_email_template').'</a></h3>';
+		$html .= '<h3>'.__('Visit this plugins', 'wp_email_template').' <a href="http://wordpress.org/support/plugin/page-views-count/" target="_blank">'.__('support forum', 'wp_email_template').'</a></h3>';
+		
+		$html .= '<h3>'.__('Other FREE a3rev WordPress Plugins', 'wp_email_template').'</h3>';
+		$html .= '<p>';
+		$html .= '<ul style="padding-left:10px;">';
+		$html .= '<li>* <a href="http://wordpress.org/plugins/contact-us-page-contact-people/" target="_blank">'.__('Contact Us page - Contact People', 'wp_email_template').'</a></li>';
+		$html .= '<li>* <a href="http://wordpress.org/plugins/wp-email-template/" target="_blank">'.__('WordPress Email Template', 'wp_email_template').'</a></li>';
+		$html .= '</ul>';
+		$html .= '</p>';
+		$html .= '<p>'.__("View all", 'wp_email_template').' <a href="http://profiles.wordpress.org/a3rev/" target="_blank">'.__("16 a3rev plugins", 'wp_email_template').'</a> '.__('on the WordPress repository', 'wp_email_template').'</p>';
+		
+		return $html;	
 	}
 	
 	public static function plugin_extra_links($links, $plugin_name) {
