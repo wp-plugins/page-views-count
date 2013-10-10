@@ -62,6 +62,13 @@
 			if( $(this).attr('callback') != undefined ) callback = $(this).attr('callback');
 			var input_name = $(this).attr('name');
 			
+			/* Apply for Border Corner */
+			if ( $(this).prop('checked') ) {
+				$(this).parents('.a3rev-ui-settings-control').find('.a3rev-ui-border-corner-value-container').css( {'display': 'block'} );
+			} else {
+				$(this).parents('.a3rev-ui-settings-control').find('.a3rev-ui-border-corner-value-container').css( {'display': 'none'} );
+			}
+			
 			$(this).iphoneStyle({ 
 								/*resizeContainer: false,*/
 								resizeHandle: false,
@@ -72,6 +79,13 @@
 								uncheckedLabel: unchecked_label,
 								onChange: function(elem, value) { 
 										var status = value.toString();
+										/* Apply for Border Corner */
+										if ( status == 'true' ) {
+											elem.parents('.a3rev-ui-settings-control').find('.a3rev-ui-border-corner-value-container').css( {'display': 'block'} );
+										} else {
+											elem.parents('.a3rev-ui-settings-control').find('.a3rev-ui-border-corner-value-container').css( {'display': 'none'} );
+										}
+										
 										$('input[name="' + input_name + '"]').trigger("a3rev-ui-onoff_checkbox-switch", [elem.val(), status]);
 									}
 								});
@@ -98,9 +112,17 @@
 								onChange: function(elem, value) { 
 										var status = value.toString();
 										if ( status == 'true') {
-											$('input[name="' + input_name + '"]').not(current_item).removeProp('checked').iphoneStyle("refresh");
+											$('input[name="' + input_name + '"]').not(current_item).removeAttr('checked').removeAttr('checkbox-disabled').iphoneStyle("refresh");
 										}
 										$('input[name="' + input_name + '"]').trigger("a3rev-ui-onoff_radio-switch", [elem.val(), status]);
+									},
+								onEnd: function(elem, value) { 
+										var status = value.toString();
+										if ( status == 'true') {
+											$('input[name="' + input_name + '"]').not(current_item).removeAttr('checkbox-disabled');
+											$(current_item).attr('checkbox-disabled', 'true');
+										}
+										$('input[name="' + input_name + '"]').trigger("a3rev-ui-onoff_radio-switch-end", [elem.val(), status]);
 									}
 								});
 		});

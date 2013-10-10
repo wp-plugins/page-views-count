@@ -1,6 +1,11 @@
 /*-------------------------------------------------------------------------------------------*/
 /* A3rev Panel UI */
 /*-------------------------------------------------------------------------------------------*/
+.a3rev_panel_container {
+	visibility:hidden; 
+	height:0; 
+	overflow:hidden;
+}
 .a3rev_panel_container .a3rev_panel_inner {
 	clear:both;
 	display:block;
@@ -116,6 +121,7 @@
 /* Border Rounded Corner Control */
 .a3rev_panel_container .forminp-border_corner .desc { margin-bottom:10px !important; }
 .a3rev_panel_container .forminp-border_corner .iPhoneCheckContainer { margin-right:30px; }
+.a3rev_panel_container .a3rev-ui-border-corner-value-container { }
 .a3rev_panel_container .a3rev-ui-border_corner-span { float:left; margin-right:20px; }
 .a3rev_panel_container .a3rev-ui-border_corner-px { float:left; margin-right:10px; }
 .a3rev_panel_container .forminp-border_corner .settings-apply-preview { border:1px solid #515151; }
@@ -238,47 +244,6 @@
 	height: 100%;
 }
 .a3rev_panel_container .a3rev-ui-slider  { float:left; width: 40px; margin-left:20px; padding:3px; margin-top:-1px;}
-/*.a3rev_panel_container .a3rev-ui-slide-container-start {
-	background: url('../images/slider-container-start.png') no-repeat left top transparent;
-	padding-left:28px;
-	float:left;
-	margin-top: -5px;
-	display:inline-block;
-}
-.a3rev_panel_container .a3rev-ui-slide-container-end {
-	background: url('../images/slider-container-end.png') no-repeat right top transparent;
-	padding-right:27px;
-	float:left;
-}
-.a3rev_panel_container .a3rev-ui-slide .ui-slider-range {
-	background: url('../images/slider-bg-range.png') repeat scroll left top transparent;
-	position: absolute;
-	border: 0;
-	top: 0;
-	height: 100%;
-}
-.a3rev_panel_container .a3rev-ui-slide {
-    background: url('../images/slider-bg.png') repeat scroll left top transparent;
-    border: none;
-    height: 32px;
-    width: 196px;
-	position:relative;
-	float:left;
-}
-.a3rev_panel_container .a3rev-ui-slide .ui-slider-handle {
-	position: absolute;
-	z-index: 2;
-	width: 46px;
-	height: 26px;
-	cursor: pointer;
-	background: url('../images/slider-handle.png') no-repeat 50% 50%;
-	font-weight: bold;
-	color: #1C94C4;
-	outline: none;
-	top: 5px;
-	margin-left: -23px;
-}
-.a3rev_panel_container .a3rev-ui-slider  { float:left; width: 40px; margin-left:10px; padding:3px; margin-top:-1px;}*/
 
 /* Array TextFields Control */
 .a3rev_panel_container .a3rev-ui-array_textfields { width:40px; }
@@ -294,116 +259,12 @@
 	width:100%;
 	padding-top:10px;	
 }
+.a3rev_panel_container .forminp-onoff_radio .iPhoneCheckDisabled , .a3rev_panel_container .forminp-onoff_radio .iOSCheckDisabled {
+	filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+	opacity: 1;
+}
 
 /* OnOff Checkbox & Radio Control */
-/*.a3rev_panel_container .iPhoneCheckContainer, .a3rev_panel_container .iOSCheckContainer {
-	position: relative;
-	height: 32px;
-	cursor: pointer;
-	margin-left: 6px;
-	margin-top:-5px;
-	margin-right:10px;
-	float:left;
-}
-.a3rev_panel_container .iPhoneCheckBeforeContainer {
-	background: url('../images/slider-container-start.png') no-repeat left top transparent;
-	width: 16px;
-	height: 32px;
-	position:absolute;
-	left: -5px;
-	top:0;
-}
-.a3rev_panel_container .iPhoneCheckAfterContainer {
-	background: url('../images/slider-container-end.png') no-repeat right top transparent;
-	width: 16px;
-	height: 32px;
-	position:absolute;
-	right: -4px;
-	top: 0;
-}
-.a3rev_panel_container .iPhoneCheckContainer input, .a3rev_panel_container .iOSCheckContainer input {
-	display: none;
-}
-.a3rev_panel_container .iPhoneCheckContainer label, .a3rev_panel_container .iOSCheckContainer label {
-	white-space: nowrap;
-    font-size: 14px;
-    line-height: 18px;
-    font-weight: bold;
-    font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
-    cursor: pointer;
-    display: block;
-    position: absolute;
-    width: auto;
-    top: 0;
-    overflow: hidden;
-	user-select: none;
-    -moz-user-select: none;
-    -khtml-user-select: none;
-}
-.a3rev_panel_container label.iPhoneCheckLabelOff, .a3rev_panel_container label.iOSCheckLabelOff {
-	background: url('../images/slider-bg.png') repeat scroll left top transparent;
-    border: none;
-    height: 32px;
-	color: #813e20;
-	text-shadow: 0px 0px 2px #FFF;
-	text-align: right;
-	right: 0;
-	margin-right:9px;
-	margin-left:10px;
-}
-.a3rev_panel_container label.iPhoneCheckLabelOff span, .a3rev_panel_container label.iOSCheckLabelOff span {
-    padding-top: 7px;
-	padding-right: 3px;
-	padding-left: 5px;
-	display: inline-block;
-}
-.a3rev_panel_container label.iPhoneCheckLabelOn, .a3rev_panel_container label.iOSCheckLabelOn {
-	background: url('../images/slider-bg-range.png') repeat scroll left top transparent;
-    border: none;
-    height: 32px;
-	text-align:left;
-	color: #217400;
-  	text-shadow: 0px 0px 2px #FFF;
-  	left: 0;
-	margin-left:8px;
-}
-.a3rev_panel_container label.iPhoneCheckLabelOn span, .a3rev_panel_container label.iOSCheckLabelOn span {
-    padding-top: 7px;
-	padding-left:4px;
-	display: inline-block;
-}
-.a3rev_panel_container .iPhoneCheckHandle, .a3rev_panel_container .iOSCheckHandle {
-	display: block;
-	cursor: pointer;
-	position: absolute;
-	top: 5px;
-	left: 0;
-	background: url('../images/slider-handle.png') no-repeat left top;
-	width: 45px;
-	height:26px;
-}
-
-.a3rev_panel_container .iPhoneCheckDisabled .iPhoneCheckBeforeContainer, .a3rev_panel_container .iOSCheckDisabled .iPhoneCheckBeforeContainer {
-	background: url('../images/slider-container-start-disable.png') no-repeat left top transparent;
-}
-.a3rev_panel_container .iPhoneCheckDisabled .iPhoneCheckAfterContainer, .a3rev_panel_container .iOSCheckDisabled .iPhoneCheckAfterContainer {
-	background: url('../images/slider-container-end-disable.png') no-repeat right top transparent;
-}
-.a3rev_panel_container .iPhoneCheckDisabled label.iPhoneCheckLabelOff, .a3rev_panel_container .iOSCheckDisabled label.iOSCheckLabelOff {
-	background: url('../images/slider-bg-disable.png') repeat scroll left top transparent;
-}
-.a3rev_panel_container .iPhoneCheckDisabled label.iPhoneCheckLabelOn, .a3rev_panel_container .iOSCheckDisabled label.iOSCheckLabelOn {
-	background: url('../images/slider-bg-disable.png') repeat scroll left top transparent;
-}
-.a3rev_panel_container .iPhoneCheckDisabled .iPhoneCheckHandle, .a3rev_panel_container .iOSCheckDisabled .iOSCheckHandle {
-	background: url('../images/slider-handle-disable.png') no-repeat 50% 50%;
-}
-.a3rev_panel_container .iPhoneCheckDisabled label.iPhoneCheckLabelOn, .a3rev_panel_container .iOSCheckDisabled label.iOSCheckLabelOn {
-	color: #AFAFAF;
-}
-.a3rev_panel_container .iPhoneCheckDisabled label.iPhoneCheckLabelOff, .a3rev_panel_container .iOSCheckDisabled label.iOSCheckLabelOff {
-	color: #AFAFAF;
-}*/
 .a3rev_panel_container .iPhoneCheckContainer, .a3rev_panel_container .iOSCheckContainer {
 	position: relative;
 	height: 25px;
@@ -560,6 +421,7 @@
 #a3_plugin_panel_fields { width:65%; float:left;}
 #a3_plugin_panel_upgrade_area { position:relative; margin-left: 65%; padding-left:10px;}
 #a3_plugin_panel_extensions { border:2px solid #E6DB55;-webkit-border-radius:10px;-moz-border-radius:10px;-o-border-radius:10px; border-radius: 10px; color: #555555; margin: 0px; padding: 5px 10px; text-shadow: 0 1px 0 rgba(255, 255, 255, 0.8); background:#FFFBCC; }
+#a3_plugin_panel_extensions img { width:100%; max-width:100%; }
 .pro_feature_fields { margin-right: -12px; position: relative; z-index: 10; border:2px solid #E6DB55;-webkit-border-radius:10px 0 0 10px;-moz-border-radius:10px 0 0 10px;-o-border-radius:10px 0 0 10px; border-radius: 10px 0 0 10px; border-right: 2px solid #FFFFFF; }
 .pro_feature_fields h3 { margin:8px 5px; }
 .pro_feature_fields p { margin-left:5px; }

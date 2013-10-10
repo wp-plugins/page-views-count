@@ -401,9 +401,9 @@ class WP_PVC_Fonts_Face extends WP_PVC_Admin_UI
 		} // END foreach
 
 		if ( !@$option['style'] && !@$option['size'] && !@$option['color'] )
-			return 'font-family: '.stripslashes($option["face"]).';';
+			return 'font-family: '.stripslashes($option["face"]).' !important;';
 		else
-			return 'font:'.$option['style'].' '.$option['size'].' '.stripslashes($option['face']).';color:'.$option['color'].';';
+			return 'font:'.$option['style'].' '.$option['size'].' '.stripslashes($option['face']).' !important; color:'.$option['color'].' !important;';
 	}
 	
 	

@@ -55,7 +55,12 @@
     };
 
     iOSCheckbox.prototype.isDisabled = function() {
-      return this.elem.is(':disabled');
+		if ( this.elem.is(':disabled') )
+			return true;
+		else if ( this.elem.attr('checkbox-disabled') == 'true' )
+			return true;
+		else
+			return false;
     };
 
     iOSCheckbox.prototype.wrapCheckboxWithDivs = function() {
@@ -196,9 +201,13 @@
       this.offSpan.animate({
         marginRight: -new_left
       }, this.duration);
-      return this.onSpan.animate({
+      this.onSpan.animate({
         marginLeft: new_left - this.rightSide
       }, this.duration);
+	  if (typeof this.onEnd === "function") {
+        this.onEnd(this.elem, this.elem.prop('checked'));
+      }
+	  return true;
     };
 
     iOSCheckbox.prototype.attachEvents = function() {
@@ -304,7 +313,8 @@
       handleRadius: 4,
       containerRadius: 5,
       dataName: "iphoneStyle",
-      onChange: function() {}
+      onChange: function() {},
+	  onEnd: function() {}
     };
 
     return iOSCheckbox;

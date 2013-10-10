@@ -1142,6 +1142,7 @@ class WP_PVC_Admin_Interface extends WP_PVC_Admin_UI
 										<li>
                                             <input
                                                 name="<?php echo $name_attribute; ?>"
+                                                <?php if ( $i_option['val'] == $option_value ) echo ' checkbox-disabled="true" ' ; ?>
                                                 class="a3rev-ui-onoff_radio <?php echo esc_attr( $value['class'] ); ?>"
                                                 checked_label="<?php echo esc_html( $i_option['checked_label'] ); ?>"
                                                 unchecked_label="<?php echo esc_html( $i_option['unchecked_label'] ); ?>"
@@ -2051,7 +2052,7 @@ class WP_PVC_Admin_Interface extends WP_PVC_Admin_UI
 		
 		$border_css = '';
 		
-		$border_css .= 'border: ' . esc_attr( $option['width'] ) . ' ' . esc_attr( $option['style'] ) . ' ' . esc_attr( $option['color'] ) .';';
+		$border_css .= 'border: ' . esc_attr( $option['width'] ) . ' ' . esc_attr( $option['style'] ) . ' ' . esc_attr( $option['color'] ) .' !important;';
 			
 		if ( isset( $option['corner'] ) && esc_attr( $option['corner'] ) == 'rounded' ) {
 			$border_css .= 'border-radius: ' . $option['rounded_value'] . 'px !important;';
@@ -2075,7 +2076,7 @@ class WP_PVC_Admin_Interface extends WP_PVC_Admin_UI
 		
 		$border_style_css = '';
 		
-		$border_style_css .= 'border: ' . esc_attr( $option['width'] ) . ' ' . esc_attr( $option['style'] ) . ' ' . esc_attr( $option['color'] ) .';';
+		$border_style_css .= 'border: ' . esc_attr( $option['width'] ) . ' ' . esc_attr( $option['style'] ) . ' ' . esc_attr( $option['color'] ) .' !important;';
 		
 		return $border_style_css;
 		
@@ -2113,9 +2114,9 @@ class WP_PVC_Admin_Interface extends WP_PVC_Admin_UI
 		if ( ! isset( $option['inset'] ) ) $option['inset'] = '';
 		
 		if ( isset( $option['enable'] ) && $option['enable'] == 1 ) {
-			$shadow_css .= 'box-shadow: ' . $option['h_shadow'] . ' ' . $option['v_shadow'] . ' ' . $option['blur'] . ' ' . $option['spread'] . ' ' . $option['color'] . ' ' . $option['inset'] . ' ;';
-            $shadow_css .= '-moz-box-shadow: ' . $option['h_shadow'] . ' ' . $option['v_shadow'] . ' ' . $option['blur'] . ' ' . $option['spread'] . ' ' . $option['color'] . ' ' . $option['inset'] . ' ;';
-            $shadow_css .= '-webkit-box-shadow: ' . $option['h_shadow'] . ' ' . $option['v_shadow'] . ' ' . $option['blur'] . ' ' . $option['spread'] . ' ' . $option['color'] . ' ' . $option['inset'] . ' ;';
+			$shadow_css .= 'box-shadow: ' . $option['h_shadow'] . ' ' . $option['v_shadow'] . ' ' . $option['blur'] . ' ' . $option['spread'] . ' ' . $option['color'] . ' ' . $option['inset'] . ' !important;';
+            $shadow_css .= '-moz-box-shadow: ' . $option['h_shadow'] . ' ' . $option['v_shadow'] . ' ' . $option['blur'] . ' ' . $option['spread'] . ' ' . $option['color'] . ' ' . $option['inset'] . ' !important;';
+            $shadow_css .= '-webkit-box-shadow: ' . $option['h_shadow'] . ' ' . $option['v_shadow'] . ' ' . $option['blur'] . ' ' . $option['spread'] . ' ' . $option['color'] . ' ' . $option['inset'] . ' !important;';
 		} else {
 			$shadow_css .= 'box-shadow: none !important ;';
             $shadow_css .= '-moz-box-shadow: none !important ;';

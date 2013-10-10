@@ -3,7 +3,7 @@ Contributors: a3rev, A3 Revolution Software Development team
 Tags: wordpress page view, page view count , post views, postview count,
 Requires at least: 3.3
 Tested up to: 3.6.1
-Stable tag: 1.0.3
+Stable tag: 1.0.4
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -85,6 +85,13 @@ The manual installation method involves down loading our plugin and uploading it
  
 == Changelog ==
 
+= 1.0.4 - 2013/10/10 =
+* Tweaks:
+	* a3rev logo image now resizes to the size of the yellow sidebar in tablets and mobiles.
+* Fixes:
+	* Intuitive Radio Switch settings not saving. Input with disabled attribute could not parse when form is submitted, replace disabled with custom attribute: checkbox-disabled
+	* App interface Radio switches not working properly on Android platform, replace removeProp() with removeAttr() function script
+
 = 1.0.3 - 2013/10/05 =
 * Features :
 	* Upgraded the plugin to the newly developed a3rev admin panel app interface.
@@ -111,6 +118,9 @@ The manual installation method involves down loading our plugin and uploading it
 
 
 == Upgrade Notice ==
+
+= 1.0.4 =
+Upgrade now for another admin panel intuitive app interface feature plus a Radio switch bug fix and Android platform bug fix
 
 = 1.0.3 =
 Upgrade you plugin now for the all new a3rev admin panel app type interface and a protocols in browser bug fix
