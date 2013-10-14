@@ -33,7 +33,7 @@ If you do a translation for your site please send it to us and we'll include it 
 
 * English (default) - always included.
 * Dutch - thanks to [Renee Klein]( http://wpdiscounts.com)
-*.po file (pvc.po) in languages folder for translations.
+* .po file (pvc.po) in languages folder for translations.
 * [Go here](http://a3rev.com/contact-us-page/) to send your translation files to us.
 
 = Documentation & Support =
