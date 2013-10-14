@@ -239,6 +239,7 @@ class WP_PVC_Admin_Interface extends WP_PVC_Admin_UI
 			$current_settings = array_merge( $default_settings, $current_settings );
 			
 			$current_settings = apply_filters( $this->plugin_name . '_' . $option_name . '_get_settings' , $current_settings );
+			$current_settings = array_map( array( $this, 'admin_stripslashes' ), $current_settings );
 			
 			$$option_name = $current_settings;
 			
@@ -271,6 +272,11 @@ class WP_PVC_Admin_Interface extends WP_PVC_Admin_UI
 				global $$id_attribute;
 				
 				$current_setting = get_option( $id_attribute, $value['default'] );
+				
+				if ( is_array( $current_setting ) )
+					$current_setting = array_map( array( $this, 'admin_stripslashes' ), $current_setting );
+				elseif ( ! is_null( $current_setting ) )
+					$current_setting = esc_attr( stripslashes( $current_setting ) );
 				
 				$$id_attribute = $current_setting;
 			}
@@ -871,7 +877,7 @@ class WP_PVC_Admin_Interface extends WP_PVC_Admin_UI
 				$description = str_replace( '[default_value_blur]', $value['default']['blur'], $description );
 				$description = str_replace( '[default_value_spread]', $value['default']['spread'], $description );
 				
-			} else {
+			} elseif ( $value['type'] != 'multiselect' ) {
 				$description = str_replace( '[default_value]', $value['default'], $description );
 			}
 	
@@ -1538,22 +1544,24 @@ class WP_PVC_Admin_Interface extends WP_PVC_Admin_UI
                                     <?php checked( 'rounded', $corner ); ?>
                                     <?php echo implode( ' ', $custom_attributes ); ?>
 								/> 
-                                <span class="a3rev-ui-border_corner-span"><?php _e( 'Rounded Value', 'pvc' ); ?></span> 
                                 
-							<!-- Border Rounded Value -->                              
-								<div class="a3rev-ui-slide-container-start">
-                                	<div class="a3rev-ui-slide-container-end">
-                                        	<div class="a3rev-ui-slide" id="<?php echo $id_attribute; ?>-rounded_value_div" min="<?php echo esc_attr( $value['min'] ); ?>" max="<?php echo esc_attr( $value['max'] ); ?>" inc="<?php echo esc_attr( $value['increment'] ); ?>"></div>
-									</div>
+							<!-- Border Rounded Value -->
+                            	<div class="a3rev-ui-border-corner-value-container">  
+                                    <span class="a3rev-ui-border_corner-span"><?php _e( 'Rounded Value', 'pvc' ); ?></span>                             
+                                    <div class="a3rev-ui-slide-container-start">
+                                        <div class="a3rev-ui-slide-container-end">
+                                                <div class="a3rev-ui-slide" id="<?php echo $id_attribute; ?>-rounded_value_div" min="<?php echo esc_attr( $value['min'] ); ?>" max="<?php echo esc_attr( $value['max'] ); ?>" inc="<?php echo esc_attr( $value['increment'] ); ?>"></div>
+                                        </div>
+                                    </div>
+                                    <input
+                                        readonly="readonly"
+                                        name="<?php echo $name_attribute; ?>[rounded_value]"
+                                        id="<?php echo $id_attribute; ?>-rounded_value"
+                                        type="text"
+                                        value="<?php echo esc_attr( $rounded_value ); ?>"
+                                        class="a3rev-ui-border_corner-rounded_value a3rev-ui-slider"
+                                    /> <span class="a3rev-ui-border_corner-px">px</span>
                                 </div>
-								<input
-									readonly="readonly"
-									name="<?php echo $name_attribute; ?>[rounded_value]"
-									id="<?php echo $id_attribute; ?>-rounded_value"
-									type="text"
-									value="<?php echo esc_attr( $rounded_value ); ?>"
-									class="a3rev-ui-border_corner-rounded_value a3rev-ui-slider"
-								/> <span class="a3rev-ui-border_corner-px">px</span>
                                 <div style="clear:both"></div>
 							</div>
                         
@@ -1672,20 +1680,22 @@ class WP_PVC_Admin_Interface extends WP_PVC_Admin_UI
 								/> 
                                 
                                 <!-- Border Rounded Value -->
-                                <span class="a3rev-ui-border_corner-span"><?php _e( 'Rounded Value', 'pvc' ); ?></span> 
-								<div class="a3rev-ui-slide-container-start">
-                                	<div class="a3rev-ui-slide-container-end">
-                                        	<div class="a3rev-ui-slide" id="<?php echo $id_attribute; ?>-rounded_value_div" min="<?php echo esc_attr( $value['min'] ); ?>" max="<?php echo esc_attr( $value['max'] ); ?>" inc="<?php echo esc_attr( $value['increment'] ); ?>"></div>
-									</div>
+                                <div class="a3rev-ui-border-corner-value-container">  
+                                    <span class="a3rev-ui-border_corner-span"><?php _e( 'Rounded Value', 'pvc' ); ?></span> 
+                                    <div class="a3rev-ui-slide-container-start">
+                                        <div class="a3rev-ui-slide-container-end">
+                                                <div class="a3rev-ui-slide" id="<?php echo $id_attribute; ?>-rounded_value_div" min="<?php echo esc_attr( $value['min'] ); ?>" max="<?php echo esc_attr( $value['max'] ); ?>" inc="<?php echo esc_attr( $value['increment'] ); ?>"></div>
+                                        </div>
+                                    </div>
+                                    <input
+                                        readonly="readonly"
+                                        name="<?php echo $name_attribute; ?>[rounded_value]"
+                                        id="<?php echo $id_attribute; ?>-rounded_value"
+                                        type="text"
+                                        value="<?php echo esc_attr( $rounded_value ); ?>"
+                                        class="a3rev-ui-border_corner-rounded_value a3rev-ui-slider"
+                                    /> <span class="a3rev-ui-border_corner-px">px</span>
                                 </div>
-								<input
-									readonly="readonly"
-									name="<?php echo $name_attribute; ?>[rounded_value]"
-									id="<?php echo $id_attribute; ?>-rounded_value"
-									type="text"
-									value="<?php echo esc_attr( $rounded_value ); ?>"
-									class="a3rev-ui-border_corner-rounded_value a3rev-ui-slider"
-								/> <span class="a3rev-ui-border_corner-px">px</span>
                                 
                                 <!-- Preview Button -->
                                <div class="a3rev-ui-settings-preview"><a href="#" class="a3rev-ui-border-preview-button a3rev-ui-settings-preview-button button submit-button" title="<?php _e( 'Preview your customized border settings', 'pvc'); ?>"><span>&nbsp;</span></a></div>

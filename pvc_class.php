@@ -105,6 +105,15 @@ class A3_PVC
 		return $html;
 	}
 	
+	public static function fixed_wordpress_seo_plugin( $ogdesc = '' ) {
+		if ( function_exists( 'wpseo_set_value' ) ) {
+			global $post;
+			$postid = $post->ID;
+			wpseo_set_value( 'opengraph-description', $ogdesc, $postid );	
+		}
+		return $ogdesc;
+	}
+	
 	public static function pvc_remove_stats($content) {
 		remove_action('the_content', array('A3_PVC','pvc_stats_show'));
 		return $content;

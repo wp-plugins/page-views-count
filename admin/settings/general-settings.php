@@ -277,7 +277,7 @@ class WP_PVC_General_Settings extends WP_PVC_Admin_UI
 					<table class="form-table">
                	 		<tbody>
                         	<tr valign="top">
-                  				<th scope="row" colspan="2"><?php _e("There are 2 functions that you can use to manually add Page Views count to any content or post type that is created by your theme or plugin that creates it's own table intead of using cutom post types", 'pvc'); ?>.</th>
+                  				<th scope="row" colspan="2"><?php _e("There are 2 functions that you can use to manually add Page Views Count to any content or post type that is created by your theme or plugin that creates it's own table instead of using custom post types", 'pvc'); ?>.</th>
 							</tr>
                 			<tr valign="top">
                   				<th scope="row"><?php _e('Single post,  page, object', 'pvc'); ?></th>
@@ -286,9 +286,6 @@ class WP_PVC_General_Settings extends WP_PVC_Admin_UI
                             <tr valign="top">
                   				<th scope="row"><?php _e('Index pages', 'pvc'); ?></th>
                     			<td>&lt;?php pvc_stats($postid); ?&gt;</td>
-							</tr>
-                            <tr valign="top">
-                  				<th scope="row" colspan="2"><?php _e('See', 'pvc'); ?> <a href="http://docs.a3rev.com/user-guides/page-view-count/" target="_blank"><?php _e('the plugins wiki', 'pvc'); ?></a> <?php _e('docs for detailed explanation on using the funtions', 'pvc'); ?></th>
 							</tr>
                         </tbody>
               		</table>

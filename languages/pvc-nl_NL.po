@@ -11,332 +11,345 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Poedit-KeywordsList: __;_e\n"
 "X-Poedit-Basepath: ../\n"
+"X-Generator: Poedit 1.5.7\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-SearchPath-0: .\n"
 
 #: pvc_class.php:93
 #: pvc_class.php:98
 msgid "total views"
-msgstr ""
+msgstr "totaal aantal vertoningen"
 
 #: pvc_class.php:93
 msgid "views today"
-msgstr ""
+msgstr "aantal vertoningen vandaag"
 
 #: pvc_class.php:98
 msgid "no views today"
-msgstr ""
+msgstr "geen vertoningen vandaag"
 
 #: pvc_class.php:100
 msgid "No views yet"
-msgstr ""
+msgstr "Nog geen vertoningen"
 
 #: pvc_class.php:230
 msgid "Settings"
-msgstr ""
+msgstr "Instellingen"
 
 #: pvc_class.php:250
 msgid "Help spread the Word about this plugin"
-msgstr ""
+msgstr "Help met het promoten van deze plugin"
 
 #: pvc_class.php:252
 msgid "View this plugins"
-msgstr ""
+msgstr "Bekijk deze plugins"
 
 #: pvc_class.php:252
 msgid "documentation"
-msgstr ""
+msgstr "documentatie"
 
 #: pvc_class.php:253
 msgid "Visit this plugins"
-msgstr ""
+msgstr "Bezoek deze plugins"
 
 #: pvc_class.php:253
 msgid "support forum"
-msgstr ""
+msgstr "support forum"
 
 #: pvc_class.php:255
 msgid "Other FREE a3rev WordPress Plugins"
-msgstr ""
+msgstr "Andere GRATIS a3rev WordPress Plugins"
 
 #: pvc_class.php:258
 msgid "Contact Us page - Contact People"
-msgstr ""
+msgstr "Contact pagina - Contact Personen"
 
 #: pvc_class.php:259
 msgid "WordPress Email Template"
-msgstr ""
+msgstr "WordPress Email Sjabloon"
 
 #: pvc_class.php:262
 msgid "View all"
-msgstr ""
+msgstr "Toon alles"
 
 #: pvc_class.php:262
 msgid "16 a3rev plugins"
-msgstr ""
+msgstr "16 a3rev plugins"
 
 #: pvc_class.php:262
 msgid "on the WordPress repository"
-msgstr ""
+msgstr "van de WordPress opslagruimte"
 
 #: pvc_class.php:271
 msgid "Documentation"
-msgstr ""
+msgstr "Documentatie"
 
 #: pvc_class.php:272
 msgid "Support"
-msgstr ""
+msgstr "Support"
 
 #: admin/admin-interface.php:120
 msgid "Settings successfully saved."
-msgstr ""
+msgstr "Instellingen succesvol opgeslagen."
 
 #: admin/admin-interface.php:128
 msgid "Error: Settings can not save."
-msgstr ""
+msgstr "Fout: Instellingen kunnen niet opgeslagen worden."
 
 #: admin/admin-interface.php:136
 msgid "Settings successfully reseted."
-msgstr ""
+msgstr "Instellingen met succes gereset."
 
 #: admin/admin-interface.php:157
 msgid "Thin"
-msgstr ""
+msgstr "Dun"
 
 #: admin/admin-interface.php:158
 msgid "Thin/Italic"
-msgstr ""
+msgstr "Dun/Cursief"
 
 #: admin/admin-interface.php:159
 msgid "Normal"
-msgstr ""
+msgstr "Normaal"
 
 #: admin/admin-interface.php:160
 msgid "Italic"
-msgstr ""
+msgstr "Cursief"
 
 #: admin/admin-interface.php:161
 msgid "Bold"
-msgstr ""
+msgstr "Vetgedrukt"
 
 #: admin/admin-interface.php:162
 msgid "Bold/Italic"
-msgstr ""
+msgstr "Vetgedrukt/Cursief"
 
 #: admin/admin-interface.php:172
 msgid "Solid"
-msgstr ""
+msgstr "Solide"
 
 #: admin/admin-interface.php:173
 msgid "Double"
-msgstr ""
+msgstr "Dubbel"
 
 #: admin/admin-interface.php:174
 msgid "Dashed"
-msgstr ""
+msgstr "Gestreept"
 
 #: admin/admin-interface.php:175
 msgid "Dotted"
-msgstr ""
+msgstr "Gestippelt"
 
 #: admin/admin-interface.php:1143
 #: admin/admin-interface.php:1233
 #: admin/admin-interface.php:1262
 #: admin/settings/general-settings.php:261
 msgid "ON"
-msgstr ""
+msgstr "AAN"
 
 #: admin/admin-interface.php:1144
 #: admin/admin-interface.php:1234
 #: admin/admin-interface.php:1263
 #: admin/settings/general-settings.php:262
 msgid "OFF"
-msgstr ""
+msgstr "UIT"
 
 #: admin/admin-interface.php:1304
 msgid "Width"
-msgstr ""
+msgstr "Breedte"
 
 #: admin/admin-interface.php:1306
 msgid "Height"
-msgstr ""
+msgstr "Hoogte"
 
 #: admin/admin-interface.php:1308
 msgid "Hard Crop"
-msgstr ""
+msgstr "Hard Knippen"
 
 #: admin/admin-interface.php:1386
 msgid "-- Default Fonts --"
-msgstr ""
+msgstr "-- Standaard Fonts --"
 
 #: admin/admin-interface.php:1397
 msgid "-- Google Fonts --"
-msgstr ""
+msgstr "-- Google Fonts --"
 
 #: admin/admin-interface.php:1438
 msgid "Preview your customized typography settings"
-msgstr ""
+msgstr "Bekijk vooraf uw aangepaste typografie instellingen"
 
 #: admin/admin-interface.php:1531
 #: admin/admin-interface.php:1701
 msgid "Preview your customized border settings"
-msgstr ""
+msgstr "Bekijk vooraf uw aangepaste rand instellingen"
 
 #: admin/admin-interface.php:1540
 #: admin/admin-interface.php:1674
 msgid "Rounded"
-msgstr ""
+msgstr "Afgerond"
 
 #: admin/admin-interface.php:1541
 #: admin/admin-interface.php:1675
 msgid "Square"
-msgstr ""
+msgstr "Vierkant"
 
 #: admin/admin-interface.php:1550
 #: admin/admin-interface.php:1684
 msgid "Rounded Value"
-msgstr ""
+msgstr "Afgeronde Waarde"
 
 #: admin/admin-interface.php:1638
 msgid "Preview your customized border styles settings"
-msgstr ""
+msgstr "Bekijk vooraf uw aangepaste randstijl instellingen"
 
 #: admin/admin-interface.php:1742
 #: admin/settings/general-settings.php:209
 #: admin/settings/general-settings.php:219
 #: admin/settings/general-settings.php:240
 msgid "YES"
-msgstr ""
+msgstr "JA"
 
 #: admin/admin-interface.php:1743
 #: admin/settings/general-settings.php:210
 #: admin/settings/general-settings.php:220
 #: admin/settings/general-settings.php:241
 msgid "NO"
-msgstr ""
+msgstr "NEE"
 
 #: admin/admin-interface.php:1757
 msgid "Horizontal Shadow"
-msgstr ""
+msgstr "Horizontale Schaduw"
 
 #: admin/admin-interface.php:1775
 msgid "Vertical Shadow"
-msgstr ""
+msgstr "Verticale Schaduw"
 
 #: admin/admin-interface.php:1793
 msgid "Blur Distance"
-msgstr ""
+msgstr "Vervaag Afstand"
 
 #: admin/admin-interface.php:1811
 msgid "Spread Size"
-msgstr ""
+msgstr "Spreiding Grootte"
 
 #: admin/admin-interface.php:1829
 msgid "INNER"
-msgstr ""
+msgstr "BINNEN"
 
 #: admin/admin-interface.php:1830
 msgid "OUTER"
-msgstr ""
+msgstr "BUITEN"
 
 #: admin/admin-interface.php:1848
 msgid "Preview your customized box shadow settings"
-msgstr ""
+msgstr "Bekijk vooraf uw aangepaste vak schaduw instellingen"
 
 #: admin/admin-interface.php:2032
 msgid "Save changes"
-msgstr ""
+msgstr "Opslaan wijzigingen"
 
 #: admin/admin-interface.php:2033
 msgid "Reset Settings"
-msgstr ""
+msgstr "Reset Instellingen"
 
 #: admin/admin-pages/admin-pvc-page.php:63
 #: admin/admin-pages/admin-pvc-page.php:64
 msgid "Page Views Count"
-msgstr ""
+msgstr "Page Views Count"
 
 #: admin/includes/uploader/class-uploader.php:149
 msgid "Upload"
-msgstr ""
+msgstr "Uploaden"
 
 #: admin/includes/uploader/class-uploader.php:169
 msgid "View File"
-msgstr ""
+msgstr "Bekijk Bestand"
 
 #: admin/includes/uploader/class-uploader.php:188
 msgid "Use this Image"
-msgstr ""
+msgstr "Gebruik deze Afbeelding"
 
 #: admin/includes/uploader/class-uploader.php:189
 msgid "Use as"
-msgstr ""
+msgstr "Gebruik als"
 
 #: admin/includes/uploader/class-uploader.php:199
 msgid "Previously Uploaded"
-msgstr ""
+msgstr "Eerder Geuploaded"
 
 #: admin/settings/general-settings.php:81
 msgid "Page View Count Settings successfully saved."
-msgstr ""
+msgstr "Page View Count Instellingen successvol opgeslagen."
 
 #: admin/settings/general-settings.php:82
 msgid "Error: Page View Count Settings can not save."
-msgstr ""
+msgstr "Fou: Page View Count Instellingen kunnen niet opgeslagen worden."
 
 #: admin/settings/general-settings.php:83
 msgid "Page View Count Settings successfully reseted."
-msgstr ""
+msgstr "Page View Count Instellingen successvol gereset."
 
 #: admin/settings/general-settings.php:153
 #: admin/tabs/admin-pvc-tab.php:78
 msgid "General"
-msgstr ""
+msgstr "Algemeen"
 
 #: admin/settings/general-settings.php:198
 msgid "Activate on Posts and Pages"
-msgstr ""
+msgstr "Activeren op Berichten en Pagina's"
 
 #: admin/settings/general-settings.php:202
 msgid "Posts"
-msgstr ""
+msgstr "Berichten"
 
 #: admin/settings/general-settings.php:203
 msgid "All posts including posts extracts on category and tags Archives"
-msgstr ""
+msgstr "Alle berichten waaronder berichten extracten op categorie en tags archieven"
 
 #: admin/settings/general-settings.php:213
 msgid "Pages"
-msgstr ""
+msgstr "Pagina's"
 
 #: admin/settings/general-settings.php:229
 msgid "Activate on these Custom Post Types"
-msgstr ""
+msgstr "Activeren van deze Custom Post Types"
 
 #: admin/settings/general-settings.php:251
 msgid "House Keeping :"
-msgstr ""
+msgstr "Huishouding :"
 
 #: admin/settings/general-settings.php:255
 msgid "Clean up on Deletion"
-msgstr ""
+msgstr "Schoonmaken bij Verwijdering"
 
 #: admin/settings/general-settings.php:256
 msgid "On deletion (not deactivate) the plugin will completely remove all tables and data it created, leaving no trace it was ever here."
-msgstr ""
+msgstr "Bij verwijdering (niet deactivering) zal de plugin alle tabellen en gegevens die het gemaakt heeft volledig verwijderen, waardoor er geen sporen achterblijven."
 
 #: admin/settings/general-settings.php:276
 msgid "Page Views Count Function"
-msgstr ""
+msgstr "Page Views Count Functie"
 
 #: admin/settings/general-settings.php:280
+#, fuzzy
 msgid "There are 2 functions that you can use to manually add Page Views Count to any content or post type that is created by your theme or plugin that creates it's own table instead of using custom post types"
-msgstr ""
+msgstr "Er zijn 2 functies die u kunt gebruiken om handmatig Page Views Count toe te voegen aan elke inhoud of post type dat wordt gemaakt door uw thema of plugin, die dan zorgt voor zijn eigen tabel in plaats van het gebruik van custom post types."
 
 #: admin/settings/general-settings.php:283
 msgid "Single post,  page, object"
-msgstr ""
+msgstr "Individueel bericht, pagina, object"
 
 #: admin/settings/general-settings.php:287
 msgid "Index pages"
-msgstr ""
+msgstr "Index pagina's"
 
+#~ msgid "See"
+#~ msgstr "Bekijk"
+
+#~ msgid "the plugins wiki"
+#~ msgstr "de plugins wiki"
+
+#~ msgid "docs for detailed explanation on using the funtions"
+#~ msgstr ""
+#~ "documenten voor gedetailleerde uitleg over het gebruik van de functies"

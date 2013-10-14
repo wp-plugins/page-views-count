@@ -79,6 +79,9 @@ add_filter('the_content', array('A3_PVC','pvc_stats_show'), 8);
 add_filter('the_excerpt', array('A3_PVC','excerpt_pvc_stats_show'), 8);
 //add_filter('get_the_excerpt', array('A3_PVC','excerpt_pvc_stats_show'), 8);
 
+// Fixed for Wordpress SEO plugin
+add_filter( 'wpseo_opengraph_desc', array( 'A3_PVC', 'fixed_wordpress_seo_plugin' ) );
+
 if(version_compare(get_option('a3_pvc_version'), '1.2') === -1){
 	update_option('a3_pvc_version', '1.2');
 	A3_PVC::upgrade_version_1_2();

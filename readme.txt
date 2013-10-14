@@ -3,7 +3,7 @@ Contributors: a3rev, A3 Revolution Software Development team
 Tags: wordpress page view, page view count , post views, postview count,
 Requires at least: 3.3
 Tested up to: 3.6.1
-Stable tag: 1.0.4
+Stable tag: 1.0.4.1
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -32,6 +32,7 @@ Using the 2 functions the plugin provides that allows you to manually add view c
 If you do a translation for your site please send it to us and we'll include it in the plugins language folder and credit you here with the translation and a link to your site.
 
 * English (default) - always included.
+* Dutch - thanks to [Renee Klein]( http://wpdiscounts.com)
 *.po file (pvc.po) in languages folder for translations.
 * [Go here](http://a3rev.com/contact-us-page/) to send your translation files to us.
 
@@ -85,6 +86,15 @@ The manual installation method involves down loading our plugin and uploading it
  
 == Changelog ==
 
+= 1.0.4.1 - 2013/10/14 =
+* Fixed:
+	* Conflict with new version of WordPress SEO plugin causing duplicate page counts - add_filter( 'wpseo_opengraph_desc', array( 'A3_PVC', 'fixed_wordpress_seo_plugin' ) );
+	* Updated Plugin Admin Framework by added array_map( array( $this, 'admin_stripslashes' ) , $current_settings ) to strip slashes on value when show on frontend
+* Tweak:
+	* Fixed typos on admin panel.
+* Translations:
+	* Added Dutch translation thanks to Renee Klein
+
 = 1.0.4 - 2013/10/10 =
 * Tweaks:
 	* a3rev logo image now resizes to the size of the yellow sidebar in tablets and mobiles.
@@ -118,6 +128,9 @@ The manual installation method involves down loading our plugin and uploading it
 
 
 == Upgrade Notice ==
+
+= 1.0.4.1 =
+Update you plugin now for 2 bug fixes - especially important to upgrade now if you use the WordPress SEO plugin.
 
 = 1.0.4 =
 Upgrade now for another admin panel intuitive app interface feature plus a Radio switch bug fix and Android platform bug fix
