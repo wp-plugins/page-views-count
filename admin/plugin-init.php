@@ -3,7 +3,7 @@
  * Process when plugin is activated
  */
 function pvc_install(){
-	update_option('a3_pvc_version', '1.3.7');
+	update_option('a3_pvc_version', '1.3.8');
 	
 	// empty pvc_daily table for daily
 	wp_schedule_event( strtotime( date('Y-m-d'). ' 00:00:00' ), 'daily', 'pvc_empty_daily_table_daily_event_hook' );
@@ -37,6 +37,9 @@ function a3_pvc_plugin_init() {
 	load_plugin_textdomain( 'pvc', false, A3_PVC_FOLDER.'/languages' );
 }
 add_action( 'init', 'a3_pvc_plugin_init' );
+
+// Add custom style to dashboard
+add_action( 'admin_enqueue_scripts', array( 'A3_PVC', 'a3_wp_admin' ) );
 
 // Add extra link on left of Deactivate link on Plugin manager page
 add_action('plugin_action_links_'.A3_PVC_PLUGIN_NAME, array('A3_PVC', 'settings_plugin_links') );
@@ -82,36 +85,40 @@ add_filter('the_excerpt', array('A3_PVC','excerpt_pvc_stats_show'), 8);
 // Fixed for Wordpress SEO plugin
 add_filter( 'wpseo_opengraph_desc', array( 'A3_PVC', 'fixed_wordpress_seo_plugin' ) );
 
-if(version_compare(get_option('a3_pvc_version'), '1.2') === -1){
-	update_option('a3_pvc_version', '1.2');
-	A3_PVC::upgrade_version_1_2();
-}
-if(version_compare(get_option('a3_pvc_version'), '1.3.0') === -1){
-	update_option('a3_pvc_version', '1.3.0');
-}
-if(version_compare(get_option('a3_pvc_version'), '1.3.5') === -1){
-	wp_schedule_event( strtotime( date('Y-m-d'). ' 00:00:00' ), 'daily', 'pvc_empty_daily_table_daily_event_hook' );
-	global $wpdb;
-	$sql = "ALTER TABLE ". $wpdb->prefix . "pvc_daily  CHANGE `id` `id` BIGINT NOT NULL AUTO_INCREMENT";
-	$wpdb->query($sql);
-	$sql = "ALTER TABLE ". $wpdb->prefix . "pvc_total  CHANGE `id` `id` BIGINT NOT NULL AUTO_INCREMENT";
-	$wpdb->query($sql);
-		
-	update_option('a3_pvc_version', '1.3.5');
-}
-if(version_compare(get_option('a3_pvc_version'), '1.3.6') === -1){
-	$pvc_settings = get_option( 'pvc_settings' );
-	if ( isset( $pvc_settings['post_types'] ) && is_array( $pvc_settings['post_types'] ) && count( $pvc_settings['post_types'] ) > 0 ) {
-		$post_types_new = array();
-		foreach ( $pvc_settings['post_types'] as $post_type ) {
-			$post_types_new[$post_type] = $post_type;
-		}
-		$pvc_settings['post_types'] = $post_types_new;
-		update_option( 'pvc_settings', $pvc_settings );
+// Check upgrade functions
+add_action('plugins_loaded', 'pvc_lite_upgrade_plugin');
+function pvc_lite_upgrade_plugin () {
+	
+	if(version_compare(get_option('a3_pvc_version'), '1.2') === -1){
+		update_option('a3_pvc_version', '1.2');
+		A3_PVC::upgrade_version_1_2();
 	}
-	update_option('a3_pvc_version', '1.3.6');
-}
+	
+	if(version_compare(get_option('a3_pvc_version'), '1.3.5') === -1){
+		wp_schedule_event( strtotime( date('Y-m-d'). ' 00:00:00' ), 'daily', 'pvc_empty_daily_table_daily_event_hook' );
+		global $wpdb;
+		$sql = "ALTER TABLE ". $wpdb->prefix . "pvc_daily  CHANGE `id` `id` BIGINT NOT NULL AUTO_INCREMENT";
+		$wpdb->query($sql);
+		$sql = "ALTER TABLE ". $wpdb->prefix . "pvc_total  CHANGE `id` `id` BIGINT NOT NULL AUTO_INCREMENT";
+		$wpdb->query($sql);
+			
+		update_option('a3_pvc_version', '1.3.5');
+	}
+	if(version_compare(get_option('a3_pvc_version'), '1.3.6') === -1){
+		$pvc_settings = get_option( 'pvc_settings' );
+		if ( isset( $pvc_settings['post_types'] ) && is_array( $pvc_settings['post_types'] ) && count( $pvc_settings['post_types'] ) > 0 ) {
+			$post_types_new = array();
+			foreach ( $pvc_settings['post_types'] as $post_type ) {
+				$post_types_new[$post_type] = $post_type;
+			}
+			$pvc_settings['post_types'] = $post_types_new;
+			update_option( 'pvc_settings', $pvc_settings );
+		}
+		update_option('a3_pvc_version', '1.3.6');
+	}
+	
+	update_option('a3_pvc_version', '1.3.8');
 
-update_option('a3_pvc_version', '1.3.7');
+}
 
 ?>

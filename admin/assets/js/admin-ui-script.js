@@ -22,10 +22,10 @@
 								range: "min",
 								min: parseInt($(this).attr('min')), 
 								max: parseInt($(this).attr('max')), 
-								value: parseInt($(this).parent('.a3rev-ui-slide-container-end').parent('.a3rev-ui-slide-container-start').next("input").val()),
+								value: parseInt($(this).parent('.a3rev-ui-slide-container-end').parent('.a3rev-ui-slide-container-start').next(".a3rev-ui-slide-result-container").children("input").val()),
 								step: parseInt($(this).attr('inc')) ,
 								slide: function( event, ui ) {
-									$( this ).parent('.a3rev-ui-slide-container-end').parent('.a3rev-ui-slide-container-start').next("input").val(ui.value);
+									$( this ).parent('.a3rev-ui-slide-container-end').parent('.a3rev-ui-slide-container-start').next(".a3rev-ui-slide-result-container").children("input").val(ui.value);
 								}
 							});
 
@@ -44,9 +44,9 @@
 			}
 			$(this).on( "a3rev-ui-onoff_checkbox-switch", function( event, value, status ) {
 				if ( status == 'true') {
-					$(this).parents('.forminp-box_shadow').find('.a3rev-ui-box_shadow-enable-container').css( {'visibility': 'visible', 'height' : 'auto', 'overflow' : 'inherit'} );
+					$(this).parents('.forminp-box_shadow').find('.a3rev-ui-box_shadow-enable-container').hide().css( {'visibility': 'visible', 'height' : 'auto', 'overflow' : 'inherit'} ).slideDown();
 				} else {
-					$(this).parents('.forminp-box_shadow').find('.a3rev-ui-box_shadow-enable-container').css( {'visibility': 'hidden', 'height' : '0px', 'overflow' : 'hidden'} );
+					$(this).parents('.forminp-box_shadow').find('.a3rev-ui-box_shadow-enable-container').show().css( {'visibility': 'hidden', 'height' : '0px', 'overflow' : 'hidden'} ).slideUp();
 				}
 			});
 		});
@@ -81,12 +81,17 @@
 										var status = value.toString();
 										/* Apply for Border Corner */
 										if ( status == 'true' ) {
-											elem.parents('.a3rev-ui-settings-control').find('.a3rev-ui-border-corner-value-container').css( {'display': 'block'} );
+											elem.parents('.a3rev-ui-settings-control').find('.a3rev-ui-border-corner-value-container').slideDown();
 										} else {
-											elem.parents('.a3rev-ui-settings-control').find('.a3rev-ui-border-corner-value-container').css( {'display': 'none'} );
+											elem.parents('.a3rev-ui-settings-control').find('.a3rev-ui-border-corner-value-container').slideUp();
 										}
 										
 										$('input[name="' + input_name + '"]').trigger("a3rev-ui-onoff_checkbox-switch", [elem.val(), status]);
+									},
+								onEnd: function(elem, value) { 
+										var status = value.toString();
+										
+										$('input[name="' + input_name + '"]').trigger("a3rev-ui-onoff_checkbox-switch-end", [elem.val(), status]);
 									}
 								});
 		});
@@ -202,5 +207,6 @@
 			$(this).css( {'visibility': 'visible', 'height' : 'auto', 'overflow' : 'inherit'} );
 		})
 		
+		$(document).trigger("a3rev-ui-script-loaded");
 	});
 })(jQuery);

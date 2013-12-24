@@ -2,19 +2,19 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Page Views Count\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-10-14 11:03+0700\n"
-"PO-Revision-Date: 2013-10-14 11:03+0700\n"
-"Last-Translator: Nguyen Tuan <mr.nguyencongtuan@gmail.com>\n"
+"POT-Creation-Date: 2013-12-24 10:40+0700\n"
+"PO-Revision-Date: 2013-12-24 10:40+0700\n"
+"Last-Translator: Nguyen Cong Tuan <mr.nguyencongtuan@gmail.com>\n"
 "Language-Team: a3rev\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Poedit-KeywordsList: __;_e\n"
 "X-Poedit-Basepath: ../\n"
+"X-Generator: Poedit 1.5.7\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: pvc_class.php:93
-#: pvc_class.php:98
+#: pvc_class.php:93 pvc_class.php:98
 msgid "total views"
 msgstr ""
 
@@ -78,175 +78,193 @@ msgstr ""
 msgid "on the WordPress repository"
 msgstr ""
 
-#: pvc_class.php:271
+#: pvc_class.php:275
 msgid "Documentation"
 msgstr ""
 
-#: pvc_class.php:272
+#: pvc_class.php:276
 msgid "Support"
 msgstr ""
 
-#: admin/admin-interface.php:120
+#: admin/admin-interface.php:125
 msgid "Settings successfully saved."
 msgstr ""
 
-#: admin/admin-interface.php:128
+#: admin/admin-interface.php:133
 msgid "Error: Settings can not save."
 msgstr ""
 
-#: admin/admin-interface.php:136
+#: admin/admin-interface.php:141
 msgid "Settings successfully reseted."
 msgstr ""
 
-#: admin/admin-interface.php:157
+#: admin/admin-interface.php:162
 msgid "Thin"
 msgstr ""
 
-#: admin/admin-interface.php:158
+#: admin/admin-interface.php:163
 msgid "Thin/Italic"
 msgstr ""
 
-#: admin/admin-interface.php:159
+#: admin/admin-interface.php:164
 msgid "Normal"
 msgstr ""
 
-#: admin/admin-interface.php:160
+#: admin/admin-interface.php:165
 msgid "Italic"
 msgstr ""
 
-#: admin/admin-interface.php:161
+#: admin/admin-interface.php:166
 msgid "Bold"
 msgstr ""
 
-#: admin/admin-interface.php:162
+#: admin/admin-interface.php:167
 msgid "Bold/Italic"
 msgstr ""
 
-#: admin/admin-interface.php:172
+#: admin/admin-interface.php:177
 msgid "Solid"
 msgstr ""
 
-#: admin/admin-interface.php:173
+#: admin/admin-interface.php:178
 msgid "Double"
 msgstr ""
 
-#: admin/admin-interface.php:174
+#: admin/admin-interface.php:179
 msgid "Dashed"
 msgstr ""
 
-#: admin/admin-interface.php:175
+#: admin/admin-interface.php:180
 msgid "Dotted"
 msgstr ""
 
-#: admin/admin-interface.php:1143
-#: admin/admin-interface.php:1233
-#: admin/admin-interface.php:1262
-#: admin/settings/general-settings.php:261
+#: admin/admin-interface.php:181
+msgid "Groove"
+msgstr ""
+
+#: admin/admin-interface.php:182
+msgid "Ridge"
+msgstr ""
+
+#: admin/admin-interface.php:183
+msgid "Inset"
+msgstr ""
+
+#: admin/admin-interface.php:184
+msgid "Outset"
+msgstr ""
+
+#: admin/admin-interface.php:1293 admin/admin-interface.php:1383
+#: admin/admin-interface.php:1412 admin/settings/general-settings.php:261
 msgid "ON"
 msgstr ""
 
-#: admin/admin-interface.php:1144
-#: admin/admin-interface.php:1234
-#: admin/admin-interface.php:1263
-#: admin/settings/general-settings.php:262
+#: admin/admin-interface.php:1294 admin/admin-interface.php:1384
+#: admin/admin-interface.php:1413 admin/settings/general-settings.php:262
 msgid "OFF"
 msgstr ""
 
-#: admin/admin-interface.php:1304
+#: admin/admin-interface.php:1454
 msgid "Width"
 msgstr ""
 
-#: admin/admin-interface.php:1306
+#: admin/admin-interface.php:1456
 msgid "Height"
 msgstr ""
 
-#: admin/admin-interface.php:1308
+#: admin/admin-interface.php:1458
 msgid "Hard Crop"
 msgstr ""
 
-#: admin/admin-interface.php:1386
+#: admin/admin-interface.php:1536
 msgid "-- Default Fonts --"
 msgstr ""
 
-#: admin/admin-interface.php:1397
+#: admin/admin-interface.php:1547
 msgid "-- Google Fonts --"
 msgstr ""
 
-#: admin/admin-interface.php:1438
+#: admin/admin-interface.php:1588
 msgid "Preview your customized typography settings"
 msgstr ""
 
-#: admin/admin-interface.php:1531
-#: admin/admin-interface.php:1701
+#: admin/admin-interface.php:1722 admin/admin-interface.php:1981
 msgid "Preview your customized border settings"
 msgstr ""
 
-#: admin/admin-interface.php:1540
-#: admin/admin-interface.php:1674
+#: admin/admin-interface.php:1731 admin/admin-interface.php:1972
 msgid "Rounded"
 msgstr ""
 
-#: admin/admin-interface.php:1541
-#: admin/admin-interface.php:1675
+#: admin/admin-interface.php:1732 admin/admin-interface.php:1973
 msgid "Square"
 msgstr ""
 
-#: admin/admin-interface.php:1550
-#: admin/admin-interface.php:1684
-msgid "Rounded Value"
+#: admin/admin-interface.php:1742 admin/admin-interface.php:1986
+msgid "Top Left Corner"
 msgstr ""
 
-#: admin/admin-interface.php:1638
+#: admin/admin-interface.php:1762 admin/admin-interface.php:2006
+msgid "Top Right Corner"
+msgstr ""
+
+#: admin/admin-interface.php:1782 admin/admin-interface.php:2026
+msgid "Bottom Right Corner"
+msgstr ""
+
+#: admin/admin-interface.php:1802 admin/admin-interface.php:2046
+msgid "Bottom Left Corner"
+msgstr ""
+
+#: admin/admin-interface.php:1895
 msgid "Preview your customized border styles settings"
 msgstr ""
 
-#: admin/admin-interface.php:1742
-#: admin/settings/general-settings.php:209
+#: admin/admin-interface.php:2107 admin/settings/general-settings.php:209
 #: admin/settings/general-settings.php:219
 #: admin/settings/general-settings.php:240
 msgid "YES"
 msgstr ""
 
-#: admin/admin-interface.php:1743
-#: admin/settings/general-settings.php:210
+#: admin/admin-interface.php:2108 admin/settings/general-settings.php:210
 #: admin/settings/general-settings.php:220
 #: admin/settings/general-settings.php:241
 msgid "NO"
 msgstr ""
 
-#: admin/admin-interface.php:1757
+#: admin/admin-interface.php:2122
 msgid "Horizontal Shadow"
 msgstr ""
 
-#: admin/admin-interface.php:1775
+#: admin/admin-interface.php:2140
 msgid "Vertical Shadow"
 msgstr ""
 
-#: admin/admin-interface.php:1793
+#: admin/admin-interface.php:2158
 msgid "Blur Distance"
 msgstr ""
 
-#: admin/admin-interface.php:1811
+#: admin/admin-interface.php:2176
 msgid "Spread Size"
 msgstr ""
 
-#: admin/admin-interface.php:1829
+#: admin/admin-interface.php:2194
 msgid "INNER"
 msgstr ""
 
-#: admin/admin-interface.php:1830
+#: admin/admin-interface.php:2195
 msgid "OUTER"
 msgstr ""
 
-#: admin/admin-interface.php:1848
+#: admin/admin-interface.php:2213
 msgid "Preview your customized box shadow settings"
 msgstr ""
 
-#: admin/admin-interface.php:2032
+#: admin/admin-interface.php:2401
 msgid "Save changes"
 msgstr ""
 
-#: admin/admin-interface.php:2033
+#: admin/admin-interface.php:2402
 msgid "Reset Settings"
 msgstr ""
 
@@ -287,8 +305,7 @@ msgstr ""
 msgid "Page View Count Settings successfully reseted."
 msgstr ""
 
-#: admin/settings/general-settings.php:153
-#: admin/tabs/admin-pvc-tab.php:78
+#: admin/settings/general-settings.php:153 admin/tabs/admin-pvc-tab.php:78
 msgid "General"
 msgstr ""
 
@@ -321,7 +338,9 @@ msgid "Clean up on Deletion"
 msgstr ""
 
 #: admin/settings/general-settings.php:256
-msgid "On deletion (not deactivate) the plugin will completely remove all tables and data it created, leaving no trace it was ever here."
+msgid ""
+"On deletion (not deactivate) the plugin will completely remove all tables "
+"and data it created, leaving no trace it was ever here."
 msgstr ""
 
 #: admin/settings/general-settings.php:276
@@ -329,14 +348,32 @@ msgid "Page Views Count Function"
 msgstr ""
 
 #: admin/settings/general-settings.php:280
-msgid "There are 2 functions that you can use to manually add Page Views Count to any content or post type that is created by your theme or plugin that creates it's own table instead of using custom post types"
+msgid ""
+"There are 2 functions that you can use to manually add Page Views Count to "
+"any content or post type that is created by your theme or plugin that "
+"creates it's own table instead of using custom post types"
 msgstr ""
 
 #: admin/settings/general-settings.php:283
 msgid "Single post,  page, object"
 msgstr ""
 
-#: admin/settings/general-settings.php:287
+#: admin/settings/general-settings.php:285
+msgid "Increase Page Views Count and echo stats of this post"
+msgstr ""
+
+#: admin/settings/general-settings.php:286
+msgid "Increase Page Views Count and return stats of this post"
+msgstr ""
+
+#: admin/settings/general-settings.php:289
 msgid "Index pages"
 msgstr ""
 
+#: admin/settings/general-settings.php:291
+msgid "Echo stats of this post"
+msgstr ""
+
+#: admin/settings/general-settings.php:292
+msgid "Return stats of this post"
+msgstr ""

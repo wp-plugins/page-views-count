@@ -20,6 +20,7 @@ TABLE OF CONTENTS
 - plugin_extension_end()
 - pro_fields_before()
 - pro_fields_after()
+- blue_message_box()
 
 -----------------------------------------------------------------------------------*/
 
@@ -125,6 +126,17 @@ class WP_PVC_Admin_UI
 	/*-----------------------------------------------------------------------------------*/
 	public function pro_fields_after( $echo = true ) {
 		echo apply_filters( $this->plugin_name . '_pro_fields_after', '</div>' );
+	}
+	
+	/*-----------------------------------------------------------------------------------*/
+	/* blue_message_box() */
+	/* Blue Message Box
+	/*-----------------------------------------------------------------------------------*/
+	public function blue_message_box( $message = '', $width = '600px' ) {
+		$message = '<div class="a3rev_blue_message_box_container" style="width:'.$width.'"><div class="a3rev_blue_message_box">' . $message . '</div></div>';
+		$message = apply_filters( $this->plugin_name . '_blue_message_box', $message );
+		
+		return $message;
 	}
 
 }

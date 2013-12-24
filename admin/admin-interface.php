@@ -105,8 +105,13 @@ class WP_PVC_Admin_Interface extends WP_PVC_Admin_UI
 	/*-----------------------------------------------------------------------------------*/
 
 	public function admin_css_load () {
+		global $wp_version;
 		
 		wp_enqueue_style( 'a3rev-admin-ui-style', $this->admin_plugin_url() . '/assets/css/admin-ui-style.css' );
+		
+		if ( version_compare( $wp_version, '3.8', '>=' ) ) {
+			wp_enqueue_style( 'a3rev-admin-flat-ui-style', $this->admin_plugin_url() . '/assets/css/admin-flat-ui-style.css' );
+		}
 		wp_enqueue_style( 'wp-color-picker' );
 		wp_enqueue_style( 'a3rev-chosen-style', $this->admin_plugin_url() . '/assets/js/chosen/chosen.css' );
 		wp_enqueue_style( 'a3rev-tiptip-style', $this->admin_plugin_url() . '/assets/js/tipTip/tipTip.css' );
@@ -173,6 +178,10 @@ class WP_PVC_Admin_Interface extends WP_PVC_Admin_UI
 			'double'			=> __( 'Double', 'pvc' ),
 			'dashed'			=> __( 'Dashed', 'pvc' ),
 			'dotted'			=> __( 'Dotted', 'pvc' ),
+			'groove'			=> __( 'Groove', 'pvc' ),
+			'ridge'				=> __( 'Ridge', 'pvc' ),
+			'inset'				=> __( 'Inset', 'pvc' ),
+			'outset'			=> __( 'Outset', 'pvc' ),
 		);
 		return apply_filters( $this->plugin_name . '_border_styles', $border_styles );
 	}
@@ -194,23 +203,58 @@ class WP_PVC_Admin_Interface extends WP_PVC_Admin_UI
 			if ( ! isset( $value['id'] ) || trim( $value['id'] ) == '' ) continue;
 			if ( ! isset( $value['default'] ) ) $value['default'] = '';
 			
-			// Do not include when it's separate option
-			if ( isset( $value['separate_option'] ) && $value['separate_option'] != false ) continue;
-			
-			// Remove [, ] characters from id argument
-			if ( strstr( $value['id'], '[' ) ) {
-				parse_str( esc_attr( $value['id'] ), $option_array );
-	
-				// Option name is first key
-				$option_keys = array_keys( $option_array );
-				$first_key = current( $option_keys );
+			switch ( $value['type'] ) {
+				
+				// Array textfields
+				case 'array_textfields' :
+					if ( !isset( $value['ids'] ) || !is_array( $value['ids'] ) || count( $value['ids'] ) < 1 ) break;
 					
-				$id_attribute		= $first_key;
-			} else {
-				$id_attribute		= esc_attr( $value['id'] );
-			}
+					foreach ( $value['ids'] as $text_field ) {
+						if ( ! isset( $text_field['id'] ) || trim( $text_field['id'] ) == '' ) continue;
+						if ( ! isset( $text_field['default'] ) ) $text_field['default'] = '';
+						
+						// Do not include when it's separate option
+						if ( isset( $text_field['separate_option'] ) && $text_field['separate_option'] != false ) continue;
+						
+						// Remove [, ] characters from id argument
+						if ( strstr( $text_field['id'], '[' ) ) {
+							parse_str( esc_attr( $text_field['id'] ), $option_array );
+				
+							// Option name is first key
+							$option_keys = array_keys( $option_array );
+							$first_key = current( $option_keys );
+								
+							$id_attribute		= $first_key;
+						} else {
+							$id_attribute		= esc_attr( $text_field['id'] );
+						}
+						
+						$default_settings[$id_attribute] = $text_field['default'];
+					}
+					
+				break;
+				
+				default :
+					// Do not include when it's separate option
+					if ( isset( $value['separate_option'] ) && $value['separate_option'] != false ) continue;
+					
+					// Remove [, ] characters from id argument
+					if ( strstr( $value['id'], '[' ) ) {
+						parse_str( esc_attr( $value['id'] ), $option_array );
 			
-			$default_settings[$id_attribute] = $value['default'];
+						// Option name is first key
+						$option_keys = array_keys( $option_array );
+						$first_key = current( $option_keys );
+							
+						$id_attribute		= $first_key;
+					} else {
+						$id_attribute		= esc_attr( $value['id'] );
+					}
+					
+					$default_settings[$id_attribute] = $value['default'];
+				
+				break;
+			}
 		}
 		
 		if ( trim( $option_name ) != '' ) $default_settings = apply_filters( $this->plugin_name . '_' . $option_name . '_default_settings' , $default_settings );
@@ -238,8 +282,8 @@ class WP_PVC_Admin_Interface extends WP_PVC_Admin_UI
 			if ( ! is_array( $current_settings ) ) $current_settings = array();
 			$current_settings = array_merge( $default_settings, $current_settings );
 			
-			$current_settings = apply_filters( $this->plugin_name . '_' . $option_name . '_get_settings' , $current_settings );
 			$current_settings = array_map( array( $this, 'admin_stripslashes' ), $current_settings );
+			$current_settings = apply_filters( $this->plugin_name . '_' . $option_name . '_get_settings' , $current_settings );
 			
 			$$option_name = $current_settings;
 			
@@ -273,10 +317,26 @@ class WP_PVC_Admin_Interface extends WP_PVC_Admin_UI
 				
 				$current_setting = get_option( $id_attribute, $value['default'] );
 				
-				if ( is_array( $current_setting ) )
-					$current_setting = array_map( array( $this, 'admin_stripslashes' ), $current_setting );
-				elseif ( ! is_null( $current_setting ) )
-					$current_setting = esc_attr( stripslashes( $current_setting ) );
+				switch ( $value['type'] ) {
+				
+					// Array textfields
+					case 'wp_editor' :
+						if ( is_array( $current_setting ) )
+							$current_setting = array_map( array( $this, 'stripslashes' ), $current_setting );
+						elseif ( ! is_null( $current_setting ) )
+							$current_setting = stripslashes( $current_setting );
+					break;
+					
+					default:
+				
+						if ( is_array( $current_setting ) )
+							$current_setting = array_map( array( $this, 'admin_stripslashes' ), $current_setting );
+						elseif ( ! is_null( $current_setting ) )
+							$current_setting = esc_attr( stripslashes( $current_setting ) );
+					break;
+				}
+				
+				$current_setting = apply_filters( $this->plugin_name . '_' . $id_attribute . '_get_setting' , $current_setting );
 				
 				$$id_attribute = $current_setting;
 			}
@@ -558,10 +618,36 @@ class WP_PVC_Admin_Interface extends WP_PVC_Admin_UI
 						if ( ! isset( $value['type'] ) ) continue;
 						if ( in_array( $value['type'], array( 'heading' ) ) ) continue;
 						if ( ! isset( $value['id'] ) || trim( $value['id'] ) == '' ) continue;
-						if ( ! isset( $value['default'] ) ) $value['default'] = '';
-						if ( ! isset( $value['free_version'] ) ) $value['free_version'] = false;
-						if ( $value['free_version'] ) unset( $default_settings[ $value['id']] );
+						
+						switch ( $value['type'] ) {
+				
+							// Array textfields
+							case 'array_textfields' :
+								if ( !isset( $value['ids'] ) || !is_array( $value['ids'] ) || count( $value['ids'] ) < 1 ) break;
+								
+								foreach ( $value['ids'] as $text_field ) {
+									if ( ! isset( $text_field['id'] ) || trim( $text_field['id'] ) == '' ) continue;
+									if ( ! isset( $text_field['default'] ) ) $text_field['default'] = '';
+									if ( ! isset( $text_field['free_version'] ) ) {
+										if ( ! isset( $value['free_version'] ) ) 
+											$text_field['free_version'] = false;
+										else
+											$text_field['free_version'] = $value['free_version'];
+									}
+									if ( $text_field['free_version'] ) unset( $default_settings[ $text_field['id']] );
+								}
+								
+							break;
+							
+							default :
+								if ( ! isset( $value['default'] ) ) $value['default'] = '';
+								if ( ! isset( $value['free_version'] ) ) $value['free_version'] = false;
+								if ( $value['free_version'] ) unset( $default_settings[ $value['id']] );
+							
+							break;
+						}
 					}
+					
 					$current_settings = array_merge( $current_settings, $default_settings );
 					update_option( $option_name, $current_settings );
 				} else {
@@ -582,28 +668,75 @@ class WP_PVC_Admin_Interface extends WP_PVC_Admin_UI
 			// For way it has an option name
 			if ( ! isset( $value['separate_option'] ) ) $value['separate_option'] = false;
 			
-			// Remove [, ] characters from id argument
-			if ( strstr( $value['id'], '[' ) ) {
-				parse_str( esc_attr( $value['id'] ), $option_array );
-	
-				// Option name is first key
-				$option_keys = array_keys( $option_array );
-				$first_key = current( $option_keys );
+			switch ( $value['type'] ) {
+				
+				// Array textfields
+				case 'array_textfields' :
+					if ( !isset( $value['ids'] ) || !is_array( $value['ids'] ) || count( $value['ids'] ) < 1 ) break;
+								
+					foreach ( $value['ids'] as $text_field ) {
+						if ( ! isset( $text_field['id'] ) || trim( $text_field['id'] ) == '' ) continue;
+						if ( ! isset( $text_field['default'] ) ) $text_field['default'] = '';
+						if ( ! isset( $text_field['free_version'] ) ) {
+							if ( ! isset( $value['free_version'] ) ) 
+								$text_field['free_version'] = false;
+							else
+								$text_field['free_version'] = $value['free_version'];
+						}
+						
+						// Remove [, ] characters from id argument
+						if ( strstr( $text_field['id'], '[' ) ) {
+							parse_str( esc_attr( $text_field['id'] ), $option_array );
+				
+							// Option name is first key
+							$option_keys = array_keys( $option_array );
+							$first_key = current( $option_keys );
+								
+							$id_attribute		= $first_key;
+						} else {
+							$id_attribute		= esc_attr( $text_field['id'] );
+						}
+						
+						if ( trim( $option_name ) == '' || $value['separate_option'] != false ) {
+							if ( $reset && $text_field['free_version'] && !$free_version ) {
+								update_option( $id_attribute,  $text_field['default'] );
+							} elseif ( $reset && !$text_field['free_version'] ) {
+								update_option( $id_attribute,  $text_field['default'] );
+							} else {
+								add_option( $id_attribute,  $text_field['default'] );
+							}
+						}
+					}
+								
+				break;
+							
+				default :
+					// Remove [, ] characters from id argument
+					if ( strstr( $value['id'], '[' ) ) {
+						parse_str( esc_attr( $value['id'] ), $option_array );
+			
+						// Option name is first key
+						$option_keys = array_keys( $option_array );
+						$first_key = current( $option_keys );
+							
+						$id_attribute		= $first_key;
+					} else {
+						$id_attribute		= esc_attr( $value['id'] );
+					}
 					
-				$id_attribute		= $first_key;
-			} else {
-				$id_attribute		= esc_attr( $value['id'] );
+					if ( trim( $option_name ) == '' || $value['separate_option'] != false ) {
+						if ( $reset && $value['free_version'] && !$free_version ) {
+							update_option( $id_attribute,  $value['default'] );
+						} elseif ( $reset && !$value['free_version'] ) {
+							update_option( $id_attribute,  $value['default'] );
+						} else {
+							add_option( $id_attribute,  $value['default'] );
+						}
+					}
+							
+				break;
 			}
 			
-			if ( trim( $option_name ) == '' || $value['separate_option'] != false ) {
-				if ( $reset && $value['free_version'] && !$free_version ) {
-					update_option( $id_attribute,  $value['default'] );
-				} elseif ( $reset && !$value['free_version'] ) {
-					update_option( $id_attribute,  $value['default'] );
-				} else {
-					add_option( $id_attribute,  $value['default'] );
-				}
-			}
 		}
 				
 	}
@@ -670,8 +803,11 @@ class WP_PVC_Admin_Interface extends WP_PVC_Admin_UI
 	 * default				=> text : apply for other types
 	 *						   array( 'width' => '125', 'height' => '125', 'crop' => 1 ) : apply image_size only
 	 *						   array( 'size' => '9px', 'face' => 'Arial', 'style' => 'normal', 'color' => '#515151' ) : apply for typography only 
-	 *						   array( 'width' => '1px', 'style' => 'normal', 'color' => '#515151' ) : apply for border, border_styles only
-	 *						   array( 'corner' => 'rounded' | 'square' , 'rounded_value' => 3 ) : apply for border, border_corner only
+	 *						   array( 'width' => '1px', 'style' => 'normal', 'color' => '#515151', 'corner' => 'rounded' | 'square' , 'top_left_corner' => 3, 
+	 *									'top_right_corner' => 3, 'bottom_left_corner' => 3, 'bottom_right_corner' => 3 ) : apply for border only
+	  *						   array( 'width' => '1px', 'style' => 'normal', 'color' => '#515151' ) : apply for border_styles only
+	 *						   array( 'corner' => 'rounded' | 'square' , 'top_left_corner' => 3, 'top_right_corner' => 3, 'bottom_left_corner' => 3, 
+	 *									'bottom_right_corner' => 3 ) : apply for border_corner only
 	 *						   array( 'enable' => 1|0, 'h_shadow' => '5px' , 'v_shadow' => '5px', 'blur' => '2px' , 'spread' => '2px', 'color' => '#515151', 
 	 *									'inset' => '' | 'insert' ) : apply for box_shadow only
 	 *
@@ -690,7 +826,7 @@ class WP_PVC_Admin_Interface extends WP_PVC_Admin_UI
 	 * unchecked_label		=> text : apply for onoff_checkbox, switcher_checkbox only ( set it to show the text instead OFF word default  )
 	 * options				=> array : apply for select, multiselect, radio types
 	 *
-	 * onoff_options		=> array : apply for onoff_options only
+	 * onoff_options		=> array : apply for onoff_radio only
 	 *						   ---------------- example ---------------------
 	 *							array( 
 	 *								array(  'val' 				=> 1,
@@ -736,6 +872,8 @@ class WP_PVC_Admin_Interface extends WP_PVC_Admin_UI
 		$admin_message = '';
 		
 		if ( isset( $_POST['form_name_action'] ) && $_POST['form_name_action'] == $form_key ) {
+			do_action( $this->plugin_name . '-' . trim( $form_key ) . '_before_settings_save' );
+			
 			// Save settings action
 			if ( isset( $_POST['bt_save_settings'] ) ) {
 				$this->save_settings( $options, $option_name );
@@ -827,6 +965,10 @@ class WP_PVC_Admin_Interface extends WP_PVC_Admin_UI
 			 *
 			 * [default_value_width]		: apply for border, border_styles types
 			 * [default_value_rounded_value]: apply for border, border_corner types
+			 * [default_value_top_left_corner]: apply for border, border_corner types
+			 * [default_value_top_right_corner]: apply for border, border_corner types
+			 * [default_value_bottom_left_corner]: apply for border, border_corner types
+			 * [default_value_bottom_right_corner]: apply for border, border_corner types
 			 */
 			if ( $value['type'] == 'image_size' ) {
 				if ( ! is_array( $value['default'] ) ) $value['default'] = array();
@@ -856,11 +998,19 @@ class WP_PVC_Admin_Interface extends WP_PVC_Admin_UI
 					
 				if ( ! isset( $value['default']['corner'] ) ) $value['default']['corner'] = 'rounded';
 				if ( ! isset( $value['default']['rounded_value'] ) ) $value['default']['rounded_value'] = '';
+				if ( ! isset( $value['default']['top_left_corner'] ) ) $value['default']['top_left_corner'] = $value['default']['rounded_value'];
+				if ( ! isset( $value['default']['top_right_corner'] ) ) $value['default']['top_right_corner'] = $value['default']['rounded_value'];
+				if ( ! isset( $value['default']['bottom_left_corner'] ) ) $value['default']['bottom_left_corner'] = $value['default']['rounded_value'];
+				if ( ! isset( $value['default']['bottom_right_corner'] ) ) $value['default']['bottom_right_corner'] = $value['default']['rounded_value'];
 				
 				$description = str_replace( '[default_value_width]', $value['default']['width'], $description );
 				$description = str_replace( '[default_value_style]', $value['default']['style'], $description );
 				$description = str_replace( '[default_value_color]', $value['default']['color'], $description );
 				$description = str_replace( '[default_value_rounded_value]', $value['default']['rounded_value'], $description );
+				$description = str_replace( '[default_value_top_left_corner]', $value['default']['top_left_corner'], $description );
+				$description = str_replace( '[default_value_top_right_corner]', $value['default']['top_right_corner'], $description );
+				$description = str_replace( '[default_value_bottom_left_corner]', $value['default']['bottom_left_corner'], $description );
+				$description = str_replace( '[default_value_bottom_right_corner]', $value['default']['bottom_right_corner'], $description );
 			} elseif ( $value['type'] == 'box_shadow' ) {
 				if ( ! is_array( $value['default'] ) ) $value['default'] = array();
 				if ( ! isset( $value['default']['enable'] ) || trim( $value['default']['enable'] ) == '' ) $value['default']['enable'] = 0;
@@ -887,7 +1037,7 @@ class WP_PVC_Admin_Interface extends WP_PVC_Admin_UI
 	
 			} elseif ( $tip ) {
 	
-				$tip = '<img class="help_tip" data-tip="' . esc_attr( $tip ) . '" src="' . $this->admin_plugin_url() . '/assets/images/help.png" height="16" width="16" />';
+				$tip = '<div class="help_tip a3-plugin-ui-icon a3-plugin-ui-help-icon" data-tip="' . esc_attr( $tip ) . '"></div>';
 	
 			}
 			
@@ -976,8 +1126,8 @@ class WP_PVC_Admin_Interface extends WP_PVC_Admin_UI
 	
 					?><tr valign="top">
 						<th scope="row" class="titledesc">
+                        	<?php echo $tip; ?>
 							<label for="<?php echo $id_attribute; ?>"><?php echo esc_html( $value['name'] ); ?></label>
-							<?php echo $tip; ?>
 						</th>
 						<td class="forminp forminp-<?php echo sanitize_title( $value['type'] ) ?>">
 							<input
@@ -1001,8 +1151,8 @@ class WP_PVC_Admin_Interface extends WP_PVC_Admin_UI
 					
 					?><tr valign="top">
 						<th scope="row" class="titledesc">
+                        	<?php echo $tip; ?>
 							<label for="<?php echo $id_attribute; ?>"><?php echo esc_html( $value['name'] ); ?></label>
-							<?php echo $tip; ?>
 						</th>
 						<td class="forminp forminp-<?php echo sanitize_title( $value['type'] ) ?>">
 							<input
@@ -1023,8 +1173,8 @@ class WP_PVC_Admin_Interface extends WP_PVC_Admin_UI
 	
 					?><tr valign="top">
 						<th scope="row" class="titledesc">
+                        	<?php echo $tip; ?>
 							<label for="<?php echo $id_attribute; ?>"><?php echo esc_html( $value['name'] ); ?></label>
-							<?php echo $tip; ?>
 						</th>
 						<td class="forminp forminp-<?php echo sanitize_title( $value['type'] ) ?>">
 							<?php echo $description; ?>
@@ -1050,8 +1200,8 @@ class WP_PVC_Admin_Interface extends WP_PVC_Admin_UI
 		
 					?><tr valign="top">
 						<th scope="row" class="titledesc">
+                        	<?php echo $tip; ?>
 							<label for="<?php echo $id_attribute; ?>"><?php echo esc_html( $value['name'] ); ?></label>
-							<?php echo $tip; ?>
 						</th>
 						<td class="forminp forminp-<?php echo sanitize_title( $value['type'] ) ?>">
 							<select
@@ -1091,8 +1241,8 @@ class WP_PVC_Admin_Interface extends WP_PVC_Admin_UI
 	
 					?><tr valign="top">
 						<th scope="row" class="titledesc">
+                        	<?php echo $tip; ?>
 							<label for="<?php echo $id_attribute; ?>"><?php echo esc_html( $value['name'] ); ?></label>
-							<?php echo $tip; ?>
 						</th>
 						<td class="forminp forminp-<?php echo sanitize_title( $value['type'] ) ?>">
 							<fieldset>
@@ -1130,8 +1280,8 @@ class WP_PVC_Admin_Interface extends WP_PVC_Admin_UI
 	
 					?><tr valign="top">
 						<th scope="row" class="titledesc">
+                        	<?php echo $tip; ?>
 							<label for="<?php echo $id_attribute; ?>"><?php echo esc_html( $value['name'] ); ?></label>
-							<?php echo $tip; ?>
 						</th>
 						<td class="forminp forminp-<?php echo sanitize_title( $value['type'] ) ?>">
 							<fieldset>
@@ -1235,8 +1385,8 @@ class WP_PVC_Admin_Interface extends WP_PVC_Admin_UI
 		
 					?><tr valign="top">
 						<th scope="row" class="titledesc">
+                        	<?php echo $tip; ?>
 							<label for="<?php echo $id_attribute; ?>"><?php echo esc_html( $value['name'] ); ?></label>
-							<?php echo $tip; ?>
 						</th>
 						<td class="forminp forminp-<?php echo sanitize_title( $value['type'] ) ?>">
 							<input
@@ -1264,8 +1414,8 @@ class WP_PVC_Admin_Interface extends WP_PVC_Admin_UI
 		
 					?><tr valign="top">
 						<th scope="row" class="titledesc">
+                        	<?php echo $tip; ?>
 							<label for="<?php echo $id_attribute; ?>"><?php echo esc_html( $value['name'] ); ?></label>
-							<?php echo $tip; ?>
 						</th>
 						<td class="forminp forminp-<?php echo sanitize_title( $value['type'] ) ?>">
 							<input
@@ -1298,7 +1448,7 @@ class WP_PVC_Admin_Interface extends WP_PVC_Admin_UI
 					}
 	
 					?><tr valign="top">
-						<th scope="row" class="titledesc"><?php echo esc_html( $value['name'] ) ?> <?php echo $tip; ?></th>
+						<th scope="row" class="titledesc"><?php echo $tip; ?><?php echo esc_html( $value['name'] ) ?></th>
 						<td class="forminp forminp-<?php echo sanitize_title( $value['type'] ) ?>">
 	
 							<label><?php _e( 'Width', 'pvc' ); ?> <input name="<?php echo $name_attribute; ?>[width]" id="<?php echo $id_attribute; ?>-width" type="text" class="a3rev-ui-<?php echo sanitize_title( $value['type'] ) ?>-width" value="<?php echo $width; ?>" /></label>
@@ -1331,7 +1481,7 @@ class WP_PVC_Admin_Interface extends WP_PVC_Admin_UI
 						$args = wp_parse_args( $value['args'], $args );
 	
 					?><tr valign="top">
-						<th scope="row" class="titledesc"><?php echo esc_html( $value['name'] ) ?> <?php echo $tip; ?></th>
+						<th scope="row" class="titledesc"><?php echo $tip; ?><?php echo esc_html( $value['name'] ) ?></th>
 						<td class="forminp">
 							<?php echo str_replace(' id=', " data-placeholder='" . esc_html( $value['placeholder'] ) .  "' style='" . $value['css'] . "' class='" . $value['class'] . "' id=", wp_dropdown_pages( $args ) ); ?> <?php echo $description; ?>
 						</td>
@@ -1356,7 +1506,7 @@ class WP_PVC_Admin_Interface extends WP_PVC_Admin_UI
 					}
 				
 					?><tr valign="top">
-						<th scope="row" class="titledesc"><?php echo esc_html( $value['name'] ) ?> <?php echo $tip; ?></th>
+						<th scope="row" class="titledesc"><?php echo $tip; ?><?php echo esc_html( $value['name'] ) ?></th>
 						<td class="forminp">
                         	<?php echo $description; ?>
                             <div class="a3rev-ui-<?php echo sanitize_title( $value['type'] ) ?>-control">
@@ -1468,18 +1618,59 @@ class WP_PVC_Admin_Interface extends WP_PVC_Admin_UI
 					if ( ! isset( $value['increment'] ) ) $value['increment'] = 1;
 					
 					if ( trim( $option_name ) != '' && $value['separate_option'] != false ) {
-						$corner			= $this->settings_get_option( $value['id'] . '[corner]', $value['default']['corner'] );
-						$rounded_value	= $this->settings_get_option( $value['id'] . '[rounded_value]', $value['default']['rounded_value'] );
+						$corner					= $this->settings_get_option( $value['id'] . '[corner]', $value['default']['corner'] );
+						
+						if ( ! isset( $value['default']['rounded_value'] ) ) $value['default']['rounded_value'] = 3;
+						$rounded_value			= $this->settings_get_option( $value['id'] . '[rounded_value]', $value['default']['rounded_value'] );
+						
+						if ( ! isset( $value['default']['top_left_corner'] ) ) $value['default']['top_left_corner'] = 3;
+						$top_left_corner		= $this->settings_get_option( $value['id'] . '[top_left_corner]', $value['default']['top_left_corner'] );
+						
+						if ( ! isset( $value['default']['top_right_corner'] ) ) $value['default']['top_right_corner'] = 3;
+						$top_right_corner		= $this->settings_get_option( $value['id'] . '[top_right_corner]', $value['default']['top_right_corner'] );
+						
+						if ( ! isset( $value['default']['bottom_left_corner'] ) ) $value['default']['bottom_left_corner'] = 3;
+						$bottom_left_corner		= $this->settings_get_option( $value['id'] . '[bottom_left_corner]', $value['default']['bottom_left_corner'] );
+						
+						if ( ! isset( $value['default']['bottom_right_corner'] ) ) $value['default']['bottom_right_corner'] = 3;
+						$bottom_right_corner	= $this->settings_get_option( $value['id'] . '[bottom_right_corner]', $value['default']['bottom_right_corner'] );
 					} else {
 						if ( ! isset( $option_value['corner'] ) ) $option_value['corner'] = '';
-						$corner			= $option_value['corner'];
-						$rounded_value	= $option_value['rounded_value'];
+						$corner					= $option_value['corner'];
+						
+						if ( ! isset( $option_value['rounded_value'] ) ) $option_value['rounded_value'] = 3;
+						$rounded_value			= $option_value['rounded_value'];
+						
+						if ( ! isset( $option_value['top_left_corner'] ) ) $option_value['top_left_corner'] = 3;
+						$top_left_corner		= $option_value['top_left_corner'];
+						
+						if ( ! isset( $option_value['top_right_corner'] ) ) $option_value['top_right_corner'] = 3;
+						$top_right_corner		= $option_value['top_right_corner'];
+						
+						if ( ! isset( $option_value['bottom_left_corner'] ) ) $option_value['bottom_left_corner'] = 3;
+						$bottom_left_corner		= $option_value['bottom_left_corner'];
+						
+						if ( ! isset( $option_value['bottom_right_corner'] ) ) $option_value['bottom_right_corner'] = 3;
+						$bottom_right_corner	= $option_value['bottom_right_corner'];
 					}
+					
 					if ( trim( $rounded_value ) == '' || trim( $rounded_value ) <= 0  ) $rounded_value = $value['min'];
 					$rounded_value = intval( $rounded_value );
+					
+					if ( trim( $top_left_corner ) == '' || trim( $top_left_corner ) <= 0  ) $top_left_corner = $rounded_value;
+					$top_left_corner = intval( $top_left_corner );
+					
+					if ( trim( $top_right_corner ) == '' || trim( $top_right_corner ) <= 0  ) $top_right_corner = $rounded_value;
+					$top_right_corner = intval( $top_right_corner );
+					
+					if ( trim( $bottom_left_corner ) == '' || trim( $bottom_left_corner ) <= 0  ) $bottom_left_corner = $rounded_value;
+					$bottom_left_corner = intval( $bottom_left_corner );
+					
+					if ( trim( $bottom_right_corner ) == '' || trim( $bottom_right_corner ) <= 0  ) $bottom_right_corner = $rounded_value;
+					$bottom_right_corner = intval( $bottom_right_corner );
 				
 					?><tr valign="top">
-						<th scope="row" class="titledesc"><?php echo esc_html( $value['name'] ) ?> <?php echo $tip; ?></th>
+						<th scope="row" class="titledesc"><?php echo $tip; ?><?php echo esc_html( $value['name'] ) ?></th>
 						<td class="forminp forminp-border_corner">
                         	<?php echo $description; ?>
                             <div class="a3rev-ui-settings-control">
@@ -1546,21 +1737,87 @@ class WP_PVC_Admin_Interface extends WP_PVC_Admin_UI
 								/> 
                                 
 							<!-- Border Rounded Value -->
-                            	<div class="a3rev-ui-border-corner-value-container">  
-                                    <span class="a3rev-ui-border_corner-span"><?php _e( 'Rounded Value', 'pvc' ); ?></span>                             
-                                    <div class="a3rev-ui-slide-container-start">
-                                        <div class="a3rev-ui-slide-container-end">
-                                                <div class="a3rev-ui-slide" id="<?php echo $id_attribute; ?>-rounded_value_div" min="<?php echo esc_attr( $value['min'] ); ?>" max="<?php echo esc_attr( $value['max'] ); ?>" inc="<?php echo esc_attr( $value['increment'] ); ?>"></div>
-                                        </div>
+								<div class="a3rev-ui-border-corner-value-container">
+                                	<div class="a3rev-ui-border_corner-top_left">
+                                        <span class="a3rev-ui-border_corner-span"><?php _e( 'Top Left Corner', 'pvc' ); ?></span>
+                                        <div class="a3rev-ui-slide-container">
+                                            <div class="a3rev-ui-slide-container-start">
+                                                <div class="a3rev-ui-slide-container-end">
+                                                    <div class="a3rev-ui-slide" id="<?php echo $id_attribute; ?>-top_left_corner_div" min="<?php echo esc_attr( $value['min'] ); ?>" max="<?php echo esc_attr( $value['max'] ); ?>" inc="<?php echo esc_attr( $value['increment'] ); ?>"></div>
+                                                </div>
+                                            </div>
+                                            <div class="a3rev-ui-slide-result-container">
+                                            <input
+                                                readonly="readonly"
+                                                name="<?php echo $name_attribute; ?>[top_left_corner]"
+                                                id="<?php echo $id_attribute; ?>-top_left_corner"
+                                                type="text"
+                                                value="<?php echo esc_attr( $top_left_corner ); ?>"
+                                                class="a3rev-ui-border_top_left_corner a3rev-ui-slider"
+                                            /> <span class="a3rev-ui-border_corner-px">px</span>
+                                            </div>
+                                		</div>
                                     </div>
-                                    <input
-                                        readonly="readonly"
-                                        name="<?php echo $name_attribute; ?>[rounded_value]"
-                                        id="<?php echo $id_attribute; ?>-rounded_value"
-                                        type="text"
-                                        value="<?php echo esc_attr( $rounded_value ); ?>"
-                                        class="a3rev-ui-border_corner-rounded_value a3rev-ui-slider"
-                                    /> <span class="a3rev-ui-border_corner-px">px</span>
+                                    <div class="a3rev-ui-border_corner-top_right">
+                                        <span class="a3rev-ui-border_corner-span"><?php _e( 'Top Right Corner', 'pvc' ); ?></span> 
+                                        <div class="a3rev-ui-slide-container">
+                                            <div class="a3rev-ui-slide-container-start">
+                                                <div class="a3rev-ui-slide-container-end">
+                                                    <div class="a3rev-ui-slide" id="<?php echo $id_attribute; ?>-top_right_corner_div" min="<?php echo esc_attr( $value['min'] ); ?>" max="<?php echo esc_attr( $value['max'] ); ?>" inc="<?php echo esc_attr( $value['increment'] ); ?>"></div>
+                                                </div>
+                                            </div>
+                                            <div class="a3rev-ui-slide-result-container">
+                                            <input
+                                                readonly="readonly"
+                                                name="<?php echo $name_attribute; ?>[top_right_corner]"
+                                                id="<?php echo $id_attribute; ?>-top_right_corner"
+                                                type="text"
+                                                value="<?php echo esc_attr( $top_right_corner ); ?>"
+                                                class="a3rev-ui-border_top_right_corner a3rev-ui-slider"
+                                            /> <span class="a3rev-ui-border_corner-px">px</span>
+                                            </div>
+                                		</div>
+                                    </div>
+                                    <div class="a3rev-ui-border_corner-bottom_right">
+                                        <span class="a3rev-ui-border_corner-span"><?php _e( 'Bottom Right Corner', 'pvc' ); ?></span> 
+                                        <div class="a3rev-ui-slide-container">
+                                            <div class="a3rev-ui-slide-container-start">
+                                                <div class="a3rev-ui-slide-container-end">
+                                                    <div class="a3rev-ui-slide" id="<?php echo $id_attribute; ?>-bottom_right_corner_div" min="<?php echo esc_attr( $value['min'] ); ?>" max="<?php echo esc_attr( $value['max'] ); ?>" inc="<?php echo esc_attr( $value['increment'] ); ?>"></div>
+                                                </div>
+                                            </div>
+                                            <div class="a3rev-ui-slide-result-container">
+                                            <input
+                                                readonly="readonly"
+                                                name="<?php echo $name_attribute; ?>[bottom_right_corner]"
+                                                id="<?php echo $id_attribute; ?>-bottom_right_corner"
+                                                type="text"
+                                                value="<?php echo esc_attr( $bottom_right_corner ); ?>"
+                                                class="a3rev-ui-border_bottom_right_corner a3rev-ui-slider"
+                                            /> <span class="a3rev-ui-border_corner-px">px</span>
+                                            </div>
+                                		</div>
+                                    </div>
+                                    <div class="a3rev-ui-border_corner-bottom_left">
+                                        <span class="a3rev-ui-border_corner-span"><?php _e( 'Bottom Left Corner', 'pvc' ); ?></span>
+                                        <div class="a3rev-ui-slide-container"> 
+                                            <div class="a3rev-ui-slide-container-start">
+                                                <div class="a3rev-ui-slide-container-end">
+                                                    <div class="a3rev-ui-slide" id="<?php echo $id_attribute; ?>-bottom_left_corner_div" min="<?php echo esc_attr( $value['min'] ); ?>" max="<?php echo esc_attr( $value['max'] ); ?>" inc="<?php echo esc_attr( $value['increment'] ); ?>"></div>
+                                                </div>
+                                            </div>
+                                            <div class="a3rev-ui-slide-result-container">
+                                            <input
+                                                readonly="readonly"
+                                                name="<?php echo $name_attribute; ?>[bottom_left_corner]"
+                                                id="<?php echo $id_attribute; ?>-bottom_left_corner"
+                                                type="text"
+                                                value="<?php echo esc_attr( $bottom_left_corner ); ?>"
+                                                class="a3rev-ui-border_bottom_left_corner a3rev-ui-slider"
+                                            /> <span class="a3rev-ui-border_corner-px">px</span>
+                                            </div>
+                                		</div>
+                                    </div>
                                 </div>
                                 <div style="clear:both"></div>
 							</div>
@@ -1586,7 +1843,7 @@ class WP_PVC_Admin_Interface extends WP_PVC_Admin_UI
 					}
 				
 					?><tr valign="top">
-						<th scope="row" class="titledesc"><?php echo esc_html( $value['name'] ) ?> <?php echo $tip; ?></th>
+						<th scope="row" class="titledesc"><?php echo $tip; ?><?php echo esc_html( $value['name'] ) ?></th>
 						<td class="forminp">
                         	<?php echo $description; ?>
                             <div class="a3rev-ui-settings-control">
@@ -1651,18 +1908,59 @@ class WP_PVC_Admin_Interface extends WP_PVC_Admin_UI
 					if ( ! isset( $value['increment'] ) ) $value['increment'] = 1;
 					
 					if ( trim( $option_name ) != '' && $value['separate_option'] != false ) {
-						$corner			= $this->settings_get_option( $value['id'] . '[corner]', $value['default']['corner'] );
-						$rounded_value	= $this->settings_get_option( $value['id'] . '[rounded_value]', $value['default']['rounded_value'] );
+						$corner					= $this->settings_get_option( $value['id'] . '[corner]', $value['default']['corner'] );
+						
+						if ( ! isset( $value['default']['rounded_value'] ) ) $value['default']['rounded_value'] = 3;
+						$rounded_value			= $this->settings_get_option( $value['id'] . '[rounded_value]', $value['default']['rounded_value'] );
+						
+						if ( ! isset( $value['default']['top_left_corner'] ) ) $value['default']['top_left_corner'] = 3;
+						$top_left_corner		= $this->settings_get_option( $value['id'] . '[top_left_corner]', $value['default']['top_left_corner'] );
+						
+						if ( ! isset( $value['default']['top_right_corner'] ) ) $value['default']['top_right_corner'] = 3;
+						$top_right_corner		= $this->settings_get_option( $value['id'] . '[top_right_corner]', $value['default']['top_right_corner'] );
+						
+						if ( ! isset( $value['default']['bottom_left_corner'] ) ) $value['default']['bottom_left_corner'] = 3;
+						$bottom_left_corner		= $this->settings_get_option( $value['id'] . '[bottom_left_corner]', $value['default']['bottom_left_corner'] );
+						
+						if ( ! isset( $value['default']['bottom_right_corner'] ) ) $value['default']['bottom_right_corner'] = 3;
+						$bottom_right_corner	= $this->settings_get_option( $value['id'] . '[bottom_right_corner]', $value['default']['bottom_right_corner'] );
 					} else {
 						if ( ! isset( $option_value['corner'] ) ) $option_value['corner'] = '';
-						$corner			= $option_value['corner'];
-						$rounded_value	= $option_value['rounded_value'];
+						$corner					= $option_value['corner'];
+						
+						if ( ! isset( $option_value['rounded_value'] ) ) $option_value['rounded_value'] = 3;
+						$rounded_value			= $option_value['rounded_value'];
+						
+						if ( ! isset( $option_value['top_left_corner'] ) ) $option_value['top_left_corner'] = 3;
+						$top_left_corner		= $option_value['top_left_corner'];
+						
+						if ( ! isset( $option_value['top_right_corner'] ) ) $option_value['top_right_corner'] = 3;
+						$top_right_corner		= $option_value['top_right_corner'];
+						
+						if ( ! isset( $option_value['bottom_left_corner'] ) ) $option_value['bottom_left_corner'] = 3;
+						$bottom_left_corner		= $option_value['bottom_left_corner'];
+						
+						if ( ! isset( $option_value['bottom_right_corner'] ) ) $option_value['bottom_right_corner'] = 3;
+						$bottom_right_corner	= $option_value['bottom_right_corner'];
 					}
+					
 					if ( trim( $rounded_value ) == '' || trim( $rounded_value ) <= 0  ) $rounded_value = $value['min'];
 					$rounded_value = intval( $rounded_value );
+					
+					if ( trim( $top_left_corner ) == '' || trim( $top_left_corner ) <= 0  ) $top_left_corner = $rounded_value;
+					$top_left_corner = intval( $top_left_corner );
+					
+					if ( trim( $top_right_corner ) == '' || trim( $top_right_corner ) <= 0  ) $top_right_corner = $rounded_value;
+					$top_right_corner = intval( $top_right_corner );
+					
+					if ( trim( $bottom_left_corner ) == '' || trim( $bottom_left_corner ) <= 0  ) $bottom_left_corner = $rounded_value;
+					$bottom_left_corner = intval( $bottom_left_corner );
+					
+					if ( trim( $bottom_right_corner ) == '' || trim( $bottom_right_corner ) <= 0  ) $bottom_right_corner = $rounded_value;
+					$bottom_right_corner = intval( $bottom_right_corner );
 				
 					?><tr valign="top">
-						<th scope="row" class="titledesc"><?php echo esc_html( $value['name'] ) ?> <?php echo $tip; ?></th>
+						<th scope="row" class="titledesc"><?php echo $tip; ?><?php echo esc_html( $value['name'] ) ?></th>
 						<td class="forminp forminp-<?php echo sanitize_title( $value['type'] ) ?>">
                         	<?php echo $description; ?>
                             <div class="a3rev-ui-settings-control">	
@@ -1679,26 +1977,93 @@ class WP_PVC_Admin_Interface extends WP_PVC_Admin_UI
                                     <?php echo implode( ' ', $custom_attributes ); ?>
 								/> 
                                 
-                                <!-- Border Rounded Value -->
-                                <div class="a3rev-ui-border-corner-value-container">  
-                                    <span class="a3rev-ui-border_corner-span"><?php _e( 'Rounded Value', 'pvc' ); ?></span> 
-                                    <div class="a3rev-ui-slide-container-start">
-                                        <div class="a3rev-ui-slide-container-end">
-                                                <div class="a3rev-ui-slide" id="<?php echo $id_attribute; ?>-rounded_value_div" min="<?php echo esc_attr( $value['min'] ); ?>" max="<?php echo esc_attr( $value['max'] ); ?>" inc="<?php echo esc_attr( $value['increment'] ); ?>"></div>
-                                        </div>
-                                    </div>
-                                    <input
-                                        readonly="readonly"
-                                        name="<?php echo $name_attribute; ?>[rounded_value]"
-                                        id="<?php echo $id_attribute; ?>-rounded_value"
-                                        type="text"
-                                        value="<?php echo esc_attr( $rounded_value ); ?>"
-                                        class="a3rev-ui-border_corner-rounded_value a3rev-ui-slider"
-                                    /> <span class="a3rev-ui-border_corner-px">px</span>
-                                </div>
-                                
                                 <!-- Preview Button -->
-                               <div class="a3rev-ui-settings-preview"><a href="#" class="a3rev-ui-border-preview-button a3rev-ui-settings-preview-button button submit-button" title="<?php _e( 'Preview your customized border settings', 'pvc'); ?>"><span>&nbsp;</span></a></div>
+                               	<div class="a3rev-ui-settings-preview"><a href="#" class="a3rev-ui-border-preview-button a3rev-ui-settings-preview-button button submit-button" title="<?php _e( 'Preview your customized border settings', 'wc_email_inquiry'); ?>"><span>&nbsp;</span></a></div>
+                               
+                               	<!-- Border Rounded Value -->
+								<div class="a3rev-ui-border-corner-value-container">
+                                	<div class="a3rev-ui-border_corner-top_left">
+                                        <span class="a3rev-ui-border_corner-span"><?php _e( 'Top Left Corner', 'pvc' ); ?></span>
+                                        <div class="a3rev-ui-slide-container">
+                                            <div class="a3rev-ui-slide-container-start">
+                                                <div class="a3rev-ui-slide-container-end">
+                                                    <div class="a3rev-ui-slide" id="<?php echo $id_attribute; ?>-top_left_corner_div" min="<?php echo esc_attr( $value['min'] ); ?>" max="<?php echo esc_attr( $value['max'] ); ?>" inc="<?php echo esc_attr( $value['increment'] ); ?>"></div>
+                                                </div>
+                                            </div>
+                                            <div class="a3rev-ui-slide-result-container">
+                                            <input
+                                                readonly="readonly"
+                                                name="<?php echo $name_attribute; ?>[top_left_corner]"
+                                                id="<?php echo $id_attribute; ?>-top_left_corner"
+                                                type="text"
+                                                value="<?php echo esc_attr( $top_left_corner ); ?>"
+                                                class="a3rev-ui-border_top_left_corner a3rev-ui-slider"
+                                            /> <span class="a3rev-ui-border_corner-px">px</span>
+                                            </div>
+                                		</div>
+                                    </div>
+                                    <div class="a3rev-ui-border_corner-top_right">
+                                        <span class="a3rev-ui-border_corner-span"><?php _e( 'Top Right Corner', 'pvc' ); ?></span>
+                                        <div class="a3rev-ui-slide-container"> 
+                                            <div class="a3rev-ui-slide-container-start">
+                                                <div class="a3rev-ui-slide-container-end">
+                                                    <div class="a3rev-ui-slide" id="<?php echo $id_attribute; ?>-top_right_corner_div" min="<?php echo esc_attr( $value['min'] ); ?>" max="<?php echo esc_attr( $value['max'] ); ?>" inc="<?php echo esc_attr( $value['increment'] ); ?>"></div>
+                                                </div>
+                                            </div>
+                                            <div class="a3rev-ui-slide-result-container">
+                                            <input
+                                                readonly="readonly"
+                                                name="<?php echo $name_attribute; ?>[top_right_corner]"
+                                                id="<?php echo $id_attribute; ?>-top_right_corner"
+                                                type="text"
+                                                value="<?php echo esc_attr( $top_right_corner ); ?>"
+                                                class="a3rev-ui-border_top_right_corner a3rev-ui-slider"
+                                            /> <span class="a3rev-ui-border_corner-px">px</span>
+                                            </div>
+                                		</div>
+                                    </div>
+                                    <div class="a3rev-ui-border_corner-bottom_right">
+                                        <span class="a3rev-ui-border_corner-span"><?php _e( 'Bottom Right Corner', 'pvc' ); ?></span>
+                                        <div class="a3rev-ui-slide-container"> 
+                                            <div class="a3rev-ui-slide-container-start">
+                                                <div class="a3rev-ui-slide-container-end">
+                                                    <div class="a3rev-ui-slide" id="<?php echo $id_attribute; ?>-bottom_right_corner_div" min="<?php echo esc_attr( $value['min'] ); ?>" max="<?php echo esc_attr( $value['max'] ); ?>" inc="<?php echo esc_attr( $value['increment'] ); ?>"></div>
+                                                </div>
+                                            </div>
+                                            <div class="a3rev-ui-slide-result-container">
+                                            <input
+                                                readonly="readonly"
+                                                name="<?php echo $name_attribute; ?>[bottom_right_corner]"
+                                                id="<?php echo $id_attribute; ?>-bottom_right_corner"
+                                                type="text"
+                                                value="<?php echo esc_attr( $bottom_right_corner ); ?>"
+                                                class="a3rev-ui-border_bottom_right_corner a3rev-ui-slider"
+                                            /> <span class="a3rev-ui-border_corner-px">px</span>
+                                            </div>
+                                		</div>
+                                    </div>
+                                    <div class="a3rev-ui-border_corner-bottom_left">
+                                        <span class="a3rev-ui-border_corner-span"><?php _e( 'Bottom Left Corner', 'pvc' ); ?></span> 
+                                        <div class="a3rev-ui-slide-container">
+                                            <div class="a3rev-ui-slide-container-start">
+                                                <div class="a3rev-ui-slide-container-end">
+                                                    <div class="a3rev-ui-slide" id="<?php echo $id_attribute; ?>-bottom_left_corner_div" min="<?php echo esc_attr( $value['min'] ); ?>" max="<?php echo esc_attr( $value['max'] ); ?>" inc="<?php echo esc_attr( $value['increment'] ); ?>"></div>
+                                                </div>
+                                            </div>
+                                            <div class="a3rev-ui-slide-result-container">
+                                            <input
+                                                readonly="readonly"
+                                                name="<?php echo $name_attribute; ?>[bottom_left_corner]"
+                                                id="<?php echo $id_attribute; ?>-bottom_left_corner"
+                                                type="text"
+                                                value="<?php echo esc_attr( $bottom_left_corner ); ?>"
+                                                class="a3rev-ui-border_bottom_left_corner a3rev-ui-slider"
+                                            /> <span class="a3rev-ui-border_corner-px">px</span>
+                                            </div>
+                                		</div>
+                                    </div>
+                                </div>
+                                <div style="clear:both"></div>
                             </div>
 							<div style="clear:both"></div>
 						</td>
@@ -1732,7 +2097,7 @@ class WP_PVC_Admin_Interface extends WP_PVC_Admin_UI
 					}
 				
 					?><tr valign="top">
-						<th scope="row" class="titledesc"><?php echo esc_html( $value['name'] ) ?> <?php echo $tip; ?></th>
+						<th scope="row" class="titledesc"><?php echo $tip; ?><?php echo esc_html( $value['name'] ) ?></th>
 						<td class="forminp forminp-box_shadow">
                         	<?php echo $description; ?>
                             <input
@@ -1865,23 +2230,27 @@ class WP_PVC_Admin_Interface extends WP_PVC_Admin_UI
 				
 					?><tr valign="top">
 						<th scope="row" class="titledesc">
+                        	<?php echo $tip; ?>
 							<label for="<?php echo $id_attribute; ?>"><?php echo esc_html( $value['name'] ); ?></label>
-							<?php echo $tip; ?>
 						</th>
 						<td class="forminp forminp-<?php echo sanitize_title( $value['type'] ) ?>">
-                        <div class="a3rev-ui-slide-container-start"><div class="a3rev-ui-slide-container-end">
-                        	<div class="a3rev-ui-slide" id="<?php echo $id_attribute; ?>_div" min="<?php echo esc_attr( $value['min'] ); ?>" max="<?php echo esc_attr( $value['max'] ); ?>" inc="<?php echo esc_attr( $value['increment'] ); ?>"></div>
-                        </div></div>
-							<input
-                            	readonly="readonly"
-								name="<?php echo $name_attribute; ?>"
-								id="<?php echo $id_attribute; ?>"
-								type="text"
-								value="<?php echo esc_attr( $option_value ); ?>"
-								class="a3rev-ui-slider"
-								<?php echo implode( ' ', $custom_attributes ); ?>
-								/> <?php echo $description; ?>
-						</td>
+                        <div class="a3rev-ui-slide-container">
+                            <div class="a3rev-ui-slide-container-start"><div class="a3rev-ui-slide-container-end">
+                                <div class="a3rev-ui-slide" id="<?php echo $id_attribute; ?>_div" min="<?php echo esc_attr( $value['min'] ); ?>" max="<?php echo esc_attr( $value['max'] ); ?>" inc="<?php echo esc_attr( $value['increment'] ); ?>"></div>
+                            </div></div>
+                            <div class="a3rev-ui-slide-result-container">
+                                <input
+                                    readonly="readonly"
+                                    name="<?php echo $name_attribute; ?>"
+                                    id="<?php echo $id_attribute; ?>"
+                                    type="text"
+                                    value="<?php echo esc_attr( $option_value ); ?>"
+                                    class="a3rev-ui-slider"
+                                    <?php echo implode( ' ', $custom_attributes ); ?>
+                                    /> <?php echo $description; ?>
+							</div>
+                        </div>
+                        </td>
 					</tr><?php
 					
 				break;
@@ -1893,8 +2262,8 @@ class WP_PVC_Admin_Interface extends WP_PVC_Admin_UI
 				
 					?><tr valign="top">
 						<th scope="row" class="titledesc">
+                        	<?php echo $tip; ?>
 							<label for="<?php echo $id_attribute; ?>"><?php echo esc_html( $value['name'] ); ?></label>
-							<?php echo $tip; ?>
 						</th>
 						<td class="forminp forminp-<?php echo sanitize_title( $value['type'] ) ?>">
                         	<?php echo $description; ?>
@@ -1911,8 +2280,8 @@ class WP_PVC_Admin_Interface extends WP_PVC_Admin_UI
 					
 					?><tr valign="top">
 						<th scope="row" class="titledesc">
+                        	<?php echo $tip; ?>
 							<label for="<?php echo $id_attribute; ?>"><?php echo esc_html( $value['name'] ); ?></label>
-							<?php echo $tip; ?>
 						</th>
 						<td class="forminp forminp-<?php echo sanitize_title( $value['type'] ) ?>">
                         	<?php echo $description; ?>
@@ -1934,8 +2303,8 @@ class WP_PVC_Admin_Interface extends WP_PVC_Admin_UI
 					
 					?><tr valign="top">
 						<th scope="row" class="titledesc">
+                        	<?php echo $tip; ?>
 							<label for="<?php echo $id_attribute; ?>"><?php echo esc_html( $value['name'] ); ?></label>
-							<?php echo $tip; ?>
 						</th>
 						<td class="forminp forminp-<?php echo sanitize_title( $value['type'] ) ?>">
                         	<?php echo $description; ?>
@@ -2029,7 +2398,7 @@ class WP_PVC_Admin_Interface extends WP_PVC_Admin_UI
 		?>
 		<?php do_action( $this->plugin_name . '-' . trim( $form_key ) . '_settings_end' ); ?>
             <p class="submit">
-                    <input type="submit" value="<?php _e('Save changes', 'pvc'); ?>" class="button-primary" name="bt_save_settings" />
+                    <input type="submit" value="<?php _e('Save changes', 'pvc'); ?>" class="button button-primary" name="bt_save_settings" />
                     <input type="submit" name="bt_reset_settings" class="button" value="<?php _e('Reset Settings', 'pvc'); ?>"  />
                     <input type="hidden" name="form_name_action" value="<?php echo $form_key; ?>"  />
                     <input type="hidden" class="last_tab" name="subtab" value="#<?php echo $current_subtab; ?>" />
@@ -2048,7 +2417,7 @@ class WP_PVC_Admin_Interface extends WP_PVC_Admin_UI
 		if ( is_array( $values ) ) {
 			$values = array_map( array( $this, 'admin_stripslashes' ), $values );
 		} else {
-			$values = stripslashes( $values );	
+			$values = esc_attr( stripslashes( $values ) );	
 		}
 		
 		return $values;
@@ -2065,9 +2434,15 @@ class WP_PVC_Admin_Interface extends WP_PVC_Admin_UI
 		$border_css .= 'border: ' . esc_attr( $option['width'] ) . ' ' . esc_attr( $option['style'] ) . ' ' . esc_attr( $option['color'] ) .' !important;';
 			
 		if ( isset( $option['corner'] ) && esc_attr( $option['corner'] ) == 'rounded' ) {
-			$border_css .= 'border-radius: ' . $option['rounded_value'] . 'px !important;';
-			$border_css .= '-moz-border-radius: ' . $option['rounded_value'] . 'px !important;';
-			$border_css .= '-webkit-border-radius: ' . $option['rounded_value'] . 'px !important;';
+			if ( ! isset( $option['rounded_value'] ) ) $option['rounded_value'] = 0;
+			if ( ! isset( $option['top_left_corner'] ) ) $option['top_left_corner'] = $option['rounded_value'];
+			if ( ! isset( $option['top_right_corner'] ) ) $option['top_right_corner'] = $option['rounded_value'];
+			if ( ! isset( $option['bottom_left_corner'] ) ) $option['bottom_left_corner'] = $option['rounded_value'];
+			if ( ! isset( $option['bottom_right_corner'] ) ) $option['bottom_right_corner'] = $option['rounded_value'];
+			
+			$border_css .= 'border-radius: ' . $option['top_left_corner'] . 'px ' . $option['top_right_corner'] . 'px ' . $option['bottom_right_corner'] . 'px ' . $option['bottom_left_corner'] . 'px !important;';
+			$border_css .= '-moz-border-radius: ' . $option['top_left_corner'] . 'px ' . $option['top_right_corner'] . 'px ' . $option['bottom_right_corner'] . 'px ' . $option['bottom_left_corner'] . 'px !important;';
+			$border_css .= '-webkit-border-radius: ' . $option['top_left_corner'] . 'px ' . $option['top_right_corner'] . 'px ' . $option['bottom_right_corner'] . 'px ' . $option['bottom_left_corner'] . 'px !important;';
 		} else {
 			$border_css .= 'border-radius: 0px !important;';
 			$border_css .= '-moz-border-radius: 0px !important;';
@@ -2101,9 +2476,15 @@ class WP_PVC_Admin_Interface extends WP_PVC_Admin_UI
 		$border_corner_css = '';
 					
 		if ( isset( $option['corner'] ) && esc_attr( $option['corner'] ) == 'rounded' ) {
-			$border_corner_css .= 'border-radius: ' . $option['rounded_value'] . 'px !important;';
-			$border_corner_css .= '-moz-border-radius: ' . $option['rounded_value'] . 'px !important;';
-			$border_corner_css .= '-webkit-border-radius: ' . $option['rounded_value'] . 'px !important;';
+			if ( ! isset( $option['rounded_value'] ) ) $option['rounded_value'] = 0;
+			if ( ! isset( $option['top_left_corner'] ) ) $option['top_left_corner'] = $option['rounded_value'];
+			if ( ! isset( $option['top_right_corner'] ) ) $option['top_right_corner'] = $option['rounded_value'];
+			if ( ! isset( $option['bottom_left_corner'] ) ) $option['bottom_left_corner'] = $option['rounded_value'];
+			if ( ! isset( $option['bottom_right_corner'] ) ) $option['bottom_right_corner'] = $option['rounded_value'];
+			
+			$border_corner_css .= 'border-radius: ' . $option['top_left_corner'] . 'px ' . $option['top_right_corner'] . 'px ' . $option['bottom_right_corner'] . 'px ' . $option['bottom_left_corner'] . 'px !important;';
+			$border_corner_css .= '-moz-border-radius: ' . $option['top_left_corner'] . 'px ' . $option['top_right_corner'] . 'px ' . $option['bottom_right_corner'] . 'px ' . $option['bottom_left_corner'] . 'px !important;';
+			$border_corner_css .= '-webkit-border-radius: ' . $option['top_left_corner'] . 'px ' . $option['top_right_corner'] . 'px ' . $option['bottom_right_corner'] . 'px ' . $option['bottom_left_corner'] . 'px !important;';
 		} else {
 			$border_corner_css .= 'border-radius: 0px !important;';
 			$border_corner_css .= '-moz-border-radius: 0px !important;';

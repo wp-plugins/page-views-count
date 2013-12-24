@@ -118,7 +118,7 @@ class WP_PVC_General_Settings extends WP_PVC_Admin_UI
 	/* Process when clean on deletion option is un selected */
 	/*-----------------------------------------------------------------------------------*/
 	public function clean_on_deletion() {
-		if ( get_option( 'pvc_clean_on_deletion' ) == 0  )  {
+		if ( ( isset( $_POST['bt_save_settings'] ) || isset( $_POST['bt_reset_settings'] ) ) && get_option( 'pvc_clean_on_deletion' ) == 0  )  {
 			$uninstallable_plugins = (array) get_option('uninstall_plugins');
 			unset($uninstallable_plugins[A3_PVC_PLUGIN_NAME]);
 			update_option('uninstall_plugins', $uninstallable_plugins);
@@ -281,11 +281,16 @@ class WP_PVC_General_Settings extends WP_PVC_Admin_UI
 							</tr>
                 			<tr valign="top">
                   				<th scope="row"><?php _e('Single post,  page, object', 'pvc'); ?></th>
-                    			<td>&lt;?php pvc_stats_update($postid); ?&gt;</td>
+                    			<td>
+                                <p style="margin-bottom:10px;">&lt;?php pvc_stats_update( $postid, 1 ); ?&gt; <br /><span class="description"><?php _e( 'Increase Page Views Count and echo stats of this post', 'pvc' ); ?></span></p>
+                                <p>&lt;?php pvc_stats_update( $postid, 0 ); ?&gt; <br /><span class="description"><?php _e( 'Increase Page Views Count and return stats of this post', 'pvc' ); ?></span></p></td>
 							</tr>
                             <tr valign="top">
                   				<th scope="row"><?php _e('Index pages', 'pvc'); ?></th>
-                    			<td>&lt;?php pvc_stats($postid); ?&gt;</td>
+                    			<td>
+                                <p style="margin-bottom:10px;">&lt;?php pvc_stats( $postid, 1 ); ?&gt; <br /><span class="description"><?php _e( 'Echo stats of this post', 'pvc' ); ?></span></p>
+                                <p>&lt;?php pvc_stats( $postid, 0 ); ?&gt; <br /><span class="description"><?php _e( 'Return stats of this post', 'pvc' ); ?></span></p>
+                                </td>
 							</tr>
                         </tbody>
               		</table>

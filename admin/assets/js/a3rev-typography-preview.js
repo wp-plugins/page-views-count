@@ -153,7 +153,7 @@
 			google: { families: [ fontFaceString ] }
 			};
 				
-			if ( $( 'script.google-webfonts-script' ).length ) { $( 'script.google-webfonts-script' ).remove(); }
+			if ( $( 'script.google-webfonts-script' ).length ) { $( 'script.google-webfonts-script' ).remove(); WebFont.load({ google: {families: [ fontFaceString ]} }); }
 				
 				(function() {
 				var wf = document.createElement( 'script' );
@@ -177,7 +177,7 @@
     	// Construct preview HTML.
     	var previewHTMLInner = $( '<div />' ).addClass( 'current' ).addClass( 'typography-preview' ).text( previewText );
     	
-    	previewHTML = $( '<div />' ).addClass( 'typography-preview-container' ).html( previewHTMLInner ).append( '<a href="#" class="preview_remove">&nbsp;</a>' );
+    	previewHTML = $( '<div />' ).addClass( 'typography-preview-container' ).html( previewHTMLInner ).append( '<a href="#" class="preview_remove a3-plugin-ui-delete-icon">&nbsp;</a>' );
     	
     	// If no preview display is present, add one.
     	if ( ! controls.next( '.typography-preview-container' ).length ) {

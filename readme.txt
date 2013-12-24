@@ -1,9 +1,9 @@
 === Page View Count  ===
 Contributors: a3rev, A3 Revolution Software Development team
 Tags: wordpress page view, page view count , post views, postview count,
-Requires at least: 3.3
-Tested up to: 3.6.1
-Stable tag: 1.0.4.1
+Requires at least: 3.5
+Tested up to: 3.8.0
+Stable tag: 1.0.4.2
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -24,8 +24,16 @@ We built this plugin and use this plugin because we think its is very good visua
 
 = Functions =
 
-Using the 2 functions the plugin provides that allows you to manually add view counts to any content or object in your theme. This is very useful if your theme or a plugin creates content that does not use custom post type. Also useful if you want to change the position of the Page View Count from the default bottom of the page. 
- 
+Using the 2 functions the plugin provides that allows you to manually add view counts to any content or object in your theme. This is very useful if your theme or a plugin creates content that does not use custom post type. Also useful if you want to change the position of the Page View Count from the default bottom of the page. Support for echo and return parameters when getting visitor stats on any variable.
+
+= Mobile Responsive App style admin interface = 
+
+Like WordPress we believe that a3rev plugin users should be able to configure and tweak our plugins settings while on the go, right from their mobile or tablet. This plugins features an app style admin interface with Switches, Sliders and a smart interface that hides associated settings when a feature is not turned ON.
+
+* 100% compatible with WordPress v3.8.0 admin interface.
+* Backward compatibility to WordPress v3.5.0
+* App style admin interface.
+* Admin app interface is fully mobile and tablet responsive. 
 
 = Localization =
 
@@ -46,7 +54,7 @@ PLEASE do not give the plugin a bad star rating - its the theme you are using no
 
 = Minimum Requirements =
 
-* WordPress 3.3
+* WordPress 3.5
 * PHP version 5.2.4 or greater
 * MySQL version 5.0 or greater
  
@@ -86,48 +94,52 @@ The manual installation method involves down loading our plugin and uploading it
  
 == Changelog ==
 
+= 1.0.4.2 - 2013/12/24 =
+* Feature - a3rev Plugin Framework admin interface upgraded to 100% Compatibility with WordPress v3.8.0 with backward compatibility.
+* Feature - Feature - a3rev framework 100% mobile and tablet responsive, portrait and landscape viewing.
+* Feature - Added option of return parameter to existing echo for getting page view stats on any variable.
+* Tweak - Upgraded dashboard switches to Vector based display that shows when WordPress version 3.8.0 is activated.
+* Tweak - Tweak - Upgraded all plugin .jpg icons and images to Vector based display for full compatibility with new WordPress version.
+* Tweak - Admin panel Yellow sidebar not show in Mobile screens to optimize admin panel screen space.
+* Tweak - Tested 100% compatible with WP 3.8.0
+* Fix - Upgraded array_textareas type for Padding, Margin settings on the a3rev plugin framework.
+
 = 1.0.4.1 - 2013/10/14 =
-* Fixed:
-	* Conflict with new version of WordPress SEO plugin causing duplicate page counts - add_filter( 'wpseo_opengraph_desc', array( 'A3_PVC', 'fixed_wordpress_seo_plugin' ) );
-	* Updated Plugin Admin Framework by added array_map( array( $this, 'admin_stripslashes' ) , $current_settings ) to strip slashes on value when show on frontend
-* Tweak:
-	* Fixed typos on admin panel.
-* Translations:
-	* Added Dutch translation thanks to Renee Klein
+* Tweak - Fixed typos on admin panel.
+* Fix - Conflict with new version of WordPress SEO plugin causing duplicate page counts - add_filter( 'wpseo_opengraph_desc', array( 'A3_PVC', 'fixed_wordpress_seo_plugin' ) );
+* Fix - Updated Plugin Admin Framework by added array_map( array( $this, 'admin_stripslashes' ) , $current_settings ) to strip slashes on value when show on frontend
+* Translation - Added Dutch translation thanks to Renee Klein
 
 = 1.0.4 - 2013/10/10 =
-* Tweaks:
-	* a3rev logo image now resizes to the size of the yellow sidebar in tablets and mobiles.
-* Fixes:
-	* Intuitive Radio Switch settings not saving. Input with disabled attribute could not parse when form is submitted, replace disabled with custom attribute: checkbox-disabled
-	* App interface Radio switches not working properly on Android platform, replace removeProp() with removeAttr() function script
+* Tweak - a3rev logo image now resizes to the size of the yellow sidebar in tablets and mobiles.
+* Fix - Intuitive Radio Switch settings not saving. Input with disabled attribute could not parse when form is submitted, replace disabled with custom attribute: checkbox-disabled
+* Fix - App interface Radio switches not working properly on Android platform, replace removeProp() with removeAttr() function script
 
 = 1.0.3 - 2013/10/05 =
-* Features :
-	* Upgraded the plugin to the newly developed a3rev admin panel app interface.
-	* New admin UI features check boxes replaced by switches.
-* Fixed :
-	* Plugins admin script and style not loading in Firefox with SSL on admin. Stripped http// and https// protocols so browser will use the protocol that the page was loaded with.
+* Feature - Upgraded the plugin to the newly developed a3rev admin panel app interface.
+* Feature - New admin UI features check boxes replaced by switches.
+* Fix - Plugins admin script and style not loading in Firefox with SSL on admin. Stripped http// and https// protocols so browser will use the protocol that the page was loaded with.
 
 = 1.0.2 - 2013/08/28 =
-* Features :
-	* Major performance enhancement. All Time Views table data emptied each day on 24 hour cron. 
-	* Added House Keeping function to settings. Clean up on Deletion. Option - Choose if you ever delete this plugin it will completely remove all tables and data it has created, leaving no trace it was ever installed.
-* Tweaks :
-	* Plugin in code tested fully compatible with WordPress v3.6.0
-	* Ran full WP_DEBUG All Uncaught exceptions errors and warnings fixed.
-	* Added PHP Public Static to functions in Class. Done so that PHP Public Static warnings don't show in WP_DEBUG mode.
-	* Added when install and activate plugin link redirects to the plugins dashboard instead of the wp-plugins dashboard.
-	* Updated plugins support forum link to the wordpress support forum.
+* Feature - Major performance enhancement. All Time Views table data emptied each day on 24 hour cron. 
+* Featue - Added House Keeping function to settings. Clean up on Deletion. Option - Choose if you ever delete this plugin it will completely remove all tables and data it has created.
+* Tweak - Plugin in code tested fully compatible with WordPress v3.6.0
+* Tweak - Ran full WP_DEBUG All Uncaught exceptions errors and warnings fixed.
+* Tweak - Added PHP Public Static to functions in Class. Done so that PHP Public Static warnings don't show in WP_DEBUG mode.
+* Tweak - Added when install and activate plugin link redirects to the plugins dashboard instead of the wp-plugins dashboard.
+* Tweak - Updated plugins support forum link to the wordpress support forum.
 
 = 1.0.1 - 2013/01/10 =
-* Tweak: Updated Support and Pro Version link URL's on wordpress.org description, plugins and plugins dashboard. Links were returning 404 errors since the launch of the all new a3rev.com mobile responsive site as the base e-commerce permalinks is changed.
+* Tweak - Updated Support and Pro Version link URL's on wordpress.org description, plugins and plugins dashboard. Links were returning 404 errors since the launch of the all new a3rev.com mobile responsive site as the base e-commerce permalinks is changed.
 
 = 1.0.0 - 2012/12/20 =
 * First Release.
 
 
 == Upgrade Notice ==
+
+= 1.0.4.2 =
+Upgrade now for full a3rev Plugin Framework compatibility with WordPress version 3.8.0 and backwards. New admin interface full mobile and tablet responsive display.
 
 = 1.0.4.1 =
 Update you plugin now for 2 bug fixes - especially important to upgrade now if you use the WordPress SEO plugin.

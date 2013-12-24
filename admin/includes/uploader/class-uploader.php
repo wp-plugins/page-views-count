@@ -151,7 +151,7 @@ class WP_PVC_Uploader extends WP_PVC_Admin_UI
 		$output .= '<div style="clear:both;"></div><div class="a3_screenshot" id="'.$id_attribute.'_image" style="'.( ( $value == '' ) ? 'display:none;' : 'display:block;' ).'">';
 
 		if ( $value != '' ) {
-			$remove = '<a href="javascript:(void);" class="a3_uploader_remove">&nbsp;</a>';
+			$remove = '<a href="javascript:(void);" class="a3_uploader_remove a3-plugin-ui-delete-icon">&nbsp;</a>';
 
 			$image = preg_match( '/(^.*\.jpg|jpeg|png|gif|ico*)/i', $value );
 
