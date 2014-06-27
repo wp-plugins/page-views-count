@@ -80,6 +80,7 @@ class WP_PVC_Admin_Interface extends WP_PVC_Admin_UI
 		$suffix = defined('SCRIPT_DEBUG') && SCRIPT_DEBUG ? '' : '.min';
 		
 		wp_register_script( 'chosen', $this->admin_plugin_url() . '/assets/js/chosen/chosen.jquery' . $suffix . '.js', array( 'jquery' ), true, false );
+		wp_register_script( 'a3rev-chosen', $this->admin_plugin_url() . '/assets/js/chosen/chosen.jquery' . $suffix . '.js', array( 'jquery' ), true, false );
 		wp_register_script( 'a3rev-style-checkboxes', $this->admin_plugin_url() . '/assets/js/iphone-style-checkboxes.js', array('jquery'), true, false );
 		
 		wp_register_script( 'a3rev-admin-ui-script', $this->admin_plugin_url() . '/assets/js/admin-ui-script.js', array('jquery'), true, true );
@@ -91,6 +92,7 @@ class WP_PVC_Admin_Interface extends WP_PVC_Admin_UI
 		wp_enqueue_script( 'wp-color-picker' );
 		wp_enqueue_script( 'jquery-ui-slider' );
 		wp_enqueue_script( 'chosen' );
+		wp_enqueue_script( 'a3rev-chosen' );
 		wp_enqueue_script( 'a3rev-style-checkboxes' );
 		wp_enqueue_script( 'a3rev-admin-ui-script' );
 		wp_enqueue_script( 'a3rev-typography-preview' );
@@ -1109,6 +1111,9 @@ class WP_PVC_Admin_Interface extends WP_PVC_Admin_UI
 					if ( ! empty( $value['id'] ) ) do_action( $this->plugin_name . '_settings_' . sanitize_title( $value['id'] ) . '_before' );
 					
 					echo '<div id="'. esc_attr( $value['id'] ) . '" class="a3rev_panel_inner '. esc_attr( $value['class'] ) .'" style="'. esc_attr( $value['css'] ) .'">' . "\n\n";
+					if ( stristr( $value['class'], 'pro_feature_fields' ) !== false && ! empty( $value['id'] ) ) $this->upgrade_top_message( true, sanitize_title( $value['id'] ) );
+					elseif ( stristr( $value['class'], 'pro_feature_fields' ) !== false ) $this->upgrade_top_message( true );
+					
 					echo ( ! empty( $value['name'] ) ) ? '<h3>'. esc_html( $value['name'] ) .' '. $view_doc .'</h3>' : '';
 					if ( ! empty( $value['desc'] ) ) echo wpautop( wptexturize( wp_kses_post( $value['desc'] ) ) );
 					echo '<table class="form-table">' . "\n\n";
@@ -1261,7 +1266,7 @@ class WP_PVC_Admin_Interface extends WP_PVC_Admin_UI
 												class="a3rev-ui-<?php echo sanitize_title( $value['type'] ) ?> <?php echo esc_attr( $value['class'] ); ?>"
 												<?php echo implode( ' ', $custom_attributes ); ?>
 												<?php checked( $val, $option_value ); ?>
-												/> <?php echo $text ?></label>
+												/> <span class="description" style="margin-left:5px;"><?php echo $text ?></span></label>
 										</li>
 										<?php
 									}
@@ -1306,7 +1311,7 @@ class WP_PVC_Admin_Interface extends WP_PVC_Admin_UI
                                                 value="<?php echo esc_attr( stripslashes( $i_option['val'] ) ); ?>"
                                                 <?php checked( esc_attr( stripslashes( $i_option['val'] ) ), $option_value ); ?>
                                                 <?php echo implode( ' ', $custom_attributes ); ?>
-                                                /> <?php echo $i_option['text'] ?>
+                                                /> <span class="description" style="margin-left:5px;"><?php echo $i_option['text'] ?></span>
 										</li>
 										<?php
 									}
@@ -1359,7 +1364,7 @@ class WP_PVC_Admin_Interface extends WP_PVC_Admin_UI
 							value="<?php echo esc_attr( stripslashes( $value['checked_value'] ) ); ?>"
 							<?php checked( $option_value, esc_attr( stripslashes( $value['checked_value'] ) ) ); ?>
 							<?php echo implode( ' ', $custom_attributes ); ?>
-						/> <?php echo wp_kses_post( $value['desc'] ) ?></label> <?php echo $tip; ?>
+						/> <?php echo $description; ?></label> <?php echo $tip; ?>
 					<?php
 	
 					if ( ! isset( $value['checkboxgroup'] ) || ( isset( $value['checkboxgroup'] ) && $value['checkboxgroup'] == 'end' ) ) {
@@ -1399,7 +1404,7 @@ class WP_PVC_Admin_Interface extends WP_PVC_Admin_UI
 								value="<?php echo esc_attr( stripslashes( $value['checked_value'] ) ); ?>"
 								<?php checked( $option_value, esc_attr( stripslashes( $value['checked_value'] ) ) ); ?>
 								<?php echo implode( ' ', $custom_attributes ); ?>
-								/> <?php echo wp_kses_post( $value['desc'] ) ?>
+								/> <?php echo $description; ?>
                         </td>
 					</tr><?php
 	
@@ -1428,7 +1433,7 @@ class WP_PVC_Admin_Interface extends WP_PVC_Admin_UI
 								value="<?php echo esc_attr( stripslashes( $value['checked_value'] ) ); ?>"
 								<?php checked( $option_value, esc_attr( stripslashes( $value['checked_value'] ) ) ); ?>
 								<?php echo implode( ' ', $custom_attributes ); ?>
-								/> <?php echo wp_kses_post( $value['desc'] ) ?>
+								/> <?php echo $description; ?>
                         </td>
 					</tr><?php
 	
@@ -2285,6 +2290,7 @@ class WP_PVC_Admin_Interface extends WP_PVC_Admin_UI
 						</th>
 						<td class="forminp forminp-<?php echo sanitize_title( $value['type'] ) ?>">
                         	<?php echo $description; ?>
+                            <?php remove_all_filters('mce_external_plugins'); ?>
                         	<?php wp_editor( 	$option_value, 
 												$id_attribute, 
 												array( 	'textarea_name' => $name_attribute, 

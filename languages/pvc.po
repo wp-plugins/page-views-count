@@ -2,275 +2,221 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Page Views Count\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-12-24 10:40+0700\n"
-"PO-Revision-Date: 2013-12-24 10:40+0700\n"
+"POT-Creation-Date: 2014-05-26 10:03+0700\n"
+"PO-Revision-Date: 2014-05-26 10:03+0700\n"
 "Last-Translator: Nguyen Cong Tuan <mr.nguyencongtuan@gmail.com>\n"
 "Language-Team: a3rev\n"
+"Language: en\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Poedit-KeywordsList: __;_e\n"
 "X-Poedit-Basepath: ../\n"
-"X-Generator: Poedit 1.5.7\n"
+"X-Generator: Poedit 1.6.4\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: pvc_class.php:93 pvc_class.php:98
-msgid "total views"
-msgstr ""
-
-#: pvc_class.php:93
-msgid "views today"
-msgstr ""
-
-#: pvc_class.php:98
-msgid "no views today"
-msgstr ""
-
-#: pvc_class.php:100
-msgid "No views yet"
-msgstr ""
-
-#: pvc_class.php:230
-msgid "Settings"
-msgstr ""
-
-#: pvc_class.php:250
-msgid "Help spread the Word about this plugin"
-msgstr ""
-
-#: pvc_class.php:252
-msgid "View this plugins"
-msgstr ""
-
-#: pvc_class.php:252
-msgid "documentation"
-msgstr ""
-
-#: pvc_class.php:253
-msgid "Visit this plugins"
-msgstr ""
-
-#: pvc_class.php:253
-msgid "support forum"
-msgstr ""
-
-#: pvc_class.php:255
-msgid "Other FREE a3rev WordPress Plugins"
-msgstr ""
-
-#: pvc_class.php:258
-msgid "Contact Us page - Contact People"
-msgstr ""
-
-#: pvc_class.php:259
-msgid "WordPress Email Template"
-msgstr ""
-
-#: pvc_class.php:262
-msgid "View all"
-msgstr ""
-
-#: pvc_class.php:262
-msgid "16 a3rev plugins"
-msgstr ""
-
-#: pvc_class.php:262
-msgid "on the WordPress repository"
-msgstr ""
-
-#: pvc_class.php:275
-msgid "Documentation"
-msgstr ""
-
-#: pvc_class.php:276
-msgid "Support"
-msgstr ""
-
-#: admin/admin-interface.php:125
+#: admin/admin-interface.php:127
 msgid "Settings successfully saved."
 msgstr ""
 
-#: admin/admin-interface.php:133
+#: admin/admin-interface.php:135
 msgid "Error: Settings can not save."
 msgstr ""
 
-#: admin/admin-interface.php:141
+#: admin/admin-interface.php:143
 msgid "Settings successfully reseted."
 msgstr ""
 
-#: admin/admin-interface.php:162
+#: admin/admin-interface.php:164
 msgid "Thin"
 msgstr ""
 
-#: admin/admin-interface.php:163
+#: admin/admin-interface.php:165
 msgid "Thin/Italic"
 msgstr ""
 
-#: admin/admin-interface.php:164
+#: admin/admin-interface.php:166
 msgid "Normal"
 msgstr ""
 
-#: admin/admin-interface.php:165
+#: admin/admin-interface.php:167
 msgid "Italic"
 msgstr ""
 
-#: admin/admin-interface.php:166
+#: admin/admin-interface.php:168
 msgid "Bold"
 msgstr ""
 
-#: admin/admin-interface.php:167
+#: admin/admin-interface.php:169
 msgid "Bold/Italic"
 msgstr ""
 
-#: admin/admin-interface.php:177
+#: admin/admin-interface.php:179
 msgid "Solid"
 msgstr ""
 
-#: admin/admin-interface.php:178
+#: admin/admin-interface.php:180
 msgid "Double"
 msgstr ""
 
-#: admin/admin-interface.php:179
+#: admin/admin-interface.php:181
 msgid "Dashed"
 msgstr ""
 
-#: admin/admin-interface.php:180
+#: admin/admin-interface.php:182
 msgid "Dotted"
 msgstr ""
 
-#: admin/admin-interface.php:181
+#: admin/admin-interface.php:183
 msgid "Groove"
 msgstr ""
 
-#: admin/admin-interface.php:182
+#: admin/admin-interface.php:184
 msgid "Ridge"
 msgstr ""
 
-#: admin/admin-interface.php:183
+#: admin/admin-interface.php:185
 msgid "Inset"
 msgstr ""
 
-#: admin/admin-interface.php:184
+#: admin/admin-interface.php:186
 msgid "Outset"
 msgstr ""
 
-#: admin/admin-interface.php:1293 admin/admin-interface.php:1383
-#: admin/admin-interface.php:1412 admin/settings/general-settings.php:261
+#: admin/admin-interface.php:1298 admin/admin-interface.php:1388
+#: admin/admin-interface.php:1417 admin/settings/general-settings.php:261
 msgid "ON"
 msgstr ""
 
-#: admin/admin-interface.php:1294 admin/admin-interface.php:1384
-#: admin/admin-interface.php:1413 admin/settings/general-settings.php:262
+#: admin/admin-interface.php:1299 admin/admin-interface.php:1389
+#: admin/admin-interface.php:1418 admin/settings/general-settings.php:262
 msgid "OFF"
 msgstr ""
 
-#: admin/admin-interface.php:1454
+#: admin/admin-interface.php:1459
 msgid "Width"
 msgstr ""
 
-#: admin/admin-interface.php:1456
+#: admin/admin-interface.php:1461
 msgid "Height"
 msgstr ""
 
-#: admin/admin-interface.php:1458
+#: admin/admin-interface.php:1463
 msgid "Hard Crop"
 msgstr ""
 
-#: admin/admin-interface.php:1536
+#: admin/admin-interface.php:1541
 msgid "-- Default Fonts --"
 msgstr ""
 
-#: admin/admin-interface.php:1547
+#: admin/admin-interface.php:1552
 msgid "-- Google Fonts --"
 msgstr ""
 
-#: admin/admin-interface.php:1588
+#: admin/admin-interface.php:1593
 msgid "Preview your customized typography settings"
 msgstr ""
 
-#: admin/admin-interface.php:1722 admin/admin-interface.php:1981
+#: admin/admin-interface.php:1727 admin/admin-interface.php:1986
 msgid "Preview your customized border settings"
 msgstr ""
 
-#: admin/admin-interface.php:1731 admin/admin-interface.php:1972
+#: admin/admin-interface.php:1736 admin/admin-interface.php:1977
 msgid "Rounded"
 msgstr ""
 
-#: admin/admin-interface.php:1732 admin/admin-interface.php:1973
+#: admin/admin-interface.php:1737 admin/admin-interface.php:1978
 msgid "Square"
 msgstr ""
 
-#: admin/admin-interface.php:1742 admin/admin-interface.php:1986
+#: admin/admin-interface.php:1747 admin/admin-interface.php:1991
 msgid "Top Left Corner"
 msgstr ""
 
-#: admin/admin-interface.php:1762 admin/admin-interface.php:2006
+#: admin/admin-interface.php:1767 admin/admin-interface.php:2011
 msgid "Top Right Corner"
 msgstr ""
 
-#: admin/admin-interface.php:1782 admin/admin-interface.php:2026
+#: admin/admin-interface.php:1787 admin/admin-interface.php:2031
 msgid "Bottom Right Corner"
 msgstr ""
 
-#: admin/admin-interface.php:1802 admin/admin-interface.php:2046
+#: admin/admin-interface.php:1807 admin/admin-interface.php:2051
 msgid "Bottom Left Corner"
 msgstr ""
 
-#: admin/admin-interface.php:1895
+#: admin/admin-interface.php:1900
 msgid "Preview your customized border styles settings"
 msgstr ""
 
-#: admin/admin-interface.php:2107 admin/settings/general-settings.php:209
+#: admin/admin-interface.php:2112 admin/settings/general-settings.php:209
 #: admin/settings/general-settings.php:219
 #: admin/settings/general-settings.php:240
 msgid "YES"
 msgstr ""
 
-#: admin/admin-interface.php:2108 admin/settings/general-settings.php:210
+#: admin/admin-interface.php:2113 admin/settings/general-settings.php:210
 #: admin/settings/general-settings.php:220
 #: admin/settings/general-settings.php:241
 msgid "NO"
 msgstr ""
 
-#: admin/admin-interface.php:2122
+#: admin/admin-interface.php:2127
 msgid "Horizontal Shadow"
 msgstr ""
 
-#: admin/admin-interface.php:2140
+#: admin/admin-interface.php:2145
 msgid "Vertical Shadow"
 msgstr ""
 
-#: admin/admin-interface.php:2158
+#: admin/admin-interface.php:2163
 msgid "Blur Distance"
 msgstr ""
 
-#: admin/admin-interface.php:2176
+#: admin/admin-interface.php:2181
 msgid "Spread Size"
 msgstr ""
 
-#: admin/admin-interface.php:2194
+#: admin/admin-interface.php:2199
 msgid "INNER"
 msgstr ""
 
-#: admin/admin-interface.php:2195
+#: admin/admin-interface.php:2200
 msgid "OUTER"
 msgstr ""
 
-#: admin/admin-interface.php:2213
+#: admin/admin-interface.php:2218
 msgid "Preview your customized box shadow settings"
 msgstr ""
 
-#: admin/admin-interface.php:2401
+#: admin/admin-interface.php:2407
 msgid "Save changes"
 msgstr ""
 
-#: admin/admin-interface.php:2402
+#: admin/admin-interface.php:2408
 msgid "Reset Settings"
 msgstr ""
 
 #: admin/admin-pages/admin-pvc-page.php:63
 #: admin/admin-pages/admin-pvc-page.php:64
 msgid "Page Views Count"
+msgstr ""
+
+#: admin/admin-ui.php:121
+#, php-format
+msgid "Settings inside this yellow border are %s Features."
+msgstr ""
+
+#: admin/admin-ui.php:123
+#, php-format
+msgid ""
+"Upgrade to the <a href=\"%s\" target=\"_blank\">%s</a> to activate these "
+"settings."
+msgstr ""
+
+#: admin/admin-ui.php:125 admin/admin-ui.php:127
+msgid "Pro Version"
 msgstr ""
 
 #: admin/includes/uploader/class-uploader.php:149
@@ -376,4 +322,80 @@ msgstr ""
 
 #: admin/settings/general-settings.php:292
 msgid "Return stats of this post"
+msgstr ""
+
+#: pvc_class.php:93 pvc_class.php:98
+msgid "total views"
+msgstr ""
+
+#: pvc_class.php:93
+msgid "views today"
+msgstr ""
+
+#: pvc_class.php:98
+msgid "no views today"
+msgstr ""
+
+#: pvc_class.php:100
+msgid "No views yet"
+msgstr ""
+
+#: pvc_class.php:230
+msgid "Settings"
+msgstr ""
+
+#: pvc_class.php:250
+msgid "Help spread the Word about this plugin"
+msgstr ""
+
+#: pvc_class.php:252
+msgid "View this plugins"
+msgstr ""
+
+#: pvc_class.php:252
+msgid "documentation"
+msgstr ""
+
+#: pvc_class.php:253
+msgid "Visit this plugins"
+msgstr ""
+
+#: pvc_class.php:253
+msgid "support forum"
+msgstr ""
+
+#: pvc_class.php:255
+msgid "Other FREE a3rev WordPress Plugins"
+msgstr ""
+
+#: pvc_class.php:258
+msgid "a3 Responsive Slider"
+msgstr ""
+
+#: pvc_class.php:259
+msgid "Contact Us page - Contact People"
+msgstr ""
+
+#: pvc_class.php:260
+msgid "WordPress Email Template"
+msgstr ""
+
+#: pvc_class.php:263
+msgid "View all"
+msgstr ""
+
+#: pvc_class.php:263
+msgid "17 a3rev plugins"
+msgstr ""
+
+#: pvc_class.php:263
+msgid "on the WordPress repository"
+msgstr ""
+
+#: pvc_class.php:276
+msgid "Documentation"
+msgstr ""
+
+#: pvc_class.php:277
+msgid "Support"
 msgstr ""

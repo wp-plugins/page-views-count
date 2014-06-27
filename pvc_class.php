@@ -249,17 +249,18 @@ class A3_PVC
 		$html .= '<a href="http://a3rev.com/shop/" target="_blank" style="float:right;margin-top:5px; margin-left:10px;" ><div class="a3-plugin-ui-icon a3-plugin-ui-a3-rev-logo"></div></a>';
 		$html .= '<h3>'.__('Help spread the Word about this plugin', 'pvc').'</h3>';
 		$html .= '<p>&nbsp;</p>';
-		$html .= '<h3>'.__('View this plugins', 'wp_email_template').' <a href="http://docs.a3rev.com/user-guides/page-view-count/" target="_blank">'.__('documentation', 'wp_email_template').'</a></h3>';
-		$html .= '<h3>'.__('Visit this plugins', 'wp_email_template').' <a href="http://wordpress.org/support/plugin/page-views-count/" target="_blank">'.__('support forum', 'wp_email_template').'</a></h3>';
+		$html .= '<h3>'.__('View this plugins', 'wp_email_template').' <a href="http://docs.a3rev.com/user-guides/page-view-count/" target="_blank">'.__('documentation', 'pvc').'</a></h3>';
+		$html .= '<h3>'.__('Visit this plugins', 'wp_email_template').' <a href="http://wordpress.org/support/plugin/page-views-count/" target="_blank">'.__('support forum', 'pvc').'</a></h3>';
 		
-		$html .= '<h3>'.__('Other FREE a3rev WordPress Plugins', 'wp_email_template').'</h3>';
+		$html .= '<h3>'.__('Other FREE a3rev WordPress Plugins', 'pvc').'</h3>';
 		$html .= '<p>';
 		$html .= '<ul style="padding-left:10px;">';
-		$html .= '<li>* <a href="http://wordpress.org/plugins/contact-us-page-contact-people/" target="_blank">'.__('Contact Us page - Contact People', 'wp_email_template').'</a></li>';
-		$html .= '<li>* <a href="http://wordpress.org/plugins/wp-email-template/" target="_blank">'.__('WordPress Email Template', 'wp_email_template').'</a></li>';
+		$html .= '<li>* <a href="http://wordpress.org/plugins/a3-responsive-slider/" target="_blank">'.__('a3 Responsive Slider', 'pvc').'</a></li>';
+		$html .= '<li>* <a href="http://wordpress.org/plugins/contact-us-page-contact-people/" target="_blank">'.__('Contact Us page - Contact People', 'pvc').'</a></li>';
+		$html .= '<li>* <a href="http://wordpress.org/plugins/wp-email-template/" target="_blank">'.__('WordPress Email Template', 'pvc').'</a></li>';
 		$html .= '</ul>';
 		$html .= '</p>';
-		$html .= '<p>'.__("View all", 'wp_email_template').' <a href="http://profiles.wordpress.org/a3rev/" target="_blank">'.__("16 a3rev plugins", 'wp_email_template').'</a> '.__('on the WordPress repository', 'wp_email_template').'</p>';
+		$html .= '<p>'.__("View all", 'pvc').' <a href="http://profiles.wordpress.org/a3rev/" target="_blank">'.__("17 a3rev plugins", 'pvc').'</a> '.__('on the WordPress repository', 'pvc').'</p>';
 		
 		return $html;	
 	}
