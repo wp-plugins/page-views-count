@@ -3,7 +3,7 @@ Contributors: a3rev, A3 Revolution Software Development team
 Tags: wordpress page view, page view count , post views, postview count,
 Requires at least: 3.5
 Tested up to: 3.9.1
-Stable tag: 1.0.4.3
+Stable tag: 1.0.5
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -94,6 +94,15 @@ The manual installation method involves down loading our plugin and uploading it
  
 == Changelog ==
 
+= 1.0.5 - 2014/06/27 =
+* Feature - Added load Counter on front end by Ajax option to prevent count being cached by caching plugins.
+* Tweak - added ajax event 'pvc_ajax_load_stats' and trigger $("body").trigger("pvc_stats_loaded_" + pvc_object_id ); for that event
+* Tweak - added ajax event 'pvc_ajax_update_stats' and trigger $("body").trigger("pvc_stats_updated_" + post_id ); for that event
+* Tweak - use $wpdb->prepare() for all sql command for security 
+* Tweak - Updated chosen js script to latest version 1.1.0 on the a3rev Plugin Framework 
+* Tweak - Added support for placeholder feature for input, email , password , text area types. 
+* Tweak - Added Russiian translation thanks to [Renat Nurlyev](http://kluchkuspexu.ru/) 
+
 = 1.0.4.3 - 2014/05/26 =
 * Tweak - Changed add_filter( 'gettext', array( $this, 'change_button_text' ), null, 2 ); to add_filter( 'gettext', array( $this, 'change_button_text' ), null, 3 );
 * Tweak - Update change_button_text() function from ( $original == 'Insert into Post' ) to ( is_admin() && $original === 'Insert into Post' )
@@ -148,6 +157,9 @@ The manual installation method involves down loading our plugin and uploading it
 
 
 == Upgrade Notice ==
+
+= 1.0.5 =
+Update now for new feature - load counter by Ajax event plus security hardening and 2 framework code tweaks and Russian translation.
 
 = 1.0.4.3 =
 Upgrade now for full compatoibility with WordPress Version 3.9.1, 8 code tweaks and 1 bug fix.

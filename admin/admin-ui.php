@@ -32,6 +32,8 @@ class WP_PVC_Admin_UI
 	 */
 	public $plugin_name = 'pvc';
 	
+	public $is_free_plugin = true;
+	
 	/**
 	 * @var string
 	 */

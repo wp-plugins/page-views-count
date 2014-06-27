@@ -61,48 +61,144 @@ class A3_PVC
 		$nowisnow = date('Y-m-d');
 		
 		// first try and update the existing total post counter
-		$results = $wpdb->query("UPDATE ". $wpdb->prefix . "pvc_total SET postcount = postcount+1 WHERE postnum = '$post_id' LIMIT 1");
+		$results = $wpdb->query( $wpdb->prepare( "UPDATE ". $wpdb->prefix . "pvc_total SET postcount = postcount+1 WHERE postnum = '%s' LIMIT 1", $post_id ) );
 		
 		// if it doesn't exist, then insert two new records
 		// one in the total views, another in today's views
 		if ($results == 0) {
-			$wpdb->query("INSERT INTO ". $wpdb->prefix . "pvc_total (postnum, postcount) VALUES ('$post_id', 1)");
-			$wpdb->query("INSERT INTO ". $wpdb->prefix . "pvc_daily (time, postnum, postcount) VALUES ('$nowisnow', '$post_id', 1)");
+			$wpdb->query( $wpdb->prepare( "INSERT INTO ". $wpdb->prefix . "pvc_total (postnum, postcount) VALUES ('%s', 1)", $post_id ) );
+			$wpdb->query( $wpdb->prepare ( "INSERT INTO ". $wpdb->prefix . "pvc_daily (time, postnum, postcount) VALUES ('%s', '%s', 1)", $nowisnow, $post_id ) );
 		// post exists so let's just update the counter
 		} else {
-			$results2 = $wpdb->query("UPDATE ". $wpdb->prefix . "pvc_daily SET postcount = postcount+1 WHERE time = '$nowisnow' AND postnum = '$post_id' LIMIT 1");
+			$results2 = $wpdb->query( $wpdb->prepare ( "UPDATE ". $wpdb->prefix . "pvc_daily SET postcount = postcount+1 WHERE time = '%s' AND postnum = '%s' LIMIT 1", $nowisnow, $post_id ) );
 			// insert a new record since one hasn't been created for current day
 			if ($results2 == 0)
-				$wpdb->query("INSERT INTO ". $wpdb->prefix . "pvc_daily (time, postnum, postcount) VALUES ('$nowisnow', '$post_id', 1)");
+				$wpdb->query( $wpdb->prepare( "INSERT INTO ". $wpdb->prefix . "pvc_daily (time, postnum, postcount) VALUES ('%s', '%s', 1)", $nowisnow, $post_id ) );
 		}
 		
 		// get all the post view info so we can update meta fields
-		$row = A3_PVC::pvc_fetch_post_counts( $post_id );
+		//$row = A3_PVC::pvc_fetch_post_counts( $post_id );
 	}
 	
-	// get the total page views and daily page views for the post
-	public static function pvc_stats_counter($post_id) {
+	public static function pvc_get_stats($post_id) {
 		global $wpdb;
-		$exclude_ids = array(3630, 3643, 5520, 3642, 3632, 3633, 3628, 2102, 6793);
-		if (in_array($post_id, (array)$exclude_ids)) return '';
+		
+		$output_html = '';
 		// get all the post view info to display
 		$results = A3_PVC::pvc_fetch_post_counts( $post_id );
 		// get the stats and
-		$html = '<div class="pvc_clear"></div>';
-		if($results){
-			$stats_html = '<p class="pvc_stats">' . number_format($results->total) . '&nbsp;' .__('total views', 'pvc') . ', ' . number_format($results->today) . '&nbsp;' .__('views today', 'pvc') . '</p>';
-		}else{
-			$stats_html = '';
-			$total = A3_PVC::pvc_fetch_post_total($post_id);
-			if($total > 0){
-				$stats_html .= '<p class="pvc_stats">' . number_format($total) . '&nbsp;' .__('total views', 'pvc') . ', ' .__('no views today', 'pvc') . '</p>';
-			}else{
-				$stats_html .= '<p class="pvc_stats">' . __('No views yet', 'pvc') . '</p>';
+		if ( $results ){
+			$output_html .= number_format( $results->total ) . '&nbsp;' .__('total views', 'pvc') . ', ' . number_format( $results->today ) . '&nbsp;' .__('views today', 'pvc');
+		} else {
+			$total = A3_PVC::pvc_fetch_post_total( $post_id );
+			if ( $total > 0 ) {
+				$output_html .= number_format( $total ) . '&nbsp;' .__('total views', 'pvc') . ', ' .__('no views today', 'pvc');
+			} else {
+				$output_html .=  __('No views yet', 'pvc');
 			}
 		}
-		$html .= apply_filters('pvc_filter_stats', $stats_html);
+		$output_html = apply_filters( 'pvc_filter_get_stats', $output_html, $post_id );
+		
+		return $output_html;
+	}
+	
+	// get the total page views and daily page views for the post
+	public static function pvc_stats_counter( $post_id, $increase_views = false ) {
+		global $wpdb;
+		global $pvc_settings;
+		
+		$exclude_ids = array(3630, 3643, 5520, 3642, 3632, 3633, 3628, 2102, 6793);
+		if (in_array($post_id, (array)$exclude_ids)) return '';
+		
+		$load_by_ajax_update_class = '';
+		if ( $increase_views ) $load_by_ajax_update_class = 'pvc_load_by_ajax_update';
+
+		// get the stats and
+		$html = '<div class="pvc_clear"></div>';
+		
+		if ( $pvc_settings['enable_ajax_load'] == 'yes' ) {
+			$stats_html = '<p id="pvc_stats_'.$post_id.'" class="pvc_stats '.$load_by_ajax_update_class.'" element-id="'.$post_id.'"><img src="'.A3_PVC_URL.'/ajax-loader.gif" border=0 /></p>';
+		} else {
+			$stats_html = '<p class="pvc_stats" element-id="'.$post_id.'">' . A3_PVC::pvc_get_stats( $post_id ) . '</p>';
+		}
+		
+		$html .= apply_filters( 'pvc_filter_stats', $stats_html, $post_id );
 		$html .= '<div class="pvc_clear"></div>';
 		return $html;
+	}
+	
+	public static function pvc_ajax_load_stats() {
+		//check_ajax_referer( 'pvc_ajax_load_stats', 'security' );
+		$post_id  = $_POST['post_id'];
+		$result = A3_PVC::pvc_get_stats( $post_id );
+		echo json_encode( $result );
+		die();
+	}
+	
+	public static function pvc_ajax_update_stats() {
+		//check_ajax_referer( 'pvc_ajax_update_stats', 'security' );
+		$post_id  = $_POST['post_id'];
+		A3_PVC::pvc_stats_update( $post_id );
+		$result = A3_PVC::pvc_get_stats( $post_id );
+		echo json_encode( $result );
+		die();
+	}
+	
+	public static function pvc_load_ajax_script_include() {
+		global $pvc_settings;
+		
+		if ( $pvc_settings['enable_ajax_load'] != 'yes' ) return;
+	?>
+    <script type="text/javascript">
+	jQuery(document).ready(function($) {
+		var pvc_ajax_url = "<?php echo admin_url( 'admin-ajax.php', 'relative' ); ?>";
+		var pvc_security = "<?php echo wp_create_nonce("pvc_ajax_load_stats"); ?>";
+		
+		$(".pvc_stats").each( function() {
+			if ( ! $(this).hasClass('pvc_load_by_ajax_update') ) {
+				var pvc_stats_object = $(this);
+				var pvc_object_id  = $(this).attr("element-id");
+				var pvc_data = {
+					action: 		"pvc_ajax_load_stats",
+					post_id: 		pvc_object_id,
+					security: 		pvc_security
+				};
+				$.post( pvc_ajax_url, pvc_data, function(response) {
+					result = $.parseJSON( response );
+					pvc_stats_object.html(result);
+				});
+				$("body").trigger("pvc_stats_loaded_" + pvc_object_id );
+			}
+		});
+	});
+	</script>
+    <?php
+	}
+	
+	public static function pvc_update_ajax_script_include( $post_id = 0 ) {
+		
+    $ouput_script = '
+    <script type="text/javascript">
+	jQuery(document).ready(function($) {
+		var pvc_ajax_url = "'.admin_url( "admin-ajax.php", "relative" ).'";
+		var pvc_security = "'.wp_create_nonce("pvc_ajax_update_stats").'";
+		$("#pvc_stats_'.$post_id.'").each( function() {
+			var pvc_stats_object = $(this);
+			var pvc_data = {
+				action: 		"pvc_ajax_update_stats",
+				post_id: 		'.$post_id.',
+				security: 		pvc_security
+			};
+			$.post( pvc_ajax_url, pvc_data, function(response) {
+				result = $.parseJSON( response );
+				pvc_stats_object.html(result);
+			});
+			$("body").trigger("pvc_stats_updated_'.$post_id.'" );
+		});
+	});
+	</script>';
+		
+		return $ouput_script;
 	}
 	
 	public static function fixed_wordpress_seo_plugin( $ogdesc = '' ) {
@@ -135,9 +231,15 @@ class A3_PVC
 		$post_types = get_post_types($args, $output, $operator );
 		if(!in_array($post->ID, (array) $exclude_ids) && isset($pvc_settings['post_types']) && in_array($post_type, (array)$pvc_settings['post_types'])){
 			if(is_singular() || is_singular($post_types)){
-				A3_PVC::pvc_stats_update($post->ID);
+				if ( isset( $pvc_settings['enable_ajax_load'] ) && $pvc_settings['enable_ajax_load'] == 'yes' ) {
+					$content .= A3_PVC::pvc_update_ajax_script_include( $post->ID );
+				} else {
+					A3_PVC::pvc_stats_update($post->ID);
+				}
+				$content .= A3_PVC::pvc_stats_counter($post->ID, true );
+			} else {
+				$content .= A3_PVC::pvc_stats_counter($post->ID);
 			}
-			$content .= A3_PVC::pvc_stats_counter($post->ID);
 		}
 		return $content;
 	}
@@ -157,7 +259,6 @@ class A3_PVC
 		$operator = 'and'; // 'and' or 'or'
 		$post_types = get_post_types($args, $output, $operator );
 		if(!in_array($post->ID, (array) $exclude_ids) && isset($pvc_settings['post_types']) && in_array($post_type, (array)$pvc_settings['post_types'])){
-			//A3_PVC::pvc_stats_update($post->ID);
 			$excerpt .= A3_PVC::pvc_stats_counter($post->ID);
 		}
 		return $excerpt;
@@ -175,7 +276,6 @@ class A3_PVC
 		$operator = 'and'; // 'and' or 'or'
 		$post_types = get_post_types($args, $output, $operator );
 		if( isset($pvc_settings['post_types']) && in_array($post_type, (array)$pvc_settings['post_types'])){
-			//A3_PVC::pvc_stats_update($post->ID);
 			echo A3_PVC::pvc_stats_counter($post->ID);
 		}
 	}
@@ -193,7 +293,6 @@ class A3_PVC
 		$operator = 'and'; // 'and' or 'or'
 		$post_types = get_post_types($args, $output, $operator );
 		if( isset($pvc_settings['post_types']) && in_array($post_type, (array)$pvc_settings['post_types'])){
-			//A3_PVC::pvc_stats_update($post->ID);
 			echo A3_PVC::pvc_stats_counter($post->ID);
 		}
 	}
@@ -206,11 +305,21 @@ class A3_PVC
 	}
 	
 	public static function custom_stats_update_echo($postid=0, $have_echo=1){
-		A3_PVC::pvc_stats_update($postid);
-		if($have_echo == 1)
-			echo A3_PVC::pvc_stats_counter($postid);
+		$output = '';
+		
+		$pvc_settings = get_option('pvc_settings', array() );
+		if ( isset( $pvc_settings['enable_ajax_load'] ) && $pvc_settings['enable_ajax_load'] == 'yes' ) {
+			$output .= A3_PVC::pvc_update_ajax_script_include( $postid );
+		} else {
+			A3_PVC::pvc_stats_update($post->ID);
+		}
+		
+		$output .= A3_PVC::pvc_stats_counter($postid, true );
+		
+		if ( $have_echo == 1 )
+			echo $output;
 		else
-			return A3_PVC::pvc_stats_counter($postid);
+			return $output;
 	}
 	
 	public static function pvc_check_exclude($postid=0) {
