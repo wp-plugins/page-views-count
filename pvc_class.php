@@ -36,6 +36,18 @@ class A3_PVC
 		$wpdb->query($sql);
 	}
 	
+	public static function pvc_fetch_posts_stats( $post_ids ) {
+		global $wpdb;
+		$nowisnow = date('Y-m-d');
+		
+		if ( !is_array( $post_ids ) ) $post_ids = array( $post_ids );
+		
+		$sql = $wpdb->prepare( "SELECT t.postnum AS post_id, t.postcount AS total, d.postcount AS today FROM ". $wpdb->prefix . "pvc_total AS t
+			LEFT JOIN ". $wpdb->prefix . "pvc_daily AS d ON t.postnum = d.postnum
+			WHERE t.postnum IN ( ".implode( ',', $post_ids )." ) AND d.time = %s", $nowisnow );
+		return $wpdb->get_results($sql);
+	}
+	
 	public static function pvc_fetch_post_counts( $post_id ) {
 		global $wpdb;
 		$nowisnow = date('Y-m-d');
@@ -127,80 +139,70 @@ class A3_PVC
 		return $html;
 	}
 	
-	public static function pvc_ajax_load_stats() {
-		//check_ajax_referer( 'pvc_ajax_load_stats', 'security' );
-		$post_id  = $_POST['post_id'];
-		$result = A3_PVC::pvc_get_stats( $post_id );
-		echo json_encode( $result );
-		die();
+	public static function pvc_backbone_load_stats() {
+		$post_ids	= $_REQUEST['post_ids'];
+		
+		$data = array();
+		$ids = array();
+		if ( is_array( $post_ids ) && count( $post_ids ) > 0 ) {
+			foreach ( $post_ids as $post_id => $post_data ) {
+				$ids[] = $post_id;
+				if ( isset( $post_data['ask_update'] ) && $post_data['ask_update'] == 'true' ) {
+					A3_PVC::pvc_stats_update( $post_id );	
+				}
+			}
+			$results = A3_PVC::pvc_fetch_posts_stats( $ids );
+			if ( $results ) {
+				foreach( $results as $result ) {
+					$data[$result->post_id] = array (
+						'post_id'		=> (int) $result->post_id,
+						'total_view' 	=> (int) $result->total,
+						'today_view' 	=> (int) $result->today
+					);
+					$ids = array_diff( $ids, array( $result->post_id ) );
+				}
+			}
+			
+			foreach ( $ids as $post_id ) {
+				$total = A3_PVC::pvc_fetch_post_total( $post_id );
+				$data[$post_id] = array (
+					'post_id'		=> (int) $post_id,
+					'total_view' 	=> (int) $total,
+					'today_view' 	=> 0
+				);
+			}
+		}
+		header( 'Content-Type: application/json', true, 200 );
+		die( json_encode( $data ) );
 	}
-	
-	public static function pvc_ajax_update_stats() {
-		//check_ajax_referer( 'pvc_ajax_update_stats', 'security' );
-		$post_id  = $_POST['post_id'];
-		A3_PVC::pvc_stats_update( $post_id );
-		$result = A3_PVC::pvc_get_stats( $post_id );
-		echo json_encode( $result );
-		die();
-	}
-	
-	public static function pvc_load_ajax_script_include() {
+		
+	public static function register_plugin_scripts() {
 		global $pvc_settings;
 		
 		if ( $pvc_settings['enable_ajax_load'] != 'yes' ) return;
-	?>
-    <script type="text/javascript">
-	jQuery(document).ready(function($) {
-		var pvc_ajax_url = "<?php echo admin_url( 'admin-ajax.php', 'relative' ); ?>";
-		var pvc_security = "<?php echo wp_create_nonce("pvc_ajax_load_stats"); ?>";
 		
-		$(".pvc_stats").each( function() {
-			if ( ! $(this).hasClass('pvc_load_by_ajax_update') ) {
-				var pvc_stats_object = $(this);
-				var pvc_object_id  = $(this).attr("element-id");
-				var pvc_data = {
-					action: 		"pvc_ajax_load_stats",
-					post_id: 		pvc_object_id,
-					security: 		pvc_security
-				};
-				$.post( pvc_ajax_url, pvc_data, function(response) {
-					result = $.parseJSON( response );
-					pvc_stats_object.html(result);
-				});
-				$("body").trigger("pvc_stats_loaded_" + pvc_object_id );
-			}
-		});
-	});
+		$suffix = defined('SCRIPT_DEBUG') && SCRIPT_DEBUG ? '' : '.min';
+	?>
+    <!-- PVC Template -->
+    <script type="text/template" id="pvc-stats-view-template">
+	<% if ( total_view > 0 ) { %>
+		<%= total_view %> <%= total_view > 1 ? "<?php _e('total views', 'pvc'); ?>" : "<?php _e('total view', 'pvc'); ?>" %>,
+		<% if ( today_view > 0 ) { %>
+			<%= today_view %> <%= today_view > 1 ? "<?php _e('views today', 'pvc'); ?>" : "<?php _e('view today', 'pvc'); ?>" %>
+		<% } else { %>
+		<?php _e('no views today', 'pvc'); ?>
+		<% } %> 
+	<% } else { %>
+	<?php _e('No views yet', 'pvc'); ?>
+	<% } %> 
 	</script>
     <?php
+		wp_enqueue_style( 'a3-pvc-style', A3_PVC_CSS_URL . '/style'.$suffix.'.css', false, '1.0.6' );
+		wp_enqueue_script( 'a3-pvc-backbone', A3_PVC_JS_URL . '/pvc.backbone'.$suffix.'.js', array( 'jquery', 'backbone', 'underscore' ), '1.0.0' );
+		wp_localize_script( 'a3-pvc-backbone', 'vars', array( 'api_url' => admin_url( 'admin-ajax.php' ) ) );
+		//wp_localize_script( 'a3-pvc-backbone', 'vars', array( 'api_url' => add_query_arg( array( 'pvc-api' => 'pvc_backbone_load_stats' ) , get_option('siteurl') . '/' ) ) );
 	}
-	
-	public static function pvc_update_ajax_script_include( $post_id = 0 ) {
-		
-    $ouput_script = '
-    <script type="text/javascript">
-	jQuery(document).ready(function($) {
-		var pvc_ajax_url = "'.admin_url( "admin-ajax.php", "relative" ).'";
-		var pvc_security = "'.wp_create_nonce("pvc_ajax_update_stats").'";
-		$("#pvc_stats_'.$post_id.'").each( function() {
-			var pvc_stats_object = $(this);
-			var pvc_data = {
-				action: 		"pvc_ajax_update_stats",
-				post_id: 		'.$post_id.',
-				security: 		pvc_security
-			};
-			$.post( pvc_ajax_url, pvc_data, function(response) {
-				result = $.parseJSON( response );
-				pvc_stats_object.html(result);
-			});
-			$("body").trigger("pvc_stats_updated_'.$post_id.'" );
-		});
-	});
-	</script>';
-		
-		return $ouput_script;
-	}
-	
+			
 	public static function fixed_wordpress_seo_plugin( $ogdesc = '' ) {
 		if ( function_exists( 'wpseo_set_value' ) ) {
 			global $post;
@@ -231,9 +233,7 @@ class A3_PVC
 		$post_types = get_post_types($args, $output, $operator );
 		if(!in_array($post->ID, (array) $exclude_ids) && isset($pvc_settings['post_types']) && in_array($post_type, (array)$pvc_settings['post_types'])){
 			if(is_singular() || is_singular($post_types)){
-				if ( isset( $pvc_settings['enable_ajax_load'] ) && $pvc_settings['enable_ajax_load'] == 'yes' ) {
-					$content .= A3_PVC::pvc_update_ajax_script_include( $post->ID );
-				} else {
+				if ( ! isset( $pvc_settings['enable_ajax_load'] ) || $pvc_settings['enable_ajax_load'] != 'yes' ) {
 					A3_PVC::pvc_stats_update($post->ID);
 				}
 				$content .= A3_PVC::pvc_stats_counter($post->ID, true );
@@ -308,9 +308,7 @@ class A3_PVC
 		$output = '';
 		
 		$pvc_settings = get_option('pvc_settings', array() );
-		if ( isset( $pvc_settings['enable_ajax_load'] ) && $pvc_settings['enable_ajax_load'] == 'yes' ) {
-			$output .= A3_PVC::pvc_update_ajax_script_include( $postid );
-		} else {
+		if ( ! isset( $pvc_settings['enable_ajax_load'] ) || $pvc_settings['enable_ajax_load'] != 'yes' ) {
 			A3_PVC::pvc_stats_update($post->ID);
 		}
 		

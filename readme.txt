@@ -3,7 +3,7 @@ Contributors: a3rev, A3 Revolution Software Development team
 Tags: wordpress page view, page view count , post views, postview count,
 Requires at least: 3.5
 Tested up to: 3.9.1
-Stable tag: 1.0.5
+Stable tag: 1.0.6
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -94,6 +94,13 @@ The manual installation method involves down loading our plugin and uploading it
  
 == Changelog ==
 
+= 1.0.6 - 2014/02/21 =
+* Feature - Beginning of conversion of the plugin to backbone.js and Sass
+* Feature - Loads superfast on frontend with substantially less calls to the server making it very lightweight and super fast.
+* Feature - On Category extract pages plugin now only calls once to admin-ajax.php regardless of how many extract view counts are shown.   
+* Feature - Upgrade Page View Count front end count and load function to backbone.js
+* Feature - Upgraded plugins front end CSS to Sass.
+
 = 1.0.5 - 2014/06/27 =
 * Feature - Added load Counter on front end by Ajax option to prevent count being cached by caching plugins.
 * Tweak - added ajax event 'pvc_ajax_load_stats' and trigger $("body").trigger("pvc_stats_loaded_" + pvc_object_id ); for that event
@@ -157,6 +164,9 @@ The manual installation method involves down loading our plugin and uploading it
 
 
 == Upgrade Notice ==
+
+= 1.0.6 =
+Upgrade now for the beginning of conversion of plugin to backbone.js and Sass. Much faster front-end load and less calls on server.
 
 = 1.0.5 =
 Update now for new feature - load counter by Ajax event plus security hardening and 2 framework code tweaks and Russian translation.
