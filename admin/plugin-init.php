@@ -85,6 +85,17 @@ add_filter('the_excerpt', array('A3_PVC','excerpt_pvc_stats_show'), 8);
 // Fixed for Wordpress SEO plugin
 add_filter( 'wpseo_opengraph_desc', array( 'A3_PVC', 'fixed_wordpress_seo_plugin' ) );
 
+// AJAX load page view count stats
+add_action( 'wp_ajax_pvc_ajax_update_stats', array( 'A3_PVC', 'pvc_ajax_update_stats' ) );
+add_action( 'wp_ajax_nopriv_pvc_ajax_update_stats', array( 'A3_PVC', 'pvc_ajax_update_stats' ) );
+
+// AJAX load page view count stats
+add_action( 'wp_ajax_pvc_ajax_load_stats', array( 'A3_PVC', 'pvc_ajax_load_stats' ) );
+add_action( 'wp_ajax_nopriv_pvc_ajax_load_stats', array( 'A3_PVC', 'pvc_ajax_load_stats' ) );
+
+// Add ajax script to load page view count stats into footer
+add_action( 'get_footer', array( 'A3_PVC', 'pvc_load_ajax_script_include' ) );
+
 // Check upgrade functions
 add_action('plugins_loaded', 'pvc_lite_upgrade_plugin');
 function pvc_lite_upgrade_plugin () {
