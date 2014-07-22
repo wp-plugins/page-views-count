@@ -2,8 +2,8 @@
 Contributors: a3rev, A3 Revolution Software Development team
 Tags: wordpress page view, page view count , post views, postview count,
 Requires at least: 3.5
-Tested up to: 3.8.0
-Stable tag: 1.0.4.2
+Tested up to: 3.9.1
+Stable tag: 1.0.6.1
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -94,6 +94,36 @@ The manual installation method involves down loading our plugin and uploading it
  
 == Changelog ==
 
+= 1.0.6.1 - 2014/02/22 =
+* Fix - Add missed style for class .pvc_clear in Sass
+
+= 1.0.6 - 2014/02/21 =
+* Feature - Beginning of conversion of the plugin to backbone.js and Sass
+* Feature - Loads superfast on frontend with substantially less calls to the server making it very lightweight and super fast.
+* Feature - On Category extract pages plugin now only calls once to admin-ajax.php regardless of how many extract view counts are shown.   
+* Feature - Upgrade Page View Count front end count and load function to backbone.js
+* Feature - Upgraded plugins front end CSS to Sass.
+
+= 1.0.5 - 2014/06/27 =
+* Feature - Added load Counter on front end by Ajax option to prevent count being cached by caching plugins.
+* Tweak - added ajax event 'pvc_ajax_load_stats' and trigger $("body").trigger("pvc_stats_loaded_" + pvc_object_id ); for that event
+* Tweak - added ajax event 'pvc_ajax_update_stats' and trigger $("body").trigger("pvc_stats_updated_" + post_id ); for that event
+* Tweak - use $wpdb->prepare() for all sql command for security 
+* Tweak - Updated chosen js script to latest version 1.1.0 on the a3rev Plugin Framework 
+* Tweak - Added support for placeholder feature for input, email , password , text area types. 
+* Tweak - Added Russiian translation thanks to [Renat Nurlyev](http://kluchkuspexu.ru/) 
+
+= 1.0.4.3 - 2014/05/26 =
+* Tweak - Changed add_filter( 'gettext', array( $this, 'change_button_text' ), null, 2 ); to add_filter( 'gettext', array( $this, 'change_button_text' ), null, 3 );
+* Tweak - Update change_button_text() function from ( $original == 'Insert into Post' ) to ( is_admin() && $original === 'Insert into Post' )
+* Tweak - Checked and updated for full compatibility with WordPress version 3.9.1
+* Tweak - Updated plugins description text and admin panel yellow sidebar text.
+* Tweak - Updated Framework help text font for consistency.
+* Tweak - Added remove_all_filters('mce_external_plugins'); before call to wp_editor to remove extension scripts from other plugins.
+* Tweak - Full WP_DEBUG ran, all uncaught exceptions, errors, warnings, notices and php strict standard notices fixed.
+* Tweak - Added PHP Public Static to functions in Class. Done so that Public Static warnings don't show in DE_BUG mode.
+* Fix - Code tweaks to fix a3 Plugins Framework conflict with WP e-Commerce tax rates.
+
 = 1.0.4.2 - 2013/12/24 =
 * Feature - a3rev Plugin Framework admin interface upgraded to 100% Compatibility with WordPress v3.8.0 with backward compatibility.
 * Feature - Feature - a3rev framework 100% mobile and tablet responsive, portrait and landscape viewing.
@@ -137,6 +167,18 @@ The manual installation method involves down loading our plugin and uploading it
 
 
 == Upgrade Notice ==
+
+= 1.0.6.1 =
+Upgrade now for a bug fix for Sass in yesterday’s major version release 1.0.6.
+
+= 1.0.6 =
+Upgrade now for the beginning of conversion of plugin to backbone.js and Sass. Much faster front-end load and less calls on server.
+
+= 1.0.5 =
+Update now for new feature - load counter by Ajax event plus security hardening and 2 framework code tweaks and Russian translation.
+
+= 1.0.4.3 =
+Upgrade now for full compatoibility with WordPress Version 3.9.1, 8 code tweaks and 1 bug fix.
 
 = 1.0.4.2 =
 Upgrade now for full a3rev Plugin Framework compatibility with WordPress version 3.8.0 and backwards. New admin interface full mobile and tablet responsive display.

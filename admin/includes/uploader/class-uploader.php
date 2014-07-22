@@ -47,7 +47,7 @@ class WP_PVC_Uploader extends WP_PVC_Admin_UI
 		if ( is_admin() ) {
 			add_action( 'init', array( $this, 'uploader_init' ) );
 			add_action( 'admin_print_scripts', array( $this, 'inside_popup' ) );
-			add_filter( 'gettext', array( $this, 'change_button_text' ), null, 2 );
+			add_filter( 'gettext', array( $this, 'change_button_text' ), null, 3 );
 			
 			// include scripts to Admin UI Interface
 			add_action( $this->plugin_name . '_init_scripts', array( $this, 'uploader_js' ) );
@@ -181,10 +181,10 @@ class WP_PVC_Uploader extends WP_PVC_Admin_UI
 	/*-----------------------------------------------------------------------------------*/
 	/* Change the Button text on image popup */
 	/*-----------------------------------------------------------------------------------*/
-	public function change_button_text( $translation, $original ) {
+	public function change_button_text( $translation, $original, $domain ) {
 	    if ( isset( $_REQUEST['type'] ) ) { return $translation; }
 	    
-	    if ( $original == 'Insert into Post' ) {
+	    if ( is_admin() && $original === 'Insert into Post' ) {
 	    	$translation = __( 'Use this Image', 'pvc' );
 			if ( isset( $_REQUEST['title'] ) && $_REQUEST['title'] != '' ) { $translation =__( 'Use as', 'pvc' ).' '.esc_attr( $_REQUEST['title'] ); }
 	    }
