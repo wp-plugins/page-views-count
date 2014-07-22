@@ -179,9 +179,12 @@ class A3_PVC
 	public static function register_plugin_scripts() {
 		global $pvc_settings;
 		
+		$suffix = defined('SCRIPT_DEBUG') && SCRIPT_DEBUG ? '' : '.min';
+		
+		wp_enqueue_style( 'a3-pvc-style', A3_PVC_CSS_URL . '/style'.$suffix.'.css', false, '1.0.6' );
+		
 		if ( $pvc_settings['enable_ajax_load'] != 'yes' ) return;
 		
-		$suffix = defined('SCRIPT_DEBUG') && SCRIPT_DEBUG ? '' : '.min';
 	?>
     <!-- PVC Template -->
     <script type="text/template" id="pvc-stats-view-template">
@@ -197,7 +200,6 @@ class A3_PVC
 	<% } %> 
 	</script>
     <?php
-		wp_enqueue_style( 'a3-pvc-style', A3_PVC_CSS_URL . '/style'.$suffix.'.css', false, '1.0.6' );
 		wp_enqueue_script( 'a3-pvc-backbone', A3_PVC_JS_URL . '/pvc.backbone'.$suffix.'.js', array( 'jquery', 'backbone', 'underscore' ), '1.0.0' );
 		wp_localize_script( 'a3-pvc-backbone', 'vars', array( 'api_url' => admin_url( 'admin-ajax.php' ) ) );
 		//wp_localize_script( 'a3-pvc-backbone', 'vars', array( 'api_url' => add_query_arg( array( 'pvc-api' => 'pvc_backbone_load_stats' ) , get_option('siteurl') . '/' ) ) );
@@ -221,6 +223,7 @@ class A3_PVC
 		remove_action('loop_end', array('A3_PVC', 'pvc_stats_echo'));
 		remove_action('genesis_after_post_content', array('A3_PVC', 'genesis_pvc_stats_echo'));
 		global $post;
+		if ( ! $post ) return;
 		$pvc_settings = get_option('pvc_settings', array() );
 		$exclude_ids = array(3630, 3643, 5520, 3642, 3632, 3633, 3628, 2102, 6793);
 		$post_type = get_post_type($post->ID);
@@ -248,6 +251,7 @@ class A3_PVC
 		remove_action('loop_end', array('A3_PVC', 'pvc_stats_echo'));
 		remove_action('genesis_after_post_content', array('A3_PVC', 'genesis_pvc_stats_echo'));
 		global $post;
+		if ( ! $post ) return;
 		$pvc_settings = get_option('pvc_settings', array() );
 		$exclude_ids = array(3630, 3643, 5520, 3642, 3632, 3633, 3628, 2102, 6793);
 		$post_type = get_post_type($post->ID);
