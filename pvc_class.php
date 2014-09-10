@@ -313,7 +313,7 @@ class A3_PVC
 		
 		$pvc_settings = get_option('pvc_settings', array() );
 		if ( ! isset( $pvc_settings['enable_ajax_load'] ) || $pvc_settings['enable_ajax_load'] != 'yes' ) {
-			A3_PVC::pvc_stats_update($post->ID);
+			A3_PVC::pvc_stats_update($postid);
 		}
 		
 		$output .= A3_PVC::pvc_stats_counter($postid, true );

@@ -1,9 +1,9 @@
 === Page View Count  ===
 Contributors: a3rev, A3 Revolution Software Development team
 Tags: wordpress page view, page view count , post views, postview count,
-Requires at least: 3.5
-Tested up to: 3.9.1
-Stable tag: 1.0.6.2
+Requires at least: 3.8
+Tested up to: 4.0
+Stable tag: 1.0.6.3
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -54,7 +54,7 @@ PLEASE do not give the plugin a bad star rating - its the theme you are using no
 
 = Minimum Requirements =
 
-* WordPress 3.5
+* WordPress 3.8
 * PHP version 5.2.4 or greater
 * MySQL version 5.0 or greater
  
@@ -94,13 +94,18 @@ The manual installation method involves down loading our plugin and uploading it
  
 == Changelog ==
 
-= 1.0.6.2 - 2014/02/22 =
+= 1.0.6.3 - 2014/09/10 =
+* Tweak - Updated google font face in plugin framework.
+* Tweak - Tested 100% compatible with WordPress Version 4.0
+* Fix - Use correct variable $postid instead of $post->ID for 'custom_stats_update_echo()' function to fix the problem don't auto increase total view for use template tag '<?php pvc_stats_update( $postid ); ?>'
+
+= 1.0.6.2 - 2014/07/22 =
 * Fix - Add missed style when disable AJAX load for view counts
 
-= 1.0.6.1 - 2014/02/22 =
+= 1.0.6.1 - 2014/07/22 =
 * Fix - Add missed style for class .pvc_clear in Sass
 
-= 1.0.6 - 2014/02/21 =
+= 1.0.6 - 2014/07/21 =
 * Feature - Beginning of conversion of the plugin to backbone.js and Sass
 * Feature - Loads superfast on frontend with substantially less calls to the server making it very lightweight and super fast.
 * Feature - On Category extract pages plugin now only calls once to admin-ajax.php regardless of how many extract view counts are shown.   
@@ -170,6 +175,9 @@ The manual installation method involves down loading our plugin and uploading it
 
 
 == Upgrade Notice ==
+
+= 1.0.6.3 =
+Update you plugin now for 1 framework code tweak plus 1 bug fix and full compatibility with WordPress Version 4.0
 
 = 1.0.6.2 =
 Upgrade now for a bug fix for missed style when disable AJAX load view counts in version release 1.0.6.1.
