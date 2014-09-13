@@ -438,6 +438,7 @@
 #a3_plugin_panel_upgrade_area { margin-left: 65%; padding-left:10px;}
 #a3_plugin_panel_extensions { border:2px solid #E6DB55;-webkit-border-radius:10px;-moz-border-radius:10px;-o-border-radius:10px; border-radius: 10px; color: #555555; margin: 0px; padding: 5px 10px; text-shadow: 0 1px 0 rgba(255, 255, 255, 0.8); background:#FFFBCC; }
 #a3_plugin_panel_extensions img { width:100%; max-width:100%; }
+.pro_feature_top_message { font-size:11px; text-align:center; margin:10px 0; }
 .pro_feature_fields { margin-right: -12px; position: relative; z-index: 10; border:2px solid #E6DB55;-webkit-border-radius:10px 0 0 10px;-moz-border-radius:10px 0 0 10px;-o-border-radius:10px 0 0 10px; border-radius: 10px 0 0 10px; border-right: 2px solid #FFFFFF; }
 .pro_feature_fields h3 { margin:8px 5px; }
 .pro_feature_fields p { margin-left:5px; }
@@ -460,7 +461,7 @@
 }
 
 /* Chosen Style */
-.a3rev_panel_container .chzn-container {
+.a3rev_panel_container .chosen-container {
 	margin-bottom:5px;
 	margin-right:2px;	
 }
@@ -598,6 +599,12 @@
 
 /* END A3 Plugin Framework Font Icons */
 
+@media screen and ( min-width: 783px ) {
+	.a3rev_panel_container .chosen-container-multi {
+		min-width:300px;
+	}
+}
+
 @media screen and ( max-width: 782px ) {
 	#a3_plugin_panel_fields {
 		width: 100%;	
@@ -615,6 +622,7 @@
 	}
 	.a3rev_panel_container input[type="text"], .a3rev_panel_container input[type="email"], .a3rev_panel_container input[type="number"], .a3rev_panel_container input[type="password"] {
 		min-width:50px;
+		width:100%;
 	}
 	.a3rev_panel_container .a3rev-ui-text {
 		max-width:none;
@@ -643,7 +651,7 @@
 	.a3rev_panel_container input.a3rev-color-picker { margin-top: 1px !important;}
 	.a3rev_panel_container input.wp-picker-default { margin-top: 1px !important; padding:2px 8px !important; }
 	
-	.a3rev_panel_container .chzn-container-multi {
+	.a3rev_panel_container .chosen-container-multi {
 		width: 100% !important;	
 	}
 	.a3rev_blue_message_box_container {
@@ -661,7 +669,7 @@
 	.a3_subsubsub_section .subsubsub {
 		text-align:left;	
 	}
-	.a3rev_panel_container .chzn-container-single {
+	.a3rev_panel_container .chosen-container-single {
 		max-width: 300px !important;
 	}
 }
