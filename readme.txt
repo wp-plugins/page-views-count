@@ -3,7 +3,7 @@ Contributors: a3rev, A3 Revolution Software Development team
 Tags: wordpress page view, page view count , post views, postview count,
 Requires at least: 3.8
 Tested up to: 4.0
-Stable tag: 1.0.6.4
+Stable tag: 1.0.7
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -26,13 +26,23 @@ We built this plugin and use this plugin because we think its is very good visua
 
 Using the 2 functions the plugin provides that allows you to manually add view counts to any content or object in your theme. This is very useful if your theme or a plugin creates content that does not use custom post type. Also useful if you want to change the position of the Page View Count from the default bottom of the page. Support for echo and return parameters when getting visitor stats on any variable.
 
+= Featuring Sass (Simply Awesome Stylesheets) =
+
+* All the front end style display is created via Sass for faster loader and render.
+* Sass is the most mature, stable, and powerful professional grade CSS extension language in the world.
+* This plugins backend admin panel are created in Sass.
+
+
+= Featuring backbone.js =
+
+* All front end functions build with backbone.js
+* Will add full automatic integration with WordPress JSON RESTful API when it is released.
+
 = Mobile Responsive App style admin interface =
 
-Like WordPress we believe that a3rev plugin users should be able to configure and tweak our plugins settings while on the go, right from their mobile or tablet. This plugins features an app style admin interface with Switches, Sliders and a smart interface that hides associated settings when a feature is not turned ON.
-
-* 100% compatible with WordPress v3.8.0 admin interface.
-* Backward compatibility to WordPress v3.5.0
-* App style admin interface.
+* 100% compatible with WordPress v4.0 admin interface.
+* Backward compatibility to WordPress v3.8
+* Sass app style admin interface.
 * Admin app interface is fully mobile and tablet responsive.
 
 = Localization =
@@ -93,6 +103,9 @@ The manual installation method involves down loading our plugin and uploading it
 
 
 == Changelog ==
+
+= 1.0.7 =
+* Feature - Next step in full conversion of plugin to backbone.js and Sass - full admin panel conversion from CSS to Sass.
 
 = 1.0.6.4 - 2014/09/13 =
 * Tweak - Added WordPress plugin icon.
@@ -179,6 +192,9 @@ The manual installation method involves down loading our plugin and uploading it
 
 
 == Upgrade Notice ==
+
+= 1.0.7 =
+Upgrade now for full admin panel conversion from CSS to Sass
 
 = 1.0.6.4 =
 Upgrade now for 1 Sass bug fix
