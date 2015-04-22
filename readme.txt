@@ -2,8 +2,8 @@
 Contributors: a3rev, A3 Revolution Software Development team
 Tags: wordpress page view, page view count , post views, postview count,
 Requires at least: 3.8
-Tested up to: 4.0
-Stable tag: 1.0.7
+Tested up to: 4.2.0
+Stable tag: 1.0.8
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -104,6 +104,10 @@ The manual installation method involves down loading our plugin and uploading it
 
 == Changelog ==
 
+= 1.0.8 - 2015/04/21 =
+* Tweak - Tested and Tweaked for full compatibility with WordPress Version 4.2.0
+* Tweak - Update style of plugin framework. Removed the [data-icon] selector to prevent conflict with other plugins that have font awesome icons
+
 = 1.0.7 =
 * Feature - Next step in full conversion of plugin to backbone.js and Sass - full admin panel conversion from CSS to Sass.
 
@@ -192,6 +196,9 @@ The manual installation method involves down loading our plugin and uploading it
 
 
 == Upgrade Notice ==
+
+= 1.0.8 =
+Maintenance upgrade. Code tweaks for full compatibility with WordPress 4.2.0
 
 = 1.0.7 =
 Upgrade now for full admin panel conversion from CSS to Sass

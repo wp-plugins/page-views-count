@@ -3,7 +3,7 @@
  * Process when plugin is activated
  */
 function pvc_install(){
-	update_option('a3_pvc_version', '1.3.8');
+	update_option('a3_pvc_version', '1.3.9');
 
 	// empty pvc_daily table for daily
 	wp_schedule_event( strtotime( date('Y-m-d'). ' 00:00:00' ), 'daily', 'pvc_empty_daily_table_daily_event_hook' );
@@ -120,7 +120,7 @@ function pvc_lite_upgrade_plugin () {
 		update_option('a3_pvc_version', '1.3.6');
 	}
 
-	update_option('a3_pvc_version', '1.3.8');
+	update_option('a3_pvc_version', '1.3.9');
 
 }
 
