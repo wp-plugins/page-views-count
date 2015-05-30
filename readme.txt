@@ -2,8 +2,8 @@
 Contributors: a3rev, A3 Revolution Software Development team
 Tags: wordpress page view, page view count , post views, postview count,
 Requires at least: 3.8
-Tested up to: 4.2.0
-Stable tag: 1.0.8
+Tested up to: 4.2.2
+Stable tag: 1.0.9
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -50,7 +50,10 @@ Using the 2 functions the plugin provides that allows you to manually add view c
 If you do a translation for your site please send it to us and we'll include it in the plugins language folder and credit you here with the translation and a link to your site.
 
 * English (default) - always included.
-* Dutch - thanks to [Renee Klein]( http://wpdiscounts.com)
+* Dutch - thanks to [Renee Klein](http://wpdiscounts.com)
+* Italian - thanks to [Antonio Petricca](http://www.gvmprotezionecivile.it)
+* Indonesian - thanks to [Ridha Harwan](https://tarjiem.com/ )
+* Russian
 * .po file (pvc.po) in languages folder for translations.
 * [Go here](http://a3rev.com/contact-us-page/) to send your translation files to us.
 
@@ -103,6 +106,11 @@ The manual installation method involves down loading our plugin and uploading it
 
 
 == Changelog ==
+
+= 1.0.9 - 2015/05/30 =
+* Tweak - Tested and Tweaked for full compatibility with WordPress Version 4.2.2
+* Localization - Italian translation by Antonio Petricca.
+* Localization - Indonesian translation by Ridha Harwan.
 
 = 1.0.8 - 2015/04/21 =
 * Tweak - Tested and Tweaked for full compatibility with WordPress Version 4.2.0
@@ -196,6 +204,9 @@ The manual installation method involves down loading our plugin and uploading it
 
 
 == Upgrade Notice ==
+
+= 1.0.9 =
+Maintenance upgrade. Code tweaks for full compatibility with WordPress 4.2.2 and Italian, Indonesian translations.
 
 = 1.0.8 =
 Maintenance upgrade. Code tweaks for full compatibility with WordPress 4.2.0
