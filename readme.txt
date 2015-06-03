@@ -3,7 +3,7 @@ Contributors: a3rev, A3 Revolution Software Development team
 Tags: wordpress page view, page view count , post views, postview count,
 Requires at least: 3.8
 Tested up to: 4.2.2
-Stable tag: 1.0.9
+Stable tag: 1.1.0
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -107,10 +107,15 @@ The manual installation method involves down loading our plugin and uploading it
 
 == Changelog ==
 
+= 1.1.0 - 2015/06/03 =
+* Tweak - Security Hardening. Removed all php file_put_contents functions in the plugin framework and replace with the WP_Filesystem API
+* Tweak - Security Hardening. Removed all php file_get_contents functions in the plugin framework and replace with the WP_Filesystem API
+* Fix - Update dynamic stylesheet url in uploads folder to the format <code>//domain.com/</code> so it's always is correct when loaded as http or https
+
 = 1.0.9 - 2015/05/30 =
 * Tweak - Tested and Tweaked for full compatibility with WordPress Version 4.2.2
 * Localization - Italian translation by Antonio Petricca.
-* Localization - Indonesian translation by Ridha Harwan.
+* Localization - Indonesian translation by [Ridha Harwan](https://tarjiem.com/).
 
 = 1.0.8 - 2015/04/21 =
 * Tweak - Tested and Tweaked for full compatibility with WordPress Version 4.2.0
@@ -204,6 +209,9 @@ The manual installation method involves down loading our plugin and uploading it
 
 
 == Upgrade Notice ==
+
+= 1.1.0 =
+Important Maintenance Upgrade. 2 x major a3rev Plugin Framework Security Hardening Tweaks plus 1 https bug fix
 
 = 1.0.9 =
 Maintenance upgrade. Code tweaks for full compatibility with WordPress 4.2.2 and Italian, Indonesian translations.
