@@ -195,6 +195,22 @@ class WP_PVC_General_Settings extends WP_PVC_Admin_UI
      	$this->form_fields = array(
 		
 			array(
+            	'name' 		=> __( 'Page Views Count Load', 'pvc' ),
+                'type' 		=> 'heading',
+           	),
+			array(  
+				'name' 		=> __( 'Ajax Load', 'pvc' ),
+				'desc' 		=> __( 'ON to load page views counter on front end by ajax event (recommended). Prevents caching plugins and CDNs from caching the count. If using caching you must clear the cache to see changes after turning this setting ON or OFF.', 'pvc' ),
+				'id' 		=> 'enable_ajax_load',
+				'type' 		=> 'onoff_checkbox',
+				'default' 	=> 'no',
+				'checked_value'		=> 'yes',
+				'unchecked_value'	=> 'no',
+				'checked_label'		=> __( 'ON', 'pvc' ),
+				'unchecked_label' 	=> __( 'OFF', 'pvc' ),
+			),
+		
+			array(
             	'name' 		=> __( 'Activate on Posts and Pages', 'pvc' ),
                 'type' 		=> 'heading',
            	),
@@ -206,8 +222,8 @@ class WP_PVC_General_Settings extends WP_PVC_Admin_UI
 				'default' 	=> 'post',
 				'checked_value'		=> 'post',
 				'unchecked_value'	=> '',
-				'checked_label'		=> __( 'YES', 'pvc' ),
-				'unchecked_label' 	=> __( 'NO', 'pvc' ),
+				'checked_label'		=> __( 'ON', 'pvc' ),
+				'unchecked_label' 	=> __( 'OFF', 'pvc' ),
 			),
 			array(  
 				'name' 		=> __( 'Pages', 'pvc' ),
@@ -216,8 +232,8 @@ class WP_PVC_General_Settings extends WP_PVC_Admin_UI
 				'default' 	=> 'page',
 				'checked_value'		=> 'page',
 				'unchecked_value'	=> '',
-				'checked_label'		=> __( 'YES', 'pvc' ),
-				'unchecked_label' 	=> __( 'NO', 'pvc' ),
+				'checked_label'		=> __( 'ON', 'pvc' ),
+				'unchecked_label' 	=> __( 'OFF', 'pvc' ),
 			),
         );
 		
@@ -237,8 +253,8 @@ class WP_PVC_General_Settings extends WP_PVC_Admin_UI
 					'default' 	=> '',
 					'checked_value'		=> $post_type,
 					'unchecked_value'	=> '',
-					'checked_label'		=> __( 'YES', 'pvc' ),
-					'unchecked_label' 	=> __( 'NO', 'pvc' ),
+					'checked_label'		=> __( 'ON', 'pvc' ),
+					'unchecked_label' 	=> __( 'OFF', 'pvc' ),
 				);
 			}
 			
