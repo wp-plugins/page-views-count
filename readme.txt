@@ -3,7 +3,7 @@ Contributors: a3rev, A3 Revolution Software Development team
 Tags: wordpress page view, page view count , post views, postview count,
 Requires at least: 3.8
 Tested up to: 4.2.2
-Stable tag: 1.1.0
+Stable tag: 1.2.0
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -107,6 +107,15 @@ The manual installation method involves down loading our plugin and uploading it
 
 == Changelog ==
 
+= 1.2.0 - 2015/06/18 =
+* Feature - Plugin framework Mobile First focus upgrade
+* Feature - Massive improvement in admin UI and UX in PC, tablet and mobile browsers
+* Feature - Introducing opening and closing Setting Boxes on admin panels.
+* Feature - Added Plugin Framework Customization settings. Control how the admin panel settings show when editing.
+* Feature - Added a 260px wide images to the right sidebar for support forum link, Documentation links.
+* Feature - Added full support for Right to Left RTL layout on plugins admin dashboard.
+* Fix - Check 'request_filesystem_credentials' function, if it does not exists then require the core php lib file from WP where it is defined
+
 = 1.1.0 - 2015/06/03 =
 * Tweak - Security Hardening. Removed all php file_put_contents functions in the plugin framework and replace with the WP_Filesystem API
 * Tweak - Security Hardening. Removed all php file_get_contents functions in the plugin framework and replace with the WP_Filesystem API
@@ -209,6 +218,9 @@ The manual installation method involves down loading our plugin and uploading it
 
 
 == Upgrade Notice ==
+
+= 1.2.0 =
+Major Feature Upgrade. Massive admin panel UI and UX upgrade. Includes 6 new features plus 1 bug fix
 
 = 1.1.0 =
 Important Maintenance Upgrade. 2 x major a3rev Plugin Framework Security Hardening Tweaks plus 1 https bug fix

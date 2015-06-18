@@ -35,7 +35,7 @@ class Compile_Less_Sass {
 
 				if ( $compiled_css != '' ){
 					$wp_filesystem->put_contents( $css_file, $compiled_css );
-					
+
 					$compiled_css_min = CssMin::minify( $compiled_css );
 					if ( $compiled_css_min != '' )
 						$wp_filesystem->put_contents( $css_min_file, $compiled_css_min );

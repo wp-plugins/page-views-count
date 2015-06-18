@@ -2,7 +2,7 @@
 /*
 Plugin Name: Page Views Count
 Description: Show front end users all time views and views today on posts, pages, index pages and custom post types with the Page Views Count Plugin. Use the Page Views Count function to add page views to any content type or object created by your theme or plugins.
-Version: 1.1.0
+Version: 1.2.0
 Requires at least: 3.7
 Tested up to: 4.2.2
 Author: A3 Revolution
@@ -17,6 +17,7 @@ define('A3_PVC_PLUGIN_NAME', plugin_basename(__FILE__));
 define('A3_PVC_URL', untrailingslashit(plugins_url('/', __FILE__)));
 define('A3_PVC_CSS_URL', A3_PVC_URL . '/assets/css');
 define('A3_PVC_JS_URL', A3_PVC_URL . '/assets/js');
+define('A3_PVC_IMAGES_URL', A3_PVC_URL . '/assets/images');
 
 // API Class
 //include_once( 'api/pvc-api.php' );
@@ -41,24 +42,6 @@ register_activation_hook(__FILE__, 'pvc_install');
  * Process when plugin is deactivated
  */
 register_deactivation_hook(__FILE__, 'pvc_deactivation');
-
-function pvc_uninstall()
-{
-    if (get_option('pvc_clean_on_deletion') == 1) {
-        delete_option('pvc_settings');
-        delete_option('a3_pvc_version');
-        delete_option('a3rev_pvc_plugin');
-        delete_option('a3rev_auth_pvc');
-        delete_option('pvc_clean_on_deletion');
-
-        global $wpdb;
-        $wpdb->query('DROP TABLE IF EXISTS ' . $wpdb->prefix . 'pvc_total');
-        $wpdb->query('DROP TABLE IF EXISTS ' . $wpdb->prefix . 'pvc_daily');
-    }
-}
-if (get_option('pvc_clean_on_deletion') == 1) {
-    register_uninstall_hook(__FILE__, 'pvc_uninstall');
-}
 
 function pvc_stats($postid, $have_echo = 1)
 {

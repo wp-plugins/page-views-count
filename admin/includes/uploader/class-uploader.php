@@ -1,5 +1,5 @@
 <?php
-/* "Copyright 2012 A3 Revolution Web Design" This software is distributed under the terms of GNU GENERAL PUBLIC LICENSE Version 3, 29 June 2007 */
+/* "Copyright 2012 a3 Revolution Web Design" This software is distributed under the terms of GNU GENERAL PUBLIC LICENSE Version 3, 29 June 2007 */
 // File Security Check
 if ( ! defined( 'ABSPATH' ) ) exit;
 ?>
@@ -82,6 +82,9 @@ class WP_PVC_Uploader extends WP_PVC_Admin_UI
 	public function uploader_style () {
 		wp_enqueue_style( 'thickbox' );
 		wp_enqueue_style( 'a3-uploader-style', $this->admin_uploader_url() . '/uploader.css' );
+		if ( is_rtl() ) {
+			wp_enqueue_style( 'a3-uploader-style-rtl', $this->admin_uploader_url() . '/uploader.rtl.css' );
+		}
 	}
 	
 	/*-----------------------------------------------------------------------------------*/

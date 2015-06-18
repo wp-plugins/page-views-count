@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Page Views Count\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-06-27 17:31+0700\n"
-"PO-Revision-Date: 2015-05-30 10:55+0700\n"
+"POT-Creation-Date: 2015-06-18 09:04+0700\n"
+"PO-Revision-Date: 2015-06-18 09:04+0700\n"
 "Last-Translator: Nguyen Cong Tuan <mr.nguyencongtuan@gmail.com>\n"
 "Language-Team: a3rev <iidsaudaraku@yahoo.co.id>\n"
 "Language: id_ID\n"
@@ -16,189 +16,232 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: admin/admin-interface.php:129
+#: admin/admin-interface.php:195
 msgid "Settings successfully saved."
 msgstr "Pengaturan berhasil disimpan."
 
-#: admin/admin-interface.php:137
+#: admin/admin-interface.php:203
 msgid "Error: Settings can not save."
 msgstr "Eror: Pengaturan tidak bisa disimpan."
 
-#: admin/admin-interface.php:145
+#: admin/admin-interface.php:211
 msgid "Settings successfully reseted."
 msgstr "Pengaturan berhasil diatur ulang."
 
-#: admin/admin-interface.php:166
+#: admin/admin-interface.php:232
 msgid "Thin"
 msgstr "Tipis"
 
-#: admin/admin-interface.php:167
+#: admin/admin-interface.php:233
 msgid "Thin/Italic"
 msgstr "Tipis/Miring"
 
-#: admin/admin-interface.php:168
+#: admin/admin-interface.php:234
 msgid "Normal"
 msgstr "Normal"
 
-#: admin/admin-interface.php:169
+#: admin/admin-interface.php:235
 msgid "Italic"
 msgstr "Miring"
 
-#: admin/admin-interface.php:170
+#: admin/admin-interface.php:236
 msgid "Bold"
 msgstr "Tebal"
 
-#: admin/admin-interface.php:171
+#: admin/admin-interface.php:237
 msgid "Bold/Italic"
 msgstr "Tebal/Miring"
 
-#: admin/admin-interface.php:181
+#: admin/admin-interface.php:247
 msgid "Solid"
 msgstr "Padat"
 
-#: admin/admin-interface.php:182
+#: admin/admin-interface.php:248
 msgid "Double"
 msgstr "Rangkap"
 
-#: admin/admin-interface.php:183
+#: admin/admin-interface.php:249
 msgid "Dashed"
 msgstr "Putus-Putus"
 
-#: admin/admin-interface.php:184
+#: admin/admin-interface.php:250
 msgid "Dotted"
 msgstr "Titik-Titik"
 
-#: admin/admin-interface.php:185
+#: admin/admin-interface.php:251
 msgid "Groove"
 msgstr "3D Cekung"
 
-#: admin/admin-interface.php:186
+#: admin/admin-interface.php:252
 msgid "Ridge"
 msgstr "3D Timbul"
 
-#: admin/admin-interface.php:187
+#: admin/admin-interface.php:253
 msgid "Inset"
 msgstr "Ke Dalam"
 
-#: admin/admin-interface.php:188
+#: admin/admin-interface.php:254
 msgid "Outset"
 msgstr "Ke Luar"
 
-#: admin/admin-interface.php:1354 admin/admin-interface.php:1444
-#: admin/admin-interface.php:1473 admin/settings/general-settings.php:209
-#: admin/settings/general-settings.php:225
-#: admin/settings/general-settings.php:235
-#: admin/settings/general-settings.php:256
-#: admin/settings/general-settings.php:277
+#: admin/admin-interface.php:1389 admin/admin-interface.php:1444
+#: admin/admin-interface.php:1646 admin/admin-interface.php:1736
+#: admin/admin-interface.php:1765 admin/settings/general-settings.php:225
+#: admin/settings/general-settings.php:243
+#: admin/settings/general-settings.php:261
+#: admin/settings/general-settings.php:271
+#: admin/settings/general-settings.php:294
 msgid "ON"
 msgstr "AKTIF"
 
-#: admin/admin-interface.php:1355 admin/admin-interface.php:1445
-#: admin/admin-interface.php:1474 admin/settings/general-settings.php:210
-#: admin/settings/general-settings.php:226
-#: admin/settings/general-settings.php:236
-#: admin/settings/general-settings.php:257
-#: admin/settings/general-settings.php:278
+#: admin/admin-interface.php:1390 admin/admin-interface.php:1445
+#: admin/admin-interface.php:1647 admin/admin-interface.php:1737
+#: admin/admin-interface.php:1766 admin/settings/general-settings.php:226
+#: admin/settings/general-settings.php:244
+#: admin/settings/general-settings.php:262
+#: admin/settings/general-settings.php:272
+#: admin/settings/general-settings.php:295
 msgid "OFF"
 msgstr "MATI"
 
-#: admin/admin-interface.php:1515
+#: admin/admin-interface.php:1395
+#, fuzzy
+msgid "Google Fonts API"
+msgstr "-- Huruf Google --"
+
+#: admin/admin-interface.php:1407
+msgid ""
+"ON to connect to Google Fonts API and have auto font updates direct from "
+"Google."
+msgstr ""
+
+#: admin/admin-interface.php:1411
+#, php-format
+msgid ""
+"Enter your existing Google Fonts API Key below. Don't have a key? Visit <a "
+"href='%s' target='_blank'>Google Developer API</a> to create a key"
+msgstr ""
+
+#: admin/admin-interface.php:1428
+#, fuzzy
+msgid "Google Fonts API Key"
+msgstr "-- Huruf Google --"
+
+#: admin/admin-interface.php:1431
+msgid "Your Google API Key is valid and automatic font updates are enabled."
+msgstr ""
+
+#: admin/admin-interface.php:1432
+msgid "Please enter a valid Google API Key."
+msgstr ""
+
+#: admin/admin-interface.php:1450
+msgid "Open Box Display"
+msgstr ""
+
+#: admin/admin-interface.php:1463
+msgid ""
+"ON and each admin panel setting box OPEN | CLOSED position are saved each "
+"time changes are SAVED."
+msgstr ""
+
+#: admin/admin-interface.php:1807
 msgid "Width"
 msgstr "Lebar"
 
-#: admin/admin-interface.php:1517
+#: admin/admin-interface.php:1809
 msgid "Height"
 msgstr "Tinggi"
 
-#: admin/admin-interface.php:1519
+#: admin/admin-interface.php:1811
 msgid "Hard Crop"
 msgstr "Potong Paksa"
 
-#: admin/admin-interface.php:1596
+#: admin/admin-interface.php:1891
 msgid "-- Default Fonts --"
 msgstr "-- Huruf Awal --"
 
-#: admin/admin-interface.php:1607
+#: admin/admin-interface.php:1902
 msgid "-- Google Fonts --"
 msgstr "-- Huruf Google --"
 
-#: admin/admin-interface.php:1648
+#: admin/admin-interface.php:1943
 msgid "Preview your customized typography settings"
 msgstr "Pratinjau pengaturan tipografi pilihan Anda"
 
-#: admin/admin-interface.php:1782 admin/admin-interface.php:2041
+#: admin/admin-interface.php:2077 admin/admin-interface.php:2336
 msgid "Preview your customized border settings"
 msgstr "Pratinjau pengaturan garis pilihan Anda"
 
-#: admin/admin-interface.php:1791 admin/admin-interface.php:2032
+#: admin/admin-interface.php:2086 admin/admin-interface.php:2327
 msgid "Rounded"
 msgstr "Bulat"
 
-#: admin/admin-interface.php:1792 admin/admin-interface.php:2033
+#: admin/admin-interface.php:2087 admin/admin-interface.php:2328
 msgid "Square"
 msgstr "Siku"
 
-#: admin/admin-interface.php:1802 admin/admin-interface.php:2046
+#: admin/admin-interface.php:2097 admin/admin-interface.php:2341
 msgid "Top Left Corner"
 msgstr "Pojok Kiri Atas"
 
-#: admin/admin-interface.php:1822 admin/admin-interface.php:2066
+#: admin/admin-interface.php:2117 admin/admin-interface.php:2361
 msgid "Top Right Corner"
 msgstr "Pojok Kanan Atas"
 
-#: admin/admin-interface.php:1842 admin/admin-interface.php:2086
+#: admin/admin-interface.php:2137 admin/admin-interface.php:2381
 msgid "Bottom Right Corner"
 msgstr "Pojok Kanan Bawah"
 
-#: admin/admin-interface.php:1862 admin/admin-interface.php:2106
+#: admin/admin-interface.php:2157 admin/admin-interface.php:2401
 msgid "Bottom Left Corner"
 msgstr "Pojok Kiri Bawah"
 
-#: admin/admin-interface.php:1955
+#: admin/admin-interface.php:2250
 msgid "Preview your customized border styles settings"
 msgstr "Pratinjau pengaturan garis pilihan Anda"
 
-#: admin/admin-interface.php:2167
+#: admin/admin-interface.php:2462
 msgid "YES"
 msgstr "YA"
 
-#: admin/admin-interface.php:2168
+#: admin/admin-interface.php:2463
 msgid "NO"
 msgstr "TIDAK"
 
-#: admin/admin-interface.php:2182
+#: admin/admin-interface.php:2477
 msgid "Horizontal Shadow"
 msgstr "Bayangan Horizontal"
 
-#: admin/admin-interface.php:2200
+#: admin/admin-interface.php:2495
 msgid "Vertical Shadow"
 msgstr "Bayangan Vertikal"
 
-#: admin/admin-interface.php:2218
+#: admin/admin-interface.php:2513
 msgid "Blur Distance"
 msgstr "Jarak Kabur"
 
-#: admin/admin-interface.php:2236
+#: admin/admin-interface.php:2531
 msgid "Spread Size"
 msgstr "Ukuran Sebaran"
 
-#: admin/admin-interface.php:2254
+#: admin/admin-interface.php:2549
 msgid "INNER"
 msgstr "DALAM"
 
-#: admin/admin-interface.php:2255
+#: admin/admin-interface.php:2550
 msgid "OUTER"
 msgstr "LUAR"
 
-#: admin/admin-interface.php:2273
+#: admin/admin-interface.php:2568
 msgid "Preview your customized box shadow settings"
 msgstr "Pratinjau pengaturan bayangan kotak pilihan Anda"
 
-#: admin/admin-interface.php:2509
+#: admin/admin-interface.php:2824
 msgid "Save changes"
 msgstr "Simpan perubahan"
 
-#: admin/admin-interface.php:2510
+#: admin/admin-interface.php:2825
 msgid "Reset Settings"
 msgstr "Atur Ulang Pengaturan"
 
@@ -207,41 +250,36 @@ msgstr "Atur Ulang Pengaturan"
 msgid "Page Views Count"
 msgstr "Page Views Count"
 
-#: admin/admin-ui.php:123
-#, php-format
-msgid "Settings inside this yellow border are %s Features."
-msgstr "Pengaturan dalam garis  kuning ini adalah Fitur %s ."
-
-#: admin/admin-ui.php:125
-#, php-format
+#: admin/admin-ui.php:173
+#, fuzzy, php-format
 msgid ""
-"Upgrade to the <a href=\"%s\" target=\"_blank\">%s</a> to activate these "
-"settings."
+"Advanced Settings - Upgrade to the <a href=\"%s\" target=\"_blank\">%s "
+"License</a> to activate these settings."
 msgstr ""
 "Lakukan peningkatan ke <a href=\"%s\" target=\"_blank\">%s</a> untuk "
 "mengaktifkan pengaturan ini."
 
-#: admin/admin-ui.php:127 admin/admin-ui.php:129
+#: admin/admin-ui.php:176
 msgid "Pro Version"
 msgstr "Versi Pro"
 
-#: admin/includes/uploader/class-uploader.php:149
+#: admin/includes/uploader/class-uploader.php:152
 msgid "Upload"
 msgstr "Unggah"
 
-#: admin/includes/uploader/class-uploader.php:169
+#: admin/includes/uploader/class-uploader.php:172
 msgid "View File"
 msgstr "Lihat Berkas"
 
-#: admin/includes/uploader/class-uploader.php:188
+#: admin/includes/uploader/class-uploader.php:191
 msgid "Use this Image"
 msgstr "Gunakan gambar ini"
 
-#: admin/includes/uploader/class-uploader.php:189
+#: admin/includes/uploader/class-uploader.php:192
 msgid "Use as"
 msgstr "Gunakan sebagai"
 
-#: admin/includes/uploader/class-uploader.php:199
+#: admin/includes/uploader/class-uploader.php:202
 msgid "Previously Uploaded"
 msgstr "Diunggah sebelumnya"
 
@@ -261,15 +299,46 @@ msgstr "Pengaturan Page View Count berhasil diatur ulang."
 msgid "General"
 msgstr "Umum"
 
-#: admin/settings/general-settings.php:198
+#: admin/settings/general-settings.php:197
+msgid "Plugin Framework Global Settings"
+msgstr ""
+
+#: admin/settings/general-settings.php:204
+msgid "Customize Admin Setting Box Display"
+msgstr ""
+
+#: admin/settings/general-settings.php:205
+msgid ""
+"By default each admin panel will open with all Setting Boxes in the CLOSED "
+"position."
+msgstr ""
+
+#: admin/settings/general-settings.php:212
+#, fuzzy
+msgid "House Keeping"
+msgstr "Kerumahtanggaan :"
+
+#: admin/settings/general-settings.php:216
+msgid "Clean up on Deletion"
+msgstr "Bersihkan saat Penghapusan"
+
+#: admin/settings/general-settings.php:217
+msgid ""
+"On deletion (not deactivate) the plugin will completely remove all tables "
+"and data it created, leaving no trace it was ever here."
+msgstr ""
+"Saat penghapusan (tidak dimatikan) plugin ini akan menghapus seluruh tabel "
+"dan data yang sudah dibuat, tidak meninggalkan jejak yang sudah ada di sini."
+
+#: admin/settings/general-settings.php:230
 msgid "Page Views Count Load"
 msgstr "Muat Page Views Count"
 
-#: admin/settings/general-settings.php:202
+#: admin/settings/general-settings.php:236
 msgid "Ajax Load"
 msgstr "Muat Ajax"
 
-#: admin/settings/general-settings.php:203
+#: admin/settings/general-settings.php:237
 msgid ""
 "ON to load page views counter on front end by ajax event (recommended). "
 "Prevents caching plugins and CDNs from caching the count. If using caching "
@@ -281,47 +350,31 @@ msgstr ""
 "penyimpanan Anda harus menghapus tembolok untuk melihat perubahan setelah "
 "mengubah pengaturan AKTIF atau MATI."
 
-#: admin/settings/general-settings.php:214
+#: admin/settings/general-settings.php:248
 msgid "Activate on Posts and Pages"
 msgstr "Aktifkan di Pos dan Laman"
 
-#: admin/settings/general-settings.php:218
+#: admin/settings/general-settings.php:254
 msgid "Posts"
 msgstr "Pos"
 
-#: admin/settings/general-settings.php:219
+#: admin/settings/general-settings.php:255
 msgid "All posts including posts extracts on category and tags Archives"
 msgstr "Semua pos termasuk ekstrak pos di kategori dan tag Arsip"
 
-#: admin/settings/general-settings.php:229
+#: admin/settings/general-settings.php:265
 msgid "Pages"
 msgstr "Laman"
 
-#: admin/settings/general-settings.php:245
+#: admin/settings/general-settings.php:281
 msgid "Activate on these Custom Post Types"
 msgstr "Aktifkan di Tipe Pos Tersuai ini"
 
-#: admin/settings/general-settings.php:267
-msgid "House Keeping :"
-msgstr "Kerumahtanggaan :"
-
-#: admin/settings/general-settings.php:271
-msgid "Clean up on Deletion"
-msgstr "Bersihkan saat Penghapusan"
-
-#: admin/settings/general-settings.php:272
-msgid ""
-"On deletion (not deactivate) the plugin will completely remove all tables "
-"and data it created, leaving no trace it was ever here."
-msgstr ""
-"Saat penghapusan (tidak dimatikan) plugin ini akan menghapus seluruh tabel "
-"dan data yang sudah dibuat, tidak meninggalkan jejak yang sudah ada di sini."
-
-#: admin/settings/general-settings.php:292
+#: admin/settings/general-settings.php:305
 msgid "Page Views Count Function"
 msgstr "Fungsi Page Views Count"
 
-#: admin/settings/general-settings.php:296
+#: admin/settings/general-settings.php:318
 msgid ""
 "There are 2 functions that you can use to manually add Page Views Count to "
 "any content or post type that is created by your theme or plugin that "
@@ -332,102 +385,121 @@ msgstr ""
 "plugin Anda yang membuat tabelnya sendiri daripada menggunakan tipe pos "
 "tersuai"
 
-#: admin/settings/general-settings.php:299
+#: admin/settings/general-settings.php:321
 msgid "Single post,  page, object"
 msgstr "Pos tunggal, laman, objek"
 
-#: admin/settings/general-settings.php:301
+#: admin/settings/general-settings.php:323
 msgid "Increase Page Views Count and echo stats of this post"
 msgstr "Naikkan Page View Count dan statistik eko pos ini"
 
-#: admin/settings/general-settings.php:302
+#: admin/settings/general-settings.php:324
 msgid "Increase Page Views Count and return stats of this post"
 msgstr "Naikkan Page View Count dan statistik balik pos ini"
 
-#: admin/settings/general-settings.php:305
+#: admin/settings/general-settings.php:327
 msgid "Index pages"
 msgstr "Laman indeks"
 
-#: admin/settings/general-settings.php:307
+#: admin/settings/general-settings.php:329
 msgid "Echo stats of this post"
 msgstr "Statistik eko pos ini"
 
-#: admin/settings/general-settings.php:308
+#: admin/settings/general-settings.php:330
 msgid "Return stats of this post"
 msgstr "Statistik balik pos ini"
 
-#: pvc_class.php:91 pvc_class.php:95
+#: pvc_class.php:103 pvc_class.php:107
 msgid "total views"
 msgstr "kali dilihat"
 
-#: pvc_class.php:91
+#: pvc_class.php:103
 msgid "views today"
 msgstr "kali dilihat hari ini"
 
-#: pvc_class.php:95
+#: pvc_class.php:107 pvc_class.php:196
 msgid "no views today"
 msgstr "belum ada yang melihat hari ini"
 
-#: pvc_class.php:97
+#: pvc_class.php:109 pvc_class.php:199
 msgid "No views yet"
 msgstr "Belum ada yang melihat"
 
-#: pvc_class.php:339
+#: pvc_class.php:345
+#, fuzzy
+msgid "Go to Support Forum"
+msgstr "forum bantuan"
+
+#: pvc_class.php:351
+#, fuzzy
+msgid "Free WordPress Plugins"
+msgstr "Plugin WordPress Lain a3rev yang GRATIS"
+
+#: pvc_class.php:358
+msgid "Free WooCommerce Plugins"
+msgstr ""
+
+#: pvc_class.php:365
+msgid "Is this plugin is just what you needed? If so"
+msgstr ""
+
+#: pvc_class.php:366
+msgid "Submit Review for Plugin on WordPress"
+msgstr ""
+
+#: pvc_class.php:373
+msgid "Connect with us via"
+msgstr ""
+
+#: pvc_class.php:374
+msgid "a3rev Facebook"
+msgstr ""
+
+#: pvc_class.php:375
+msgid "a3rev Twitter"
+msgstr ""
+
+#: pvc_class.php:386
 msgid "Settings"
 msgstr "Pengaturan"
 
-#: pvc_class.php:359
-msgid "Help spread the Word about this plugin"
-msgstr "Bantu sebarkan Pendapat tentang plugin ini"
-
-#: pvc_class.php:361
-msgid "View this plugins"
-msgstr "Lihat plugin ini"
-
-#: pvc_class.php:361
-msgid "documentation"
-msgstr "dokumentasi"
-
-#: pvc_class.php:362
-msgid "Visit this plugins"
-msgstr "Kunjungi plugin ini"
-
-#: pvc_class.php:362
-msgid "support forum"
-msgstr "forum bantuan"
-
-#: pvc_class.php:364
-msgid "Other FREE a3rev WordPress Plugins"
-msgstr "Plugin WordPress Lain a3rev yang GRATIS"
-
-#: pvc_class.php:367
-msgid "a3 Responsive Slider"
-msgstr "a3 Responsive Slider"
-
-#: pvc_class.php:368
-msgid "Contact Us page - Contact People"
-msgstr "Halaman Contact Us- Contact People"
-
-#: pvc_class.php:369
-msgid "WordPress Email Template"
-msgstr "WordPress Email Template"
-
-#: pvc_class.php:372
-msgid "View all"
-msgstr "Lihat semua"
-
-#: pvc_class.php:372
-msgid "17 a3rev plugins"
-msgstr "plugin 17 a3rev"
-
-#: pvc_class.php:372
-msgid "on the WordPress repository"
-msgstr "di penyimpanan WordPress"
-
-#: pvc_class.php:385
+#: pvc_class.php:395
 msgid "Documentation"
 msgstr "Dokumentasi"
 
-#: pvc_class.php:386
+#: pvc_class.php:396
 msgid "Support"
 msgstr "Bantuan"
+
+#~ msgid "Settings inside this yellow border are %s Features."
+#~ msgstr "Pengaturan dalam garis  kuning ini adalah Fitur %s ."
+
+#~ msgid "Help spread the Word about this plugin"
+#~ msgstr "Bantu sebarkan Pendapat tentang plugin ini"
+
+#~ msgid "View this plugins"
+#~ msgstr "Lihat plugin ini"
+
+#~ msgid "documentation"
+#~ msgstr "dokumentasi"
+
+#~ msgid "Visit this plugins"
+#~ msgstr "Kunjungi plugin ini"
+
+#~ msgid "a3 Responsive Slider"
+#~ msgstr "a3 Responsive Slider"
+
+#~ msgid "Contact Us page - Contact People"
+#~ msgstr "Halaman Contact Us- Contact People"
+
+#~ msgid "WordPress Email Template"
+#~ msgstr "WordPress Email Template"
+
+#~ msgid "View all"
+#~ msgstr "Lihat semua"
+
+#~ msgid "17 a3rev plugins"
+#~ msgstr "plugin 17 a3rev"
+
+#~ msgid "on the WordPress repository"
+#~ msgstr "di penyimpanan WordPress"

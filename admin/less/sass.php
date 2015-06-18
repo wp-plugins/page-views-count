@@ -15,9 +15,7 @@ class A3_PVC_Less
     /*-----------------------------------------------------------------------------------*/
     public function __construct()
     {
-		if ( isset( $_POST['form_name_action'] ) ) {
-            add_action( $this->plugin_name.'_settings_init', array ($this, 'plugin_build_sass') );
-        }
+		add_action( $this->plugin_name.'_after_settings_save_reset', array ($this, 'plugin_build_sass') );
 		add_action( 'wp_head', array ($this, 'apply_style_css_fontend') , 9 );
     }
 
@@ -43,6 +41,10 @@ class A3_PVC_Less
         add_filter( 'filesystem_method', array( $this, 'custom_filesystem_method' ) );
 
         $form_url = wp_nonce_url( esc_url( add_query_arg( 'compile-sass', 'true' ) ), 'compile-sass' );
+
+        if ( ! function_exists( 'request_filesystem_credentials' ) ) {
+            require_once( ABSPATH . 'wp-admin/includes/file.php' );
+        }
 
         if ( false === ( $creds = request_filesystem_credentials( $form_url, '', false, false, null ) ) ) {
             return true;
@@ -131,7 +133,7 @@ class A3_PVC_Less
 		do_action($this->plugin_name . '_get_all_settings');
 
         ob_start();
-		include( $this->plugin_dir. '/templates/customized_style.php' );
+		include( $this->plugin_dir. '/includes/customized_style.php' );
 		$sass = ob_get_clean();
 		$sass = str_replace( '<style>', '', str_replace( '</style>', '', $sass ) );
 		$sass = str_replace( '<style type="text/css">', '', str_replace( '</style>', '', $sass ) );

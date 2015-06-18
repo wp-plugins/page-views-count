@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Page Views Count\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-06-27 17:31+0700\n"
-"PO-Revision-Date: 2014-06-27 17:31+0700\n"
+"POT-Creation-Date: 2015-06-18 09:04+0700\n"
+"PO-Revision-Date: 2015-06-18 09:04+0700\n"
 "Last-Translator: Nguyen Cong Tuan <mr.nguyencongtuan@gmail.com>\n"
 "Language-Team: a3rev\n"
 "Language: nl_NL\n"
@@ -17,189 +17,232 @@ msgstr ""
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: admin/admin-interface.php:129
+#: admin/admin-interface.php:195
 msgid "Settings successfully saved."
 msgstr "Instellingen succesvol opgeslagen."
 
-#: admin/admin-interface.php:137
+#: admin/admin-interface.php:203
 msgid "Error: Settings can not save."
 msgstr "Fout: Instellingen kunnen niet opgeslagen worden."
 
-#: admin/admin-interface.php:145
+#: admin/admin-interface.php:211
 msgid "Settings successfully reseted."
 msgstr "Instellingen met succes gereset."
 
-#: admin/admin-interface.php:166
+#: admin/admin-interface.php:232
 msgid "Thin"
 msgstr "Dun"
 
-#: admin/admin-interface.php:167
+#: admin/admin-interface.php:233
 msgid "Thin/Italic"
 msgstr "Dun/Cursief"
 
-#: admin/admin-interface.php:168
+#: admin/admin-interface.php:234
 msgid "Normal"
 msgstr "Normaal"
 
-#: admin/admin-interface.php:169
+#: admin/admin-interface.php:235
 msgid "Italic"
 msgstr "Cursief"
 
-#: admin/admin-interface.php:170
+#: admin/admin-interface.php:236
 msgid "Bold"
 msgstr "Vetgedrukt"
 
-#: admin/admin-interface.php:171
+#: admin/admin-interface.php:237
 msgid "Bold/Italic"
 msgstr "Vetgedrukt/Cursief"
 
-#: admin/admin-interface.php:181
+#: admin/admin-interface.php:247
 msgid "Solid"
 msgstr "Solide"
 
-#: admin/admin-interface.php:182
+#: admin/admin-interface.php:248
 msgid "Double"
 msgstr "Dubbel"
 
-#: admin/admin-interface.php:183
+#: admin/admin-interface.php:249
 msgid "Dashed"
 msgstr "Gestreept"
 
-#: admin/admin-interface.php:184
+#: admin/admin-interface.php:250
 msgid "Dotted"
 msgstr "Gestippelt"
 
-#: admin/admin-interface.php:185
+#: admin/admin-interface.php:251
 msgid "Groove"
 msgstr ""
 
-#: admin/admin-interface.php:186
+#: admin/admin-interface.php:252
 msgid "Ridge"
 msgstr ""
 
-#: admin/admin-interface.php:187
+#: admin/admin-interface.php:253
 msgid "Inset"
 msgstr ""
 
-#: admin/admin-interface.php:188
+#: admin/admin-interface.php:254
 msgid "Outset"
 msgstr ""
 
-#: admin/admin-interface.php:1354 admin/admin-interface.php:1444
-#: admin/admin-interface.php:1473 admin/settings/general-settings.php:209
-#: admin/settings/general-settings.php:225
-#: admin/settings/general-settings.php:235
-#: admin/settings/general-settings.php:256
-#: admin/settings/general-settings.php:277
+#: admin/admin-interface.php:1389 admin/admin-interface.php:1444
+#: admin/admin-interface.php:1646 admin/admin-interface.php:1736
+#: admin/admin-interface.php:1765 admin/settings/general-settings.php:225
+#: admin/settings/general-settings.php:243
+#: admin/settings/general-settings.php:261
+#: admin/settings/general-settings.php:271
+#: admin/settings/general-settings.php:294
 msgid "ON"
 msgstr "AAN"
 
-#: admin/admin-interface.php:1355 admin/admin-interface.php:1445
-#: admin/admin-interface.php:1474 admin/settings/general-settings.php:210
-#: admin/settings/general-settings.php:226
-#: admin/settings/general-settings.php:236
-#: admin/settings/general-settings.php:257
-#: admin/settings/general-settings.php:278
+#: admin/admin-interface.php:1390 admin/admin-interface.php:1445
+#: admin/admin-interface.php:1647 admin/admin-interface.php:1737
+#: admin/admin-interface.php:1766 admin/settings/general-settings.php:226
+#: admin/settings/general-settings.php:244
+#: admin/settings/general-settings.php:262
+#: admin/settings/general-settings.php:272
+#: admin/settings/general-settings.php:295
 msgid "OFF"
 msgstr "UIT"
 
-#: admin/admin-interface.php:1515
+#: admin/admin-interface.php:1395
+#, fuzzy
+msgid "Google Fonts API"
+msgstr "-- Google Fonts --"
+
+#: admin/admin-interface.php:1407
+msgid ""
+"ON to connect to Google Fonts API and have auto font updates direct from "
+"Google."
+msgstr ""
+
+#: admin/admin-interface.php:1411
+#, php-format
+msgid ""
+"Enter your existing Google Fonts API Key below. Don't have a key? Visit <a "
+"href='%s' target='_blank'>Google Developer API</a> to create a key"
+msgstr ""
+
+#: admin/admin-interface.php:1428
+#, fuzzy
+msgid "Google Fonts API Key"
+msgstr "-- Google Fonts --"
+
+#: admin/admin-interface.php:1431
+msgid "Your Google API Key is valid and automatic font updates are enabled."
+msgstr ""
+
+#: admin/admin-interface.php:1432
+msgid "Please enter a valid Google API Key."
+msgstr ""
+
+#: admin/admin-interface.php:1450
+msgid "Open Box Display"
+msgstr ""
+
+#: admin/admin-interface.php:1463
+msgid ""
+"ON and each admin panel setting box OPEN | CLOSED position are saved each "
+"time changes are SAVED."
+msgstr ""
+
+#: admin/admin-interface.php:1807
 msgid "Width"
 msgstr "Breedte"
 
-#: admin/admin-interface.php:1517
+#: admin/admin-interface.php:1809
 msgid "Height"
 msgstr "Hoogte"
 
-#: admin/admin-interface.php:1519
+#: admin/admin-interface.php:1811
 msgid "Hard Crop"
 msgstr "Hard Knippen"
 
-#: admin/admin-interface.php:1596
+#: admin/admin-interface.php:1891
 msgid "-- Default Fonts --"
 msgstr "-- Standaard Fonts --"
 
-#: admin/admin-interface.php:1607
+#: admin/admin-interface.php:1902
 msgid "-- Google Fonts --"
 msgstr "-- Google Fonts --"
 
-#: admin/admin-interface.php:1648
+#: admin/admin-interface.php:1943
 msgid "Preview your customized typography settings"
 msgstr "Bekijk vooraf uw aangepaste typografie instellingen"
 
-#: admin/admin-interface.php:1782 admin/admin-interface.php:2041
+#: admin/admin-interface.php:2077 admin/admin-interface.php:2336
 msgid "Preview your customized border settings"
 msgstr "Bekijk vooraf uw aangepaste rand instellingen"
 
-#: admin/admin-interface.php:1791 admin/admin-interface.php:2032
+#: admin/admin-interface.php:2086 admin/admin-interface.php:2327
 msgid "Rounded"
 msgstr "Afgerond"
 
-#: admin/admin-interface.php:1792 admin/admin-interface.php:2033
+#: admin/admin-interface.php:2087 admin/admin-interface.php:2328
 msgid "Square"
 msgstr "Vierkant"
 
-#: admin/admin-interface.php:1802 admin/admin-interface.php:2046
+#: admin/admin-interface.php:2097 admin/admin-interface.php:2341
 msgid "Top Left Corner"
 msgstr ""
 
-#: admin/admin-interface.php:1822 admin/admin-interface.php:2066
+#: admin/admin-interface.php:2117 admin/admin-interface.php:2361
 msgid "Top Right Corner"
 msgstr ""
 
-#: admin/admin-interface.php:1842 admin/admin-interface.php:2086
+#: admin/admin-interface.php:2137 admin/admin-interface.php:2381
 msgid "Bottom Right Corner"
 msgstr ""
 
-#: admin/admin-interface.php:1862 admin/admin-interface.php:2106
+#: admin/admin-interface.php:2157 admin/admin-interface.php:2401
 msgid "Bottom Left Corner"
 msgstr ""
 
-#: admin/admin-interface.php:1955
+#: admin/admin-interface.php:2250
 msgid "Preview your customized border styles settings"
 msgstr "Bekijk vooraf uw aangepaste randstijl instellingen"
 
-#: admin/admin-interface.php:2167
+#: admin/admin-interface.php:2462
 msgid "YES"
 msgstr "JA"
 
-#: admin/admin-interface.php:2168
+#: admin/admin-interface.php:2463
 msgid "NO"
 msgstr "NEE"
 
-#: admin/admin-interface.php:2182
+#: admin/admin-interface.php:2477
 msgid "Horizontal Shadow"
 msgstr "Horizontale Schaduw"
 
-#: admin/admin-interface.php:2200
+#: admin/admin-interface.php:2495
 msgid "Vertical Shadow"
 msgstr "Verticale Schaduw"
 
-#: admin/admin-interface.php:2218
+#: admin/admin-interface.php:2513
 msgid "Blur Distance"
 msgstr "Vervaag Afstand"
 
-#: admin/admin-interface.php:2236
+#: admin/admin-interface.php:2531
 msgid "Spread Size"
 msgstr "Spreiding Grootte"
 
-#: admin/admin-interface.php:2254
+#: admin/admin-interface.php:2549
 msgid "INNER"
 msgstr "BINNEN"
 
-#: admin/admin-interface.php:2255
+#: admin/admin-interface.php:2550
 msgid "OUTER"
 msgstr "BUITEN"
 
-#: admin/admin-interface.php:2273
+#: admin/admin-interface.php:2568
 msgid "Preview your customized box shadow settings"
 msgstr "Bekijk vooraf uw aangepaste vak schaduw instellingen"
 
-#: admin/admin-interface.php:2509
+#: admin/admin-interface.php:2824
 msgid "Save changes"
 msgstr "Opslaan wijzigingen"
 
-#: admin/admin-interface.php:2510
+#: admin/admin-interface.php:2825
 msgid "Reset Settings"
 msgstr "Reset Instellingen"
 
@@ -208,39 +251,34 @@ msgstr "Reset Instellingen"
 msgid "Page Views Count"
 msgstr "Page Views Count"
 
-#: admin/admin-ui.php:123
-#, php-format
-msgid "Settings inside this yellow border are %s Features."
-msgstr ""
-
-#: admin/admin-ui.php:125
+#: admin/admin-ui.php:173
 #, php-format
 msgid ""
-"Upgrade to the <a href=\"%s\" target=\"_blank\">%s</a> to activate these "
-"settings."
+"Advanced Settings - Upgrade to the <a href=\"%s\" target=\"_blank\">%s "
+"License</a> to activate these settings."
 msgstr ""
 
-#: admin/admin-ui.php:127 admin/admin-ui.php:129
+#: admin/admin-ui.php:176
 msgid "Pro Version"
 msgstr ""
 
-#: admin/includes/uploader/class-uploader.php:149
+#: admin/includes/uploader/class-uploader.php:152
 msgid "Upload"
 msgstr "Uploaden"
 
-#: admin/includes/uploader/class-uploader.php:169
+#: admin/includes/uploader/class-uploader.php:172
 msgid "View File"
 msgstr "Bekijk Bestand"
 
-#: admin/includes/uploader/class-uploader.php:188
+#: admin/includes/uploader/class-uploader.php:191
 msgid "Use this Image"
 msgstr "Gebruik deze Afbeelding"
 
-#: admin/includes/uploader/class-uploader.php:189
+#: admin/includes/uploader/class-uploader.php:192
 msgid "Use as"
 msgstr "Gebruik als"
 
-#: admin/includes/uploader/class-uploader.php:199
+#: admin/includes/uploader/class-uploader.php:202
 msgid "Previously Uploaded"
 msgstr "Eerder Geuploaded"
 
@@ -260,52 +298,30 @@ msgstr "Page View Count Instellingen successvol gereset."
 msgid "General"
 msgstr "Algemeen"
 
-#: admin/settings/general-settings.php:198
-#, fuzzy
-msgid "Page Views Count Load"
-msgstr "Page Views Count"
-
-#: admin/settings/general-settings.php:202
-msgid "Ajax Load"
+#: admin/settings/general-settings.php:197
+msgid "Plugin Framework Global Settings"
 msgstr ""
 
-#: admin/settings/general-settings.php:203
+#: admin/settings/general-settings.php:204
+msgid "Customize Admin Setting Box Display"
+msgstr ""
+
+#: admin/settings/general-settings.php:205
 msgid ""
-"ON to load page views counter on front end by ajax event (recommended). "
-"Prevents caching plugins and CDNs from caching the count. If using caching "
-"you must clear the cache to see changes after turning this setting ON or OFF."
+"By default each admin panel will open with all Setting Boxes in the CLOSED "
+"position."
 msgstr ""
 
-#: admin/settings/general-settings.php:214
-msgid "Activate on Posts and Pages"
-msgstr "Activeren op Berichten en Pagina's"
-
-#: admin/settings/general-settings.php:218
-msgid "Posts"
-msgstr "Berichten"
-
-#: admin/settings/general-settings.php:219
-msgid "All posts including posts extracts on category and tags Archives"
-msgstr ""
-"Alle berichten waaronder berichten extracten op categorie en tags archieven"
-
-#: admin/settings/general-settings.php:229
-msgid "Pages"
-msgstr "Pagina's"
-
-#: admin/settings/general-settings.php:245
-msgid "Activate on these Custom Post Types"
-msgstr "Activeren van deze Custom Post Types"
-
-#: admin/settings/general-settings.php:267
-msgid "House Keeping :"
+#: admin/settings/general-settings.php:212
+#, fuzzy
+msgid "House Keeping"
 msgstr "Huishouding :"
 
-#: admin/settings/general-settings.php:271
+#: admin/settings/general-settings.php:216
 msgid "Clean up on Deletion"
 msgstr "Schoonmaken bij Verwijdering"
 
-#: admin/settings/general-settings.php:272
+#: admin/settings/general-settings.php:217
 msgid ""
 "On deletion (not deactivate) the plugin will completely remove all tables "
 "and data it created, leaving no trace it was ever here."
@@ -314,11 +330,48 @@ msgstr ""
 "die het gemaakt heeft volledig verwijderen, waardoor er geen sporen "
 "achterblijven."
 
-#: admin/settings/general-settings.php:292
+#: admin/settings/general-settings.php:230
+#, fuzzy
+msgid "Page Views Count Load"
+msgstr "Page Views Count"
+
+#: admin/settings/general-settings.php:236
+msgid "Ajax Load"
+msgstr ""
+
+#: admin/settings/general-settings.php:237
+msgid ""
+"ON to load page views counter on front end by ajax event (recommended). "
+"Prevents caching plugins and CDNs from caching the count. If using caching "
+"you must clear the cache to see changes after turning this setting ON or OFF."
+msgstr ""
+
+#: admin/settings/general-settings.php:248
+msgid "Activate on Posts and Pages"
+msgstr "Activeren op Berichten en Pagina's"
+
+#: admin/settings/general-settings.php:254
+msgid "Posts"
+msgstr "Berichten"
+
+#: admin/settings/general-settings.php:255
+msgid "All posts including posts extracts on category and tags Archives"
+msgstr ""
+"Alle berichten waaronder berichten extracten op categorie en tags archieven"
+
+#: admin/settings/general-settings.php:265
+msgid "Pages"
+msgstr "Pagina's"
+
+#: admin/settings/general-settings.php:281
+msgid "Activate on these Custom Post Types"
+msgstr "Activeren van deze Custom Post Types"
+
+#: admin/settings/general-settings.php:305
 msgid "Page Views Count Function"
 msgstr "Page Views Count Functie"
 
-#: admin/settings/general-settings.php:296
+#: admin/settings/general-settings.php:318
 #, fuzzy
 msgid ""
 "There are 2 functions that you can use to manually add Page Views Count to "
@@ -330,106 +383,119 @@ msgstr ""
 "plugin, die dan zorgt voor zijn eigen tabel in plaats van het gebruik van "
 "custom post types."
 
-#: admin/settings/general-settings.php:299
+#: admin/settings/general-settings.php:321
 msgid "Single post,  page, object"
 msgstr "Individueel bericht, pagina, object"
 
-#: admin/settings/general-settings.php:301
+#: admin/settings/general-settings.php:323
 msgid "Increase Page Views Count and echo stats of this post"
 msgstr ""
 
-#: admin/settings/general-settings.php:302
+#: admin/settings/general-settings.php:324
 msgid "Increase Page Views Count and return stats of this post"
 msgstr ""
 
-#: admin/settings/general-settings.php:305
+#: admin/settings/general-settings.php:327
 msgid "Index pages"
 msgstr "Index pagina's"
 
-#: admin/settings/general-settings.php:307
+#: admin/settings/general-settings.php:329
 msgid "Echo stats of this post"
 msgstr ""
 
-#: admin/settings/general-settings.php:308
+#: admin/settings/general-settings.php:330
 msgid "Return stats of this post"
 msgstr ""
 
-#: pvc_class.php:91 pvc_class.php:95
+#: pvc_class.php:103 pvc_class.php:107
 msgid "total views"
 msgstr "totaal aantal vertoningen"
 
-#: pvc_class.php:91
+#: pvc_class.php:103
 msgid "views today"
 msgstr "aantal vertoningen vandaag"
 
-#: pvc_class.php:95
+#: pvc_class.php:107 pvc_class.php:196
 msgid "no views today"
 msgstr "geen vertoningen vandaag"
 
-#: pvc_class.php:97
+#: pvc_class.php:109 pvc_class.php:199
 msgid "No views yet"
 msgstr "Nog geen vertoningen"
 
-#: pvc_class.php:339
+#: pvc_class.php:345
+#, fuzzy
+msgid "Go to Support Forum"
+msgstr "support forum"
+
+#: pvc_class.php:351
+#, fuzzy
+msgid "Free WordPress Plugins"
+msgstr "Andere GRATIS a3rev WordPress Plugins"
+
+#: pvc_class.php:358
+msgid "Free WooCommerce Plugins"
+msgstr ""
+
+#: pvc_class.php:365
+msgid "Is this plugin is just what you needed? If so"
+msgstr ""
+
+#: pvc_class.php:366
+msgid "Submit Review for Plugin on WordPress"
+msgstr ""
+
+#: pvc_class.php:373
+msgid "Connect with us via"
+msgstr ""
+
+#: pvc_class.php:374
+msgid "a3rev Facebook"
+msgstr ""
+
+#: pvc_class.php:375
+msgid "a3rev Twitter"
+msgstr ""
+
+#: pvc_class.php:386
 msgid "Settings"
 msgstr "Instellingen"
 
-#: pvc_class.php:359
-msgid "Help spread the Word about this plugin"
-msgstr "Help met het promoten van deze plugin"
-
-#: pvc_class.php:361
-msgid "View this plugins"
-msgstr "Bekijk deze plugins"
-
-#: pvc_class.php:361
-msgid "documentation"
-msgstr "documentatie"
-
-#: pvc_class.php:362
-msgid "Visit this plugins"
-msgstr "Bezoek deze plugins"
-
-#: pvc_class.php:362
-msgid "support forum"
-msgstr "support forum"
-
-#: pvc_class.php:364
-msgid "Other FREE a3rev WordPress Plugins"
-msgstr "Andere GRATIS a3rev WordPress Plugins"
-
-#: pvc_class.php:367
-msgid "a3 Responsive Slider"
-msgstr ""
-
-#: pvc_class.php:368
-msgid "Contact Us page - Contact People"
-msgstr "Contact pagina - Contact Personen"
-
-#: pvc_class.php:369
-msgid "WordPress Email Template"
-msgstr "WordPress Email Sjabloon"
-
-#: pvc_class.php:372
-msgid "View all"
-msgstr "Toon alles"
-
-#: pvc_class.php:372
-#, fuzzy
-msgid "17 a3rev plugins"
-msgstr "16 a3rev plugins"
-
-#: pvc_class.php:372
-msgid "on the WordPress repository"
-msgstr "van de WordPress opslagruimte"
-
-#: pvc_class.php:385
+#: pvc_class.php:395
 msgid "Documentation"
 msgstr "Documentatie"
 
-#: pvc_class.php:386
+#: pvc_class.php:396
 msgid "Support"
 msgstr "Support"
+
+#~ msgid "Help spread the Word about this plugin"
+#~ msgstr "Help met het promoten van deze plugin"
+
+#~ msgid "View this plugins"
+#~ msgstr "Bekijk deze plugins"
+
+#~ msgid "documentation"
+#~ msgstr "documentatie"
+
+#~ msgid "Visit this plugins"
+#~ msgstr "Bezoek deze plugins"
+
+#~ msgid "Contact Us page - Contact People"
+#~ msgstr "Contact pagina - Contact Personen"
+
+#~ msgid "WordPress Email Template"
+#~ msgstr "WordPress Email Sjabloon"
+
+#~ msgid "View all"
+#~ msgstr "Toon alles"
+
+#, fuzzy
+#~ msgid "17 a3rev plugins"
+#~ msgstr "16 a3rev plugins"
+
+#~ msgid "on the WordPress repository"
+#~ msgstr "van de WordPress opslagruimte"
 
 #~ msgid "Rounded Value"
 #~ msgstr "Afgeronde Waarde"

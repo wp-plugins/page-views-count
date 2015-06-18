@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Page Views Count\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-06-27 17:32+0700\n"
-"PO-Revision-Date: 2014-06-27 17:32+0700\n"
+"POT-Creation-Date: 2015-06-18 09:03+0700\n"
+"PO-Revision-Date: 2015-06-18 09:04+0700\n"
 "Last-Translator: Nguyen Cong Tuan <mr.nguyencongtuan@gmail.com>\n"
 "Language-Team: a3rev\n"
 "Language: ru\n"
@@ -16,189 +16,232 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: admin/admin-interface.php:129
+#: admin/admin-interface.php:195
 msgid "Settings successfully saved."
 msgstr "Настройки успешно сохранены."
 
-#: admin/admin-interface.php:137
+#: admin/admin-interface.php:203
 msgid "Error: Settings can not save."
 msgstr "Ошибка: Настройки не могут быть сохранены."
 
-#: admin/admin-interface.php:145
+#: admin/admin-interface.php:211
 msgid "Settings successfully reseted."
 msgstr "Настройки успешно сброшены."
 
-#: admin/admin-interface.php:166
+#: admin/admin-interface.php:232
 msgid "Thin"
 msgstr "Тонкий"
 
-#: admin/admin-interface.php:167
+#: admin/admin-interface.php:233
 msgid "Thin/Italic"
 msgstr "Тонкий/Курсив"
 
-#: admin/admin-interface.php:168
+#: admin/admin-interface.php:234
 msgid "Normal"
 msgstr "Обычный"
 
-#: admin/admin-interface.php:169
+#: admin/admin-interface.php:235
 msgid "Italic"
 msgstr "Курсив"
 
-#: admin/admin-interface.php:170
+#: admin/admin-interface.php:236
 msgid "Bold"
 msgstr "Жирный"
 
-#: admin/admin-interface.php:171
+#: admin/admin-interface.php:237
 msgid "Bold/Italic"
 msgstr "Жирный/Курсив"
 
-#: admin/admin-interface.php:181
+#: admin/admin-interface.php:247
 msgid "Solid"
 msgstr "Сплошной"
 
-#: admin/admin-interface.php:182
+#: admin/admin-interface.php:248
 msgid "Double"
 msgstr "Двойной"
 
-#: admin/admin-interface.php:183
+#: admin/admin-interface.php:249
 msgid "Dashed"
 msgstr "Пунктирный"
 
-#: admin/admin-interface.php:184
+#: admin/admin-interface.php:250
 msgid "Dotted"
 msgstr "Точечный"
 
-#: admin/admin-interface.php:185
+#: admin/admin-interface.php:251
 msgid "Groove"
 msgstr "Выемка"
 
-#: admin/admin-interface.php:186
+#: admin/admin-interface.php:252
 msgid "Ridge"
 msgstr "Грани"
 
-#: admin/admin-interface.php:187
+#: admin/admin-interface.php:253
 msgid "Inset"
 msgstr "Вогнутый"
 
-#: admin/admin-interface.php:188
+#: admin/admin-interface.php:254
 msgid "Outset"
 msgstr "Выпуклый"
 
-#: admin/admin-interface.php:1354 admin/admin-interface.php:1444
-#: admin/admin-interface.php:1473 admin/settings/general-settings.php:209
-#: admin/settings/general-settings.php:225
-#: admin/settings/general-settings.php:235
-#: admin/settings/general-settings.php:256
-#: admin/settings/general-settings.php:277
+#: admin/admin-interface.php:1389 admin/admin-interface.php:1444
+#: admin/admin-interface.php:1646 admin/admin-interface.php:1736
+#: admin/admin-interface.php:1765 admin/settings/general-settings.php:225
+#: admin/settings/general-settings.php:243
+#: admin/settings/general-settings.php:261
+#: admin/settings/general-settings.php:271
+#: admin/settings/general-settings.php:294
 msgid "ON"
 msgstr "ВКЛ"
 
-#: admin/admin-interface.php:1355 admin/admin-interface.php:1445
-#: admin/admin-interface.php:1474 admin/settings/general-settings.php:210
-#: admin/settings/general-settings.php:226
-#: admin/settings/general-settings.php:236
-#: admin/settings/general-settings.php:257
-#: admin/settings/general-settings.php:278
+#: admin/admin-interface.php:1390 admin/admin-interface.php:1445
+#: admin/admin-interface.php:1647 admin/admin-interface.php:1737
+#: admin/admin-interface.php:1766 admin/settings/general-settings.php:226
+#: admin/settings/general-settings.php:244
+#: admin/settings/general-settings.php:262
+#: admin/settings/general-settings.php:272
+#: admin/settings/general-settings.php:295
 msgid "OFF"
 msgstr "ВЫКЛ"
 
-#: admin/admin-interface.php:1515
+#: admin/admin-interface.php:1395
+#, fuzzy
+msgid "Google Fonts API"
+msgstr "-- Шрифты Google --"
+
+#: admin/admin-interface.php:1407
+msgid ""
+"ON to connect to Google Fonts API and have auto font updates direct from "
+"Google."
+msgstr ""
+
+#: admin/admin-interface.php:1411
+#, php-format
+msgid ""
+"Enter your existing Google Fonts API Key below. Don't have a key? Visit <a "
+"href='%s' target='_blank'>Google Developer API</a> to create a key"
+msgstr ""
+
+#: admin/admin-interface.php:1428
+#, fuzzy
+msgid "Google Fonts API Key"
+msgstr "-- Шрифты Google --"
+
+#: admin/admin-interface.php:1431
+msgid "Your Google API Key is valid and automatic font updates are enabled."
+msgstr ""
+
+#: admin/admin-interface.php:1432
+msgid "Please enter a valid Google API Key."
+msgstr ""
+
+#: admin/admin-interface.php:1450
+msgid "Open Box Display"
+msgstr ""
+
+#: admin/admin-interface.php:1463
+msgid ""
+"ON and each admin panel setting box OPEN | CLOSED position are saved each "
+"time changes are SAVED."
+msgstr ""
+
+#: admin/admin-interface.php:1807
 msgid "Width"
 msgstr "Ширина"
 
-#: admin/admin-interface.php:1517
+#: admin/admin-interface.php:1809
 msgid "Height"
 msgstr "Высота"
 
-#: admin/admin-interface.php:1519
+#: admin/admin-interface.php:1811
 msgid "Hard Crop"
 msgstr "Жесткое обрезание"
 
-#: admin/admin-interface.php:1596
+#: admin/admin-interface.php:1891
 msgid "-- Default Fonts --"
 msgstr "-- Шрифты по умолчанию --"
 
-#: admin/admin-interface.php:1607
+#: admin/admin-interface.php:1902
 msgid "-- Google Fonts --"
 msgstr "-- Шрифты Google --"
 
-#: admin/admin-interface.php:1648
+#: admin/admin-interface.php:1943
 msgid "Preview your customized typography settings"
 msgstr "Предварительный просмотр Ваших настроек оформления"
 
-#: admin/admin-interface.php:1782 admin/admin-interface.php:2041
+#: admin/admin-interface.php:2077 admin/admin-interface.php:2336
 msgid "Preview your customized border settings"
 msgstr "Предварительный просмотр Ваших настроек границы"
 
-#: admin/admin-interface.php:1791 admin/admin-interface.php:2032
+#: admin/admin-interface.php:2086 admin/admin-interface.php:2327
 msgid "Rounded"
 msgstr "Скругленный"
 
-#: admin/admin-interface.php:1792 admin/admin-interface.php:2033
+#: admin/admin-interface.php:2087 admin/admin-interface.php:2328
 msgid "Square"
 msgstr "Квадрат"
 
-#: admin/admin-interface.php:1802 admin/admin-interface.php:2046
+#: admin/admin-interface.php:2097 admin/admin-interface.php:2341
 msgid "Top Left Corner"
 msgstr "Верхний Левый Угол"
 
-#: admin/admin-interface.php:1822 admin/admin-interface.php:2066
+#: admin/admin-interface.php:2117 admin/admin-interface.php:2361
 msgid "Top Right Corner"
 msgstr "Верхний Правый Угол"
 
-#: admin/admin-interface.php:1842 admin/admin-interface.php:2086
+#: admin/admin-interface.php:2137 admin/admin-interface.php:2381
 msgid "Bottom Right Corner"
 msgstr "Нижний Правый Угол"
 
-#: admin/admin-interface.php:1862 admin/admin-interface.php:2106
+#: admin/admin-interface.php:2157 admin/admin-interface.php:2401
 msgid "Bottom Left Corner"
 msgstr "Верхний Левый Угол"
 
-#: admin/admin-interface.php:1955
+#: admin/admin-interface.php:2250
 msgid "Preview your customized border styles settings"
 msgstr "Предварительный просмотр Ваших настроек стиля границы"
 
-#: admin/admin-interface.php:2167
+#: admin/admin-interface.php:2462
 msgid "YES"
 msgstr "ДА"
 
-#: admin/admin-interface.php:2168
+#: admin/admin-interface.php:2463
 msgid "NO"
 msgstr "НЕТ"
 
-#: admin/admin-interface.php:2182
+#: admin/admin-interface.php:2477
 msgid "Horizontal Shadow"
 msgstr "Горизонтальная Тень"
 
-#: admin/admin-interface.php:2200
+#: admin/admin-interface.php:2495
 msgid "Vertical Shadow"
 msgstr "Вертикальная Тень"
 
-#: admin/admin-interface.php:2218
+#: admin/admin-interface.php:2513
 msgid "Blur Distance"
 msgstr "Размытие Расстояния"
 
-#: admin/admin-interface.php:2236
+#: admin/admin-interface.php:2531
 msgid "Spread Size"
 msgstr "Простирающийся Размер"
 
-#: admin/admin-interface.php:2254
+#: admin/admin-interface.php:2549
 msgid "INNER"
 msgstr "ВНУТРЕННИЙ"
 
-#: admin/admin-interface.php:2255
+#: admin/admin-interface.php:2550
 msgid "OUTER"
 msgstr "ВНЕШНИЙ"
 
-#: admin/admin-interface.php:2273
+#: admin/admin-interface.php:2568
 msgid "Preview your customized box shadow settings"
 msgstr "Предварительный просмотр Ваших настроек тени коробки"
 
-#: admin/admin-interface.php:2509
+#: admin/admin-interface.php:2824
 msgid "Save changes"
 msgstr "Сохранить изменения"
 
-#: admin/admin-interface.php:2510
+#: admin/admin-interface.php:2825
 msgid "Reset Settings"
 msgstr "Сбросить Настройки"
 
@@ -207,41 +250,36 @@ msgstr "Сбросить Настройки"
 msgid "Page Views Count"
 msgstr "Счетчик Просмотров Страниц"
 
-#: admin/admin-ui.php:123
-#, php-format
-msgid "Settings inside this yellow border are %s Features."
-msgstr "Настройки внутри этой желтой рамки являются %s Характеристиками."
-
-#: admin/admin-ui.php:125
-#, php-format
+#: admin/admin-ui.php:173
+#, fuzzy, php-format
 msgid ""
-"Upgrade to the <a href=\"%s\" target=\"_blank\">%s</a> to activate these "
-"settings."
+"Advanced Settings - Upgrade to the <a href=\"%s\" target=\"_blank\">%s "
+"License</a> to activate these settings."
 msgstr ""
 "Обновите <a href=\"%s\" target=\"_blank\">%s</a> чтобы активировать эти "
 "настройки."
 
-#: admin/admin-ui.php:127 admin/admin-ui.php:129
+#: admin/admin-ui.php:176
 msgid "Pro Version"
 msgstr "Про Версия"
 
-#: admin/includes/uploader/class-uploader.php:149
+#: admin/includes/uploader/class-uploader.php:152
 msgid "Upload"
 msgstr "Загрузить"
 
-#: admin/includes/uploader/class-uploader.php:169
+#: admin/includes/uploader/class-uploader.php:172
 msgid "View File"
 msgstr "Просмотреть Файл"
 
-#: admin/includes/uploader/class-uploader.php:188
+#: admin/includes/uploader/class-uploader.php:191
 msgid "Use this Image"
 msgstr "Использовать это Изображение"
 
-#: admin/includes/uploader/class-uploader.php:189
+#: admin/includes/uploader/class-uploader.php:192
 msgid "Use as"
 msgstr "Использовать как"
 
-#: admin/includes/uploader/class-uploader.php:199
+#: admin/includes/uploader/class-uploader.php:202
 msgid "Previously Uploaded"
 msgstr "Ранее Загруженное"
 
@@ -261,51 +299,30 @@ msgstr "Настройки Счетчика Просмотров Страниц 
 msgid "General"
 msgstr "Общие"
 
-#: admin/settings/general-settings.php:198
-#, fuzzy
-msgid "Page Views Count Load"
-msgstr "Счетчик Просмотров Страниц"
-
-#: admin/settings/general-settings.php:202
-msgid "Ajax Load"
+#: admin/settings/general-settings.php:197
+msgid "Plugin Framework Global Settings"
 msgstr ""
 
-#: admin/settings/general-settings.php:203
+#: admin/settings/general-settings.php:204
+msgid "Customize Admin Setting Box Display"
+msgstr ""
+
+#: admin/settings/general-settings.php:205
 msgid ""
-"ON to load page views counter on front end by ajax event (recommended). "
-"Prevents caching plugins and CDNs from caching the count. If using caching "
-"you must clear the cache to see changes after turning this setting ON or OFF."
+"By default each admin panel will open with all Setting Boxes in the CLOSED "
+"position."
 msgstr ""
 
-#: admin/settings/general-settings.php:214
-msgid "Activate on Posts and Pages"
-msgstr "Включить в Записях и на Страницах"
-
-#: admin/settings/general-settings.php:218
-msgid "Posts"
-msgstr "Записи"
-
-#: admin/settings/general-settings.php:219
-msgid "All posts including posts extracts on category and tags Archives"
-msgstr "Все записи, включая выдержки записей в категории и теги Архивов"
-
-#: admin/settings/general-settings.php:229
-msgid "Pages"
-msgstr "Страницы"
-
-#: admin/settings/general-settings.php:245
-msgid "Activate on these Custom Post Types"
-msgstr "Включить на следующих Выбранных Типах Записей"
-
-#: admin/settings/general-settings.php:267
-msgid "House Keeping :"
+#: admin/settings/general-settings.php:212
+#, fuzzy
+msgid "House Keeping"
 msgstr "Служба Очистки :"
 
-#: admin/settings/general-settings.php:271
+#: admin/settings/general-settings.php:216
 msgid "Clean up on Deletion"
 msgstr "Очистка при Удалении"
 
-#: admin/settings/general-settings.php:272
+#: admin/settings/general-settings.php:217
 msgid ""
 "On deletion (not deactivate) the plugin will completely remove all tables "
 "and data it created, leaving no trace it was ever here."
@@ -313,11 +330,47 @@ msgstr ""
 "При удалении (не отключать) плагин полностью удалит все таблицы и данные, "
 "которые он создал, не оставляя следов, что он когда-либо был здесь."
 
-#: admin/settings/general-settings.php:292
+#: admin/settings/general-settings.php:230
+#, fuzzy
+msgid "Page Views Count Load"
+msgstr "Счетчик Просмотров Страниц"
+
+#: admin/settings/general-settings.php:236
+msgid "Ajax Load"
+msgstr ""
+
+#: admin/settings/general-settings.php:237
+msgid ""
+"ON to load page views counter on front end by ajax event (recommended). "
+"Prevents caching plugins and CDNs from caching the count. If using caching "
+"you must clear the cache to see changes after turning this setting ON or OFF."
+msgstr ""
+
+#: admin/settings/general-settings.php:248
+msgid "Activate on Posts and Pages"
+msgstr "Включить в Записях и на Страницах"
+
+#: admin/settings/general-settings.php:254
+msgid "Posts"
+msgstr "Записи"
+
+#: admin/settings/general-settings.php:255
+msgid "All posts including posts extracts on category and tags Archives"
+msgstr "Все записи, включая выдержки записей в категории и теги Архивов"
+
+#: admin/settings/general-settings.php:265
+msgid "Pages"
+msgstr "Страницы"
+
+#: admin/settings/general-settings.php:281
+msgid "Activate on these Custom Post Types"
+msgstr "Включить на следующих Выбранных Типах Записей"
+
+#: admin/settings/general-settings.php:305
 msgid "Page Views Count Function"
 msgstr "Функция Счетчика Просмотров Страниц"
 
-#: admin/settings/general-settings.php:296
+#: admin/settings/general-settings.php:318
 msgid ""
 "There are 2 functions that you can use to manually add Page Views Count to "
 "any content or post type that is created by your theme or plugin that "
@@ -328,102 +381,121 @@ msgstr ""
 "созданы Вашей темой или плагином, который создает свою ​​собственную таблицу "
 "вместо использования пользовательских типов записей"
 
-#: admin/settings/general-settings.php:299
+#: admin/settings/general-settings.php:321
 msgid "Single post,  page, object"
 msgstr "Отдельная запись, страница, объект"
 
-#: admin/settings/general-settings.php:301
+#: admin/settings/general-settings.php:323
 msgid "Increase Page Views Count and echo stats of this post"
 msgstr "Увеличить Счетчик Просмотров Страниц и вывести статистику этой записи"
 
-#: admin/settings/general-settings.php:302
+#: admin/settings/general-settings.php:324
 msgid "Increase Page Views Count and return stats of this post"
 msgstr "Увеличить Счетчик Просмотров Страниц и вернуть статистику этой записи"
 
-#: admin/settings/general-settings.php:305
+#: admin/settings/general-settings.php:327
 msgid "Index pages"
 msgstr "Показатели страниц"
 
-#: admin/settings/general-settings.php:307
+#: admin/settings/general-settings.php:329
 msgid "Echo stats of this post"
 msgstr "Вывод статистики этой записи"
 
-#: admin/settings/general-settings.php:308
+#: admin/settings/general-settings.php:330
 msgid "Return stats of this post"
 msgstr "Возврат статистики этой записи"
 
-#: pvc_class.php:91 pvc_class.php:95
+#: pvc_class.php:103 pvc_class.php:107
 msgid "total views"
 msgstr "просмотров всего"
 
-#: pvc_class.php:91
+#: pvc_class.php:103
 msgid "views today"
 msgstr "просмотров сегодня"
 
-#: pvc_class.php:95
+#: pvc_class.php:107 pvc_class.php:196
 msgid "no views today"
 msgstr "сегодня нет просмотров"
 
-#: pvc_class.php:97
+#: pvc_class.php:109 pvc_class.php:199
 msgid "No views yet"
 msgstr "Еще нет просмотров"
 
-#: pvc_class.php:339
+#: pvc_class.php:345
+#, fuzzy
+msgid "Go to Support Forum"
+msgstr "форум поддержки"
+
+#: pvc_class.php:351
+#, fuzzy
+msgid "Free WordPress Plugins"
+msgstr "Другие БЕСПЛАТНЫЕ a3rev WordPress Плагины"
+
+#: pvc_class.php:358
+msgid "Free WooCommerce Plugins"
+msgstr ""
+
+#: pvc_class.php:365
+msgid "Is this plugin is just what you needed? If so"
+msgstr ""
+
+#: pvc_class.php:366
+msgid "Submit Review for Plugin on WordPress"
+msgstr ""
+
+#: pvc_class.php:373
+msgid "Connect with us via"
+msgstr ""
+
+#: pvc_class.php:374
+msgid "a3rev Facebook"
+msgstr ""
+
+#: pvc_class.php:375
+msgid "a3rev Twitter"
+msgstr ""
+
+#: pvc_class.php:386
 msgid "Settings"
 msgstr "Настройки"
 
-#: pvc_class.php:359
-msgid "Help spread the Word about this plugin"
-msgstr "Помогите распространить информацию об этом плагине"
-
-#: pvc_class.php:361
-msgid "View this plugins"
-msgstr "Смотреть у этих плагинов"
-
-#: pvc_class.php:361
-msgid "documentation"
-msgstr "документацию"
-
-#: pvc_class.php:362
-msgid "Visit this plugins"
-msgstr "Посетить у этих плагинов"
-
-#: pvc_class.php:362
-msgid "support forum"
-msgstr "форум поддержки"
-
-#: pvc_class.php:364
-msgid "Other FREE a3rev WordPress Plugins"
-msgstr "Другие БЕСПЛАТНЫЕ a3rev WordPress Плагины"
-
-#: pvc_class.php:367
-msgid "a3 Responsive Slider"
-msgstr "a3 Отзывчивый Слайдер"
-
-#: pvc_class.php:368
-msgid "Contact Us page - Contact People"
-msgstr "Страница Связи с Нами - Связаться с Людьми"
-
-#: pvc_class.php:369
-msgid "WordPress Email Template"
-msgstr "WordPress Email Шаблон"
-
-#: pvc_class.php:372
-msgid "View all"
-msgstr "Смотреть все"
-
-#: pvc_class.php:372
-msgid "17 a3rev plugins"
-msgstr "17 a3rev плагинов"
-
-#: pvc_class.php:372
-msgid "on the WordPress repository"
-msgstr "на складе WordPress"
-
-#: pvc_class.php:385
+#: pvc_class.php:395
 msgid "Documentation"
 msgstr "Документация"
 
-#: pvc_class.php:386
+#: pvc_class.php:396
 msgid "Support"
 msgstr "Поддержка"
+
+#~ msgid "Settings inside this yellow border are %s Features."
+#~ msgstr "Настройки внутри этой желтой рамки являются %s Характеристиками."
+
+#~ msgid "Help spread the Word about this plugin"
+#~ msgstr "Помогите распространить информацию об этом плагине"
+
+#~ msgid "View this plugins"
+#~ msgstr "Смотреть у этих плагинов"
+
+#~ msgid "documentation"
+#~ msgstr "документацию"
+
+#~ msgid "Visit this plugins"
+#~ msgstr "Посетить у этих плагинов"
+
+#~ msgid "a3 Responsive Slider"
+#~ msgstr "a3 Отзывчивый Слайдер"
+
+#~ msgid "Contact Us page - Contact People"
+#~ msgstr "Страница Связи с Нами - Связаться с Людьми"
+
+#~ msgid "WordPress Email Template"
+#~ msgstr "WordPress Email Шаблон"
+
+#~ msgid "View all"
+#~ msgstr "Смотреть все"
+
+#~ msgid "17 a3rev plugins"
+#~ msgstr "17 a3rev плагинов"
+
+#~ msgid "on the WordPress repository"
+#~ msgstr "на складе WordPress"

@@ -14,6 +14,8 @@ function pvc_install(){
 	global $wp_pvc_admin_init;
 	$wp_pvc_admin_init->set_default_settings();
 
+	delete_metadata( 'user', 0, $wp_pvc_admin_init->plugin_name . '-' . 'plugin_framework_global_box' . '-' . 'opened', '', true );
+
 	update_option('pvc_just_installed', true);
 }
 
@@ -53,15 +55,7 @@ global $wp_pvc_admin_init;
 $wp_pvc_admin_init->init();
 
 // Add upgrade notice to Dashboard pages
-add_filter( $wp_pvc_admin_init->plugin_name . '_plugin_extension', array( 'A3_PVC', 'plugin_extension' ) );
-
-$admin_pages = $wp_pvc_admin_init->admin_pages();
-if ( is_array( $admin_pages ) && count( $admin_pages ) > 0 ) {
-	foreach ( $admin_pages as $admin_page ) {
-		add_action( $wp_pvc_admin_init->plugin_name . '-' . $admin_page . '_tab_start', array( 'A3_PVC', 'plugin_extension_start' ) );
-		add_action( $wp_pvc_admin_init->plugin_name . '-' . $admin_page . '_tab_end', array( 'A3_PVC', 'plugin_extension_end' ) );
-	}
-}
+add_filter( $wp_pvc_admin_init->plugin_name . '_plugin_extension_boxes', array( 'A3_PVC', 'plugin_extension_box' ) );
 
 /**
  * On the scheduled action hook, run the function.
@@ -98,16 +92,18 @@ function pvc_lite_upgrade_plugin () {
 	}
 
 	if(version_compare(get_option('a3_pvc_version'), '1.3.5') === -1){
+		update_option('a3_pvc_version', '1.3.5');
+
 		wp_schedule_event( strtotime( date('Y-m-d'). ' 00:00:00' ), 'daily', 'pvc_empty_daily_table_daily_event_hook' );
 		global $wpdb;
 		$sql = "ALTER TABLE ". $wpdb->prefix . "pvc_daily  CHANGE `id` `id` BIGINT NOT NULL AUTO_INCREMENT";
 		$wpdb->query($sql);
 		$sql = "ALTER TABLE ". $wpdb->prefix . "pvc_total  CHANGE `id` `id` BIGINT NOT NULL AUTO_INCREMENT";
 		$wpdb->query($sql);
-
-		update_option('a3_pvc_version', '1.3.5');
 	}
 	if(version_compare(get_option('a3_pvc_version'), '1.3.6') === -1){
+		update_option('a3_pvc_version', '1.3.6');
+
 		$pvc_settings = get_option( 'pvc_settings' );
 		if ( isset( $pvc_settings['post_types'] ) && is_array( $pvc_settings['post_types'] ) && count( $pvc_settings['post_types'] ) > 0 ) {
 			$post_types_new = array();
@@ -117,7 +113,6 @@ function pvc_lite_upgrade_plugin () {
 			$pvc_settings['post_types'] = $post_types_new;
 			update_option( 'pvc_settings', $pvc_settings );
 		}
-		update_option('a3_pvc_version', '1.3.6');
 	}
 
 	update_option('a3_pvc_version', '1.3.9');
